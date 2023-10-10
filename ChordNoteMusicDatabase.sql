@@ -1,3 +1,4 @@
+-- language: sql
 CREATE DATABASE ChordNoteMusic;
 
 USE ChordNoteMusic;
