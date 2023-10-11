@@ -957,5 +957,3 @@ INSERT INTO NoteSI# (note_ita, chord_ita, chord_note_ita, note_eng, chord_eng, c
 ('SI#', 'Si# Settima Maggiore 13', 'Si#-Re♯♯-Fa♯♯-La♯-Do♯♯-Mi♯-Sol♯-Si♯-Re♯♯-Fa♯-La♯', 'B#', 'B#Maj13', 'B#-Dx-Fxx-Ax-Cx-Ex-Gx-Bx♯-Dx♯-Fx-#x-Gx'),
 ('SI#', 'Si# Minore 11', 'Si#-Re♯-Fa♯♯♯-La-Do♯♯♯-Mi♯-Sol♯♯-Si♯-Re♯-Fa♯-La', 'B#', 'B#m11', 'B#-Dx-Fxx-Ax-Cx-Ex-Gx-Bx♯-Dx♯-Fx-#x-Gx'),
 ('SI#', 'Si# Settima add11', 'Si#-Re♯♯-Fa♯♯-La♯-Do♯♯-Mi♯-Sol♯♯-Si♯-Re♯♯-Fa♯-La', 'B#', 'B#7add11', 'B#-Dx-Fxx-Ax-Cx-Ex-Gx-Bx♯-Dx♯-Fx-#x-Gx');
-
--- Aggiungi altre righe di dati se necessario
