@@ -28,8 +28,6 @@ Each row represents a different type of chord for the note "DO," with details in
 This table represents the note "DO#" (C#).
 It contains information about chords in Italian and English related to the note "DO#," with similar details in the specified fields.
 
-(Continue with tables for other musical notes following the same format.)
-
 # Lingua Italiana
 
 ## Descrizione del Database
@@ -58,5 +56,3 @@ Ogni riga rappresenta un diverso tipo di accordo per la nota "DO", con dettagli 
 Questa tabella rappresenta la nota "DO#" (C#).
 Contiene informazioni sugli accordi in italiano e inglese relativi alla nota "DO#".
 Ogni riga rappresenta un diverso tipo di accordo per la nota "DO#", con dettagli simili nei campi specificati sopra.
-
-(Continua con le tabelle per le altre note musicali secondo lo stesso formato.)
