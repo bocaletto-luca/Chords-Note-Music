@@ -1482,50 +1482,81 @@ INSERT INTO NoteLAb (
   ('La♭','La♭ Maj13',       'La♭-Do-Mi♭-Sol-Re♭-Fa','Ab','AbMaj13', 'Ab-C-Eb-G-Bb-Db-F'),
   ('La♭','La♭ m13',         'La♭-Do♭-Mi♭-Sol♭-Si♭-Re♭-Fa','Ab','Abm13',   'Ab-Cb-Eb-Gb-Bb-Db-F');
 
--- Creazione della tabella LAdiesis
+-- Creazione della tabella NoteLAdiesis (La♯ / A#)
 CREATE TABLE NoteLAdiesis (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    note_ita VARCHAR(255),
-    chord_ita VARCHAR(255),
-    chord_note_ita VARCHAR(255),
-    note_eng VARCHAR(255),
-    chord_eng VARCHAR(255),
-    chord_note_eng VARCHAR(255)
-);
--- Inserimento dei dati per gli accordi di La# nella tabella LA#
-INSERT INTO NoteLA# (note_ita, chord_ita, chord_note_ita, note_eng, chord_eng, chord_note_eng) VALUES
-('LA#', 'La# Maggiore', 'La#-Do##-Mi#', 'A#', 'A#Maj', 'A#-D##-F#'),
-('LA#', 'La# Minore', 'La#-Do#-Mi#', 'A#', 'A#m', 'A#-D#-F#'),
-('LA#', 'La# Settima', 'La#-Do##-Mi#-Sol#', 'A#', 'A#7', 'A#-D##-F#-A#'),
-('LA#', 'La# Maggiore 7', 'La#-Do##-Mi#-Sol##', 'A#', 'A#Maj7', 'A#-D##-F#-A##'),
-('LA#', 'La# Minore 7', 'La#-Do#-Mi#-Sol#', 'A#', 'A#m7', 'A#-D#-F#-A#'),
-('LA#', 'La# Settima Minore', 'La#-Do#-Mi#-Sol#', 'A#', 'A#m7', 'A#-D#-F#-A#'),
-('LA#', 'La# Maggiore 6', 'La#-Do##-Mi#-Fa#', 'A#', 'A#6', 'A#-D##-F#-Bb'),
-('LA#', 'La# Minore 6', 'La#-Do#-Mi#-Fa#', 'A#', 'A#m6', 'A#-D#-F#-Bb'),
-('LA#', 'La# Settima 9', 'La#-Do##-Mi#-Sol#-Si#', 'A#', 'A#9', 'A#-D##-F#-A#-C#'),
-('LA#', 'La# Maggiore 9', 'La#-Do##-Mi#-Sol##-Si#', 'A#', 'A#Maj9', 'A#-D##-F#-A##-C#'),
-('LA#', 'La# Minore 9', 'La#-Do#-Mi#-Sol#-Si#', 'A#', 'A#m9', 'A#-D#-F#-A#-C#'),
-('LA#', 'La# Settima Maggiore 7', 'La#-Do##-Mi#-Sol##-Si#', 'A#', 'A#Maj7♯5', 'A#-D##-F#-A##-C#'),
-('LA#', 'La# Diminuito', 'La#-Do#-Mi♭-Sol#', 'A#', 'A#dim', 'A#-D#-F-#A'),
-('LA#', 'La# Aumentato', 'La#-Do##-Mi#-Sol##', 'A#', 'A#aug', 'A#-D##-F##-A##'),
-('LA#', 'La# Sesta', 'La#-Do##-Mi#-Fa#-Si#', 'A#', 'A#6', 'A#-D##-F#-Bb-C#'),
-('LA#', 'La# Nona', 'La#-Do##-Mi#-Sol#-Si#-Re#', 'A#', 'A#9', 'A#-D##-F#-A#-C#-E#'),
-('LA#', 'La# Settima Maggiore', 'La#-Do##-Mi#-Sol##-Si#-Re#', 'A#', 'A#Maj7', 'A#-D##-F#-A##-C#-E#'),
-('LA#', 'La# Settima Maggiore 9', 'La#-Do##-Mi#-Sol##-Si#-Re#-Fa#', 'A#', 'A#Maj9', 'A#-D##-F#-A##-C#-E#-G#'),
-('LA#', 'La# Settima 11', 'La#-Do##-Mi#-Sol##-Si#-Re#-Fa#-La#', 'A#', 'A#11', 'A#-D##-F#-A##-C#-E#-G#-B#'),
-('LA#', 'La# Settima 13', 'La#-Do##-Mi#-Sol##-Si#-Re#-Fa#-La#-Do##', 'A#', 'A#13', 'A#-D##-F#-A##-C#-E#-G#-B#-D##'),
-('LA#', 'La# Settima 9 Add11', 'La#-Do##-Mi#-Sol##-Si#-Re#-Fa#', 'A#', 'A#9add11', 'A#-D##-F#-A##-C#-E#-G#-B#'),
-('LA#', 'La# Sesta 9', 'La#-Do##-Mi#-Fa#-Si#-Re#-La#', 'A#', 'A#6/9', 'A#-D##-F#-Bb-C#-E#-A#'),
-('LA#', 'La# Sesta 11', 'La#-Do##-Mi#-Fa#-Si#-Re#-La#-Do##', 'A#', 'A#6/11', 'A#-D##-F#-Bb-C#-E#-A#-D##'),
-('LA#', 'La# Settima Maggiore 11', 'La#-Do##-Mi#-Sol##-Re#-Fa#', 'A#', 'A#Maj7#11', 'A#-D##-F#-A##-E#-G#'),
-('LA#', 'La# Minore 7 Add11', 'La#-Do#-Mi#-Sol-Bb', 'A#', 'A#m7add11', 'A#-D#-F#-A#-Bb'),
-('LA#', 'La# Maggiore 7#11', 'La#-Do##-Mi#-Sol##-Re#-Fa##', 'A#', 'A#Maj7#11', 'A#-D##-F#-A##-E#-G##'),
-('LA#', 'La# Minore/Maggiore 7', 'La#-Do#-Mi#-Sol-B', 'A#', 'A#m/Maj7', 'A#-D#-F#-A#-B'),
-('LA#', 'La# Settima 9#11', 'La#-Do##-Mi#-Sol#-Si#-Re#-Fa##', 'A#', 'A#9#11', 'A#-D##-F#-A#-C#-E#-G##'),
-('LA#', 'La# Settima Minore 9', 'La#-Do#-Mi#-Sol#-Si#-Re#', 'A#', 'A#m9', 'A#-D#-F#-A#-C#-E#'),
-('LA#', 'La# Settima Maggiore 13', 'La#-Do##-Mi#-Sol#-Ti#-Re#-Fa##-La#', 'A#', 'A#Maj13', 'A#-D##-F#-A#-C#-E#-G##-B#'),
-('LA#', 'La# Minore 11', 'La#-Do#-Mi#-Sol-Bb-Si-Re-Fa', 'A#', 'A#m11', 'A#-D#-F#-A#-Bb-C#-E#-G#'),
-('LA#', 'La# Settima add11', 'La#-Do##-Mi#-Sol##-Re#-Fa#', 'A#', 'A#7add11', 'A#-D##-F#-A##-E#-G#-B#');
+  id               INT UNSIGNED    NOT NULL AUTO_INCREMENT,
+  note_ita         VARCHAR(3)      NOT NULL COMMENT 'es. La♯',
+  chord_ita        VARCHAR(50)     NOT NULL COMMENT 'es. La♯ Maggiore 7',
+  chord_note_ita   VARCHAR(100)    NOT NULL COMMENT 'es. La♯-Do♯♯-Mi♯♯-Fa♯',
+  note_eng         VARCHAR(2)      NOT NULL COMMENT 'es. A#',
+  chord_eng        VARCHAR(20)     NOT NULL COMMENT 'es. A#Maj7',
+  chord_note_eng   VARCHAR(100)    NOT NULL COMMENT 'es. A#-C##-E##-F#',
+  created_at       TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at       TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP
+                        ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uk_ita (note_ita, chord_ita),
+  UNIQUE KEY uk_eng (note_eng, chord_eng)
+) ENGINE=InnoDB
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_unicode_ci;
+
+-- Inserimento dei dati per gli accordi di La♯ (A#) fino alla 9°
+INSERT INTO NoteLAdiesis (
+  note_ita, chord_ita, chord_note_ita,
+  note_eng, chord_eng, chord_note_eng
+) VALUES
+
+  /* --- TRIADI --- */
+  ('La♯','La♯ Maggiore',      'La♯-Do♯♯-Mi♯♯',       'A#','A#Maj',   'A#-C##-E##'),
+  ('La♯','La♯ Minore',        'La♯-Do♯-Mi♯',         'A#','A#m',     'A#-C#-E#'),
+  ('La♯','La♯ Diminuito',     'La♯-Do♯-Mi♯',         'A#','A#dim',   'A#-C#-E'),
+  ('La♯','La♯ Aumentato',     'La♯-Do♯♯-Mi♯',        'A#','A#aug',   'A#-C##-E#'),
+
+  /* --- QUARTE & QUINTE --- */
+  ('La♯','La♯ Quarta',        'La♯-Re♯',             'A#','A#4',     'A#-D#'),
+  ('La♯','La♯ Quinta',        'La♯-Mi♯',             'A#','A#5',     'A#-E#'),
+
+  /* --- SOSPESI --- */
+  ('La♯','La♯ sus2',         'La♯-Si♯-Mi♯',         'A#','A#sus2',  'A#-B#-E#'),
+  ('La♯','La♯ sus4',         'La♯-Re♯-Mi♯',         'A#','A#sus4',  'A#-D#-E#'),
+  ('La♯','La♯ sus4 add9',    'La♯-Si♯-Re♯-Mi♯',     'A#','A#sus4add9','A#-B#-D#-E#'),
+
+  /* --- SENZA INTERVALLI --- */
+  ('La♯','La♯ no3',          'La♯-Mi♯',             'A#','A#no3',   'A#-E#'),
+  ('La♯','La♯ no5',          'La♯-Do♯♯',            'A#','A#no5',   'A#-C##'),
+
+  /* --- ADDITIONS --- */
+  ('La♯','La♯ add2',         'La♯-Do♯♯-Mi♯♯-Si♯',    'A#','A#add2',  'A#-C##-E##-B#'),
+  ('La♯','La♯ add4',         'La♯-Do♯♯-Mi♯♯-Re♯',    'A#','A#add4',  'A#-C##-E##-D#'),
+  ('La♯','La♯ add9',         'La♯-Do♯♯-Mi♯♯-Si♯',    'A#','A#add9',  'A#-C##-E##-B#'),
+  ('La♯','La♯ add11',        'La♯-Do♯♯-Mi♯♯-Re♯',    'A#','A#add11', 'A#-C##-E##-D#'),
+
+  /* --- SESTE --- */
+  ('La♯','La♯ 6',            'La♯-Do♯♯-Mi♯♯-Fa♯♯',   'A#','A#6',     'A#-C##-E##-F##'),
+  ('La♯','La♯ Minore 6',     'La♯-Do♯-Mi♯-Fa♯♯',     'A#','A#m6',    'A#-C#-E#-F##'),
+  ('La♯','La♯ 6/9',          'La♯-Do♯♯-Mi♯♯-Fa♯♯-Si♯','A#','A#6/9',   'A#-C##-E##-F##-B#'),
+
+  /* --- SETTIME --- */
+  ('La♯','La♯ 7',            'La♯-Do♯♯-Mi♯♯-Fa♯',    'A#','A#7',     'A#-C##-E##-F#'),
+  ('La♯','La♯ Maggiore 7',   'La♯-Do♯♯-Mi♯♯-Sol♯',   'A#','A#Maj7',  'A#-C##-E##-G#'),
+  ('La♯','La♯ Minore 7',     'La♯-Do♯-Mi♯-Fa♯',      'A#','A#m7',    'A#-C#-E#-F#'),
+  ('La♯','La♯ m7b5',        'La♯-Do♯-Mi♯-Fa♯',      'A#','A#m7b5',  'A#-C#-E#-F#'),
+  ('La♯','La♯ Dim7',         'La♯-Do♯-Mi♯-Sol',      'A#','A#dim7',  'A#-C#-E#-G'),
+  ('La♯','La♯ 7b5',         'La♯-Do♯♯-Mi♯♯-Fa♯',    'A#','A#7b5',   'A#-C##-E##-F#'),
+  ('La♯','La♯ 7#5',         'La♯-Do♯♯-Mi♯-Fa♯',     'A#','A#7#5',   'A#-C##-E##-F#'),
+  ('La♯','La♯ 7sus2',       'La♯-Si♯-Mi♯-Fa♯',      'A#','A#7sus2', 'A#-B#-E#-F#'),
+  ('La♯','La♯ 7sus4',       'La♯-Re♯-Mi♯-Fa♯',      'A#','A#7sus4', 'A#-D#-E#-F#'),
+  ('La♯','La♯ 7add11',      'La♯-Do♯♯-Mi♯♯-Fa♯-Re♯','A#','A#7add11','A#-C##-E##-F#-D#'),
+
+  /* --- NOVE --- */
+  ('La♯','La♯ 9',            'La♯-Do♯♯-Mi♯♯-Fa♯-Si♯','A#','A#9',     'A#-C##-E##-F#-B#'),
+  ('La♯','La♯ Maggiore 9',   'La♯-Do♯♯-Mi♯♯-Sol♯-Si♯','A#','A#Maj9',  'A#-C##-E##-G#-B#'),
+  ('La♯','La♯ Minore 9',     'La♯-Do♯-Mi♯-Fa♯-Si♯',  'A#','A#m9',    'A#-C#-E#-F#-B#'),
+  ('La♯','La♯ 9b5',          'La♯-Do♯♯-Mi♯-Fa♯-Si♯','A#','A#9b5',   'A#-C##-E##-F#-B#'),
+  ('La♯','La♯ 9#5',          'La♯-Do♯♯-Mi♯♯-Fa♯-Si♯','A#','A#9#5',   'A#-C##-E##-F#-B#'),
+  ('La♯','La♯ 9sus4',        'La♯-Re♯-Mi♯-Fa♯-Si♯',  'A#','A#9sus4', 'A#-D#-E#-F#-B#'),
+  ('La♯','La♯ 9add11',       'La♯-Do♯♯-Mi♯♯-Fa♯-Re♯-Si♯','A#','A#9add11','A#-C##-E##-F#-D#-B#');
 
 -- Creazione della tabella SI
 CREATE TABLE NoteLA (
