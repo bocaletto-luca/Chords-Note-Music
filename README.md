@@ -1,11 +1,26 @@
-# Chord Note Music Database
-#### Author: Bocaletto Luca
+# Chord Note Music Database  
+#### Author: Bocaletto Luca (@bocaletto-luca)
 
-A MySQL schema storing chord definitions for every note in the chromatic scale, with names and interval lists in both Italian and English. Each note (natural, sharp, flat) gets its own table containing all common chord types up to the 13th.
+A robust, production-ready MySQL schema that catalogs every chord extension (triads, 6ths, 7ths, 9ths, 11ths, 13ths) for all 12 chromatic notes (naturals, sharps, flats), with bilingual metadata (Italian & English).  
 
-## Table Structure (Production-Ready)
+---
 
-Every table is named `NoteXY` (where `XY` is the note: DO, DOdiesis, REb, REdiesis, …) and shares this definition:
+## 📖 Overview
+
+The **Chord Note Music Database** provides a uniform set of tables—one per note of the chromatic scale—populated with every common chord type up to the 13th. Each table stores:
+
+- Italian & English chord names  
+- Interval breakdowns in both languages  
+- Automatic `created_at` / `updated_at` timestamps  
+- Unique constraints to prevent duplicates  
+
+Use it as a standalone MySQL reference or convert to JSON for web/mobile apps and APIs.
+
+---
+
+## 🗄️ Table Structure (Production-Ready)
+
+Every table is named `NoteXY` (where `XY` is the note: DO, DOdiesis, REb, REdiesis, …) and follows this DDL:
 
 ```sql
 CREATE TABLE NoteXY (
@@ -27,72 +42,119 @@ CREATE TABLE NoteXY (
   COLLATE=utf8mb4_unicode_ci;
 ```
 
-**Columns**
-
-- `note_ita` / `note_eng`: the root note name in Italian / English  
+**Columns**  
+- `note_ita` / `note_eng`: root note name in Italian / English  
 - `chord_ita` / `chord_eng`: chord type (triad, 7th, 9th, 11th, 13th…)  
 - `chord_note_ita` / `chord_note_eng`: interval composition (Do-Mi-Sol / C-E-G…)  
-- `created_at` / `updated_at`: automatic timestamps for auditing  
-- Unique keys to prevent duplicate chord entries  
+- `created_at` / `updated_at`: timestamps for audit  
+- Unique keys to prevent duplicate entries  
 
-## Included Tables
+---
 
-Each of the 12 chromatic notes (plus enharmonic flats/sharps) has its own table:
+## 🎹 Included Tables
 
-- **NoteDO**            (Do / C)  
-- **NoteDOdiesis**      (Do♯ / C#)  
-- **NoteDOb**           (Do♭ / Cb)  
+| Table Name        | Italian / English |  
+|-------------------|-------------------|  
+| NoteDO            | Do / C            |  
+| NoteDOdiesis      | Do♯ / C#          |  
+| NoteDOb           | Do♭ / Cb          |  
+| NoteRE            | Re / D            |  
+| NoteREdiesis      | Re♯ / D#          |  
+| NoteREb           | Re♭ / Db          |  
+| NoteMI            | Mi / E            |  
+| NoteMIdiesis      | Mi♯ / E#          |  
+| NoteMIb           | Mi♭ / Eb          |  
+| NoteFA            | Fa / F            |  
+| NoteFAdiesis      | Fa♯ / F#          |  
+| NoteFAb           | Fa♭ / Fb          |  
+| NoteSOL           | Sol / G           |  
+| NoteSOLdiesis     | Sol♯ / G#         |  
+| NoteSOLb          | Sol♭ / Gb         |  
+| NoteLA            | La / A            |  
+| NoteLAdiesis      | La♯ / A#          |  
+| NoteLAb           | La♭ / Ab          |  
+| NoteSI            | Si / B            |  
+| NoteSIdiesis      | Si♯ (rare)        |  
+| NoteSIb           | Si♭ / Bb          |  
 
-- **NoteRE**            (Re / D)  
-- **NoteREdiesis**      (Re♯ / D#)  
-- **NoteREb**           (Re♭ / Db)  
+Each table includes full `INSERT` statements to populate chords up to the 13th.
 
-- **NoteMI**            (Mi / E)  
-- **NoteMIdiesis**      (Mi♯ / E#)  
-- **NoteMIb**           (Mi♭ / Eb)  
+---
 
-- **NoteFA**            (Fa / F)  
-- **NoteFAdiesis**      (Fa♯ / F#)  
-- **NoteFAb**           (Fa♭ / Fb)  
+## 🛠️ Scripts & Utilities
 
-- **NoteSOL**           (Sol / G)  
-- **NoteSOLdiesis**     (Sol♯ / G#)  
-- **NoteSOLb**          (Sol♭ / Gb)  
+This repo provides three key files:
 
-- **NoteLA**            (La / A)  
-- **NoteLAdiesis**      (La♯ / A#)  
-- **NoteLAb**           (La♭ / Ab)  
+1. **`file.sql`**  
+   - Complete DDL & `INSERT` statements for all `NoteXY` tables  
 
-- **NoteSI**            (Si / B)  
-- **NoteSIdiesis**      (Si♯ – rarely used)  
-- **NoteSIb**           (Si♭ / Bb)  
+2. **`sql_to_json.sh`**  
+   - Bash script (requires `mysql` & `python3`)  
+   - Imports `file.sql` into MySQL → dumps all tables to a single `chords.json`  
 
-Each table also includes `INSERT` statements populating all chord types up to the 13th.
-
-## Quick Start
-
-1. Create the database:  
-   ```sql
-   CREATE DATABASE ChordNoteMusic;
-   USE ChordNoteMusic;
+   Usage:
+   ```bash
+   chmod +x sql_to_json.sh
+   ./sql_to_json.sh
+   # → generates chords.json
    ```
-2. Apply each table’s DDL (above).  
-3. Run the corresponding `INSERT` scripts for each `NoteXY` table.  
-4. Query example:  
+
+3. **`sql_to_json.py`**  
+   - Pure-Python parser (no MySQL server required)  
+   - Reads `file.sql`, extracts all `INSERT` data, writes `chords.json`  
+
+   Usage:
+   ```bash
+   # Optional: pip install sqlparse
+   python3 sql_to_json.py file.sql [output.json]
+   # → default output.json = chords.json
+   ```
+
+---
+
+## 🚀 Quick Start
+
+1. **Clone the repo**  
+   ```bash
+   git clone https://github.com/bocaletto-luca/Chords-Note-Music.git
+   cd Chords-Note-Music
+   ```
+
+2. **Import schema & data**  
    ```sql
-   -- Find all D9 variants
+   mysql -u <user> -p < file.sql
+   ```
+
+3. **(Optional) Generate JSON**  
+   - With MySQL: `./sql_to_json.sh`  
+   - Without MySQL: `python3 sql_to_json.py file.sql`
+
+4. **Query example**  
+   ```sql
    SELECT * 
      FROM NoteRE 
     WHERE chord_eng LIKE 'D%9%';
    ```
 
-## Repository & License
+---
 
-This project is open source under the GPL v3 license.  
-GitHub: https://github.com/bocaletto-luca/Chords-Note-Music/
+## 🔗 Links
+
+- GitHub Repository:  
+  https://github.com/bocaletto-luca/Chords-Note-Music/  
+- Author’s GitHub:  
+  https://github.com/bocaletto-luca  
+- Author’s Website:  
+  https://bocalettoluca.altervista.org  
 
 ---
 
-#### This is my old account @Elektronoide 
+## ⚖️ License
+
+This project is licensed under **GPLv3**. See [LICENSE](LICENSE).
+
+---
+
+> **Note:** This repository replaces the old account `@Elektronoide`. All future updates will be under `@bocaletto-luca`.
 
 ---
