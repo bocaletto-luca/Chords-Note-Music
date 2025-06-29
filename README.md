@@ -167,8 +167,15 @@ This project is licensed under **GPLv3**. See [LICENSE](LICENSE).
 > - `german.html`  
 > - `portuguese.html`  
 > - `chinese.html`  
-> - `russian.html`  
+> - `russian.html`
+> - `index.html`
 
 Navigate your preferred language from the main selector page.  
+
+---
+
+#### Explore Website this project here
+
+[Visit the multilingual Chord Note Music site](https://bocaletto-luca.github.io/Chords-Note-Music/index.html)
 
 ---
