@@ -523,143 +523,262 @@ INSERT INTO NoteREdiesis (
   ('Re♯','Re♯ Maj13',         'Re♯-Fa♯♯-La♯-Do♯♯-Mi♯-Sol♯-Si♯','D#','D#Maj13','D#-G##-A#-C##-E#-G#-B#'),
   ('Re♯','Re♯ m13',           'Re♯-Fa♯-La♯-Do♯-Mi♯-Sol♯-Si♯',  'D#','D#m13',   'D#-F#-A#-C#-E#-G#-B#');
 
--- Creazione della tabella MI
+-- Creazione della tabella NoteMI (Mi / E)
 CREATE TABLE NoteMI (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    note_ita VARCHAR(255),
-    chord_ita VARCHAR(255),
-    chord_note_ita VARCHAR(255),
-    note_eng VARCHAR(255),
-    chord_eng VARCHAR(255),
-    chord_note_eng VARCHAR(255)
-);
+  id               INT UNSIGNED    NOT NULL AUTO_INCREMENT,
+  note_ita         VARCHAR(2)      NOT NULL COMMENT 'es. Mi',
+  chord_ita        VARCHAR(50)     NOT NULL COMMENT 'es. Mi Maggiore 7',
+  chord_note_ita   VARCHAR(100)    NOT NULL COMMENT 'es. Mi-Sol♯-Si-Re',
+  note_eng         VARCHAR(2)      NOT NULL COMMENT 'es. E',
+  chord_eng        VARCHAR(20)     NOT NULL COMMENT 'es. EMaj7',
+  chord_note_eng   VARCHAR(100)    NOT NULL COMMENT 'es. E-G#-B-D',
+  created_at       TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at       TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uk_ita (note_ita, chord_ita),
+  UNIQUE KEY uk_eng (note_eng, chord_eng)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Inserimento dei dati per gli accordi di Mi nella tabella MI
-INSERT INTO NoteMI (note_ita, chord_ita, chord_note_ita, note_eng, chord_eng, chord_note_eng) VALUES
-('MI', 'Mi Maggiore', 'Mi-Sol♯-Si', 'E', 'EMaj', 'E-G♯-B'),
-('MI', 'Mi Minore', 'Mi-Sol-Si', 'E', 'Em', 'E-G-B'),
-('MI', 'Mi Settima', 'Mi-Sol♯-Si-Re', 'E', 'E7', 'E-G♯-B-D'),
-('MI', 'Mi Maggiore 7', 'Mi-Sol♯-Si-Re♯', 'E', 'EMaj7', 'E-G♯-B-D♯'),
-('MI', 'Mi Minore 7', 'Mi-Sol-Si-Re', 'E', 'Em7', 'E-G-B-D'),
-('MI', 'Mi Settima Minore', 'Mi-Sol-Si-Re♭', 'E', 'Em7', 'E-G-B-D'),
-('MI', 'Mi Maggiore 6', 'Mi-Sol♯-Si-La♯', 'E', 'E6', 'E-G♯-B-C♯'),
-('MI', 'Mi Minore 6', 'Mi-Sol-Si-La', 'E', 'Em6', 'E-G-B-C♯'),
-('MI', 'Mi Settima 9', 'Mi-Sol♯-Si-Re-Fa♯', 'E', 'E9', 'E-G♯-B-D-F♯'),
-('MI', 'Mi Maggiore 9', 'Mi-Sol♯-Si-Re♯-Fa♯', 'E', 'EMaj9', 'E-G♯-B-D♯-F♯'),
-('MI', 'Mi Minore 9', 'Mi-Sol-Si-Re-Fa♯', 'E', 'Em9', 'E-G-B-D-F♯'),
-('MI', 'Mi Settima Maggiore 7', 'Mi-Sol♯-Si-Re♯', 'E', 'EMaj7♯5', 'E-G♯-B-D♯'),
-('MI', 'Mi Diminuito', 'Mi-Sol-Si♭', 'E', 'Edim', 'E-G-B♭'),
-('MI', 'Mi Aumentato', 'Mi-Sol♯-Si♯', 'E', 'Eaug', 'E-G♯-B♯'),
-('MI', 'Mi Sesta', 'Mi-Sol♯-Si-La♯', 'E', 'E6', 'E-G♯-B-C♯'),
-('MI', 'Mi Nona', 'Mi-Sol♯-Si-Re-Fa♯', 'E', 'E9', 'E-G♯-B-D-F♯'),
-('MI', 'Mi Settima Maggiore', 'Mi-Sol♯-Si-Re♯', 'E', 'EMaj7', 'E-G♯-B-D♯'),
-('MI', 'Mi Settima Maggiore 9', 'Mi-Sol♯-Si-Re♯-Fa♯', 'E', 'EMaj9', 'E-G♯-B-D♯-F♯'),
-('MI', 'Mi Settima 11', 'Mi-Sol♯-Si-Re-Fa♯-La', 'E', 'E11', 'E-G♯-B-D-F♯-A'),
-('MI', 'Mi Settima 13', 'Mi-Sol♯-Si-Re-Fa♯-La-Do♯', 'E', 'E13', 'E-G♯-B-D-F♯-A-C♯'),
-('MI', 'Mi Settima 9 Add11', 'Mi-Sol♯-Si-Re-Fa♯-La', 'E', 'E9add11', 'E-G♯-B-D-F♯-A'),
-('MI', 'Mi Sesta 9', 'Mi-Sol♯-Si-La♯-Re♯', 'E', 'E6/9', 'E-G♯-B-C♯-D♯'),
-('MI', 'Mi Sesta 11', 'Mi-Sol♯-Si-La♯-Re♯-Fa♯', 'E', 'E6/11', 'E-G♯-B-C♯-D♯-F♯'),
-('MI', 'Mi Settima Maggiore 11', 'Mi-Sol♯-Si-Re♯-Fa', 'E', 'EMaj7#11', 'E-G♯-B-D♯-F'),
-('MI', 'Mi Minore 7 Add11', 'Mi-Sol-Si-Re-Fa', 'E', 'Em7add11', 'E-G-B-D-F♯'),
-('MI', 'Mi Maggiore 7#11', 'Mi-Sol♯-Si-Re-Fa♯', 'E', 'EMaj7#11', 'E-G♯-B-D♯-F♯'),
-('MI', 'Mi Minore/Maggiore 7', 'Mi-Sol-Si-Re-Fa♯', 'E', 'Em/Maj7', 'E-G-B-D♯-F♯'),
-('MI', 'Mi Settima 9#11', 'Mi-Sol♯-Si-Re-Fa♯-La♯', 'E', 'E9#11', 'E-G♯-B-D♯-F♯-A♯'),
-('MI', 'Mi Settima Minore 9', 'Mi-Sol-Si-Re♭-Fa', 'E', 'Em9', 'E-G-B-D-F♯-A'),
-('MI', 'Mi Settima Maggiore 13', 'Mi-Sol♯-Si-Re♯-Fa♯-La-Do♯', 'E', 'EMaj13', 'E-G♯-B-D♯-F♯-A-C♯'),
-('MI', 'Mi Minore 11', 'Mi-Sol-Si-Re-Fa♯-La-Do', 'E', 'Em11', 'E-G-B-D-F♯-A-C♯'),
-('MI', 'Mi Settima add11', 'Mi-Sol♯-Si-Re-Fa', 'E', 'E7add11', 'E-G♯-B-D♯-F♯');
+-- Inserimento di tutti gli accordi per Mi (E)
+INSERT INTO NoteMI (
+  note_ita, chord_ita, chord_note_ita,
+  note_eng, chord_eng, chord_note_eng
+) VALUES
 
--- Creazione della tabella MIb
+  /* --- TRIADI --- */
+  ('MI','Mi Maggiore',        'Mi-Sol♯-Si',             'E','EMaj',     'E-G#-B'),
+  ('MI','Mi Minore',          'Mi-Sol-Si',              'E','Em',       'E-G-B'),
+  ('MI','Mi Diminuito',       'Mi-Sol-Si♭',             'E','Edim',     'E-G-Bb'),
+  ('MI','Mi Aumentato',       'Mi-Sol♯-Si♯',            'E','Eaug',     'E-G#-B#'),
+
+  /* --- QUARTE & QUINTE --- */
+  ('MI','Mi Quarta',          'Mi-La',                  'E','E4',       'E-A'),
+  ('MI','Mi Quinta',          'Mi-Si',                  'E','E5',       'E-B'),
+
+  /* --- SOSPESI --- */
+  ('MI','Mi sus2',            'Mi-Re-Si',               'E','Esus2',    'E-D-B'),
+  ('MI','Mi sus4',            'Mi-La-Si',               'E','Esus4',    'E-A-B'),
+  ('MI','Mi sus4 add9',       'Mi-Re-La-Si',            'E','Esus4add9','E-D-A-B'),
+
+  /* --- SENZA INTERVALLI --- */
+  ('MI','Mi no3',             'Mi-Si',                  'E','Eno3',     'E-B'),
+  ('MI','Mi no5',             'Mi-Sol♯',                'E','Eno5',     'E-G#'),
+
+  /* --- ADDITIONS --- */
+  ('MI','Mi add2',            'Mi-Sol♯-Si-Re',          'E','Eadd2',    'E-G#-B-D'),
+  ('MI','Mi add4',            'Mi-Sol♯-Si-La',          'E','Eadd4',    'E-G#-B-A'),
+  ('MI','Mi add9',            'Mi-Sol♯-Si-Re',          'E','Eadd9',    'E-G#-B-D'),
+  ('MI','Mi add11',           'Mi-Sol♯-Si-La',          'E','Eadd11',   'E-G#-B-A'),
+
+  /* --- SESTE --- */
+  ('MI','Mi 6',               'Mi-Sol♯-Si-Do♯',         'E','E6',       'E-G#-B-C#'),
+  ('MI','Mi m6',              'Mi-Sol-Si-Do♯',          'E','Em6',      'E-G-B-C#'),
+  ('MI','Mi 6/9',             'Mi-Sol♯-Si-Do♯-Fa♯',      'E','E6/9',     'E-G#-B-C#-F#'),
+
+  /* --- SETTIME --- */
+  ('MI','Mi Settima',         'Mi-Sol♯-Si-Re',          'E','E7',       'E-G#-B-D'),
+  ('MI','Mi Maggiore 7',      'Mi-Sol♯-Si-Re♯',         'E','EMaj7',    'E-G#-B-D#'),
+  ('MI','Mi Minore 7',        'Mi-Sol-Si-Re',           'E','Em7',      'E-G-B-D'),
+  ('MI','Mi Semidiminuito',   'Mi-Sol-Si♭-Re',          'E','Em7b5',    'E-G-Bb-D'),
+  ('MI','Mi Dim7',            'Mi-Sol-Si♭-Re♭',         'E','Edim7',    'E-G-Bb-Db'),
+  ('MI','Mi 7♭5',             'Mi-Sol♯-Si♭-Re',         'E','E7b5',     'E-G#-Bb-D'),
+  ('MI','Mi 7♯5',             'Mi-Sol♯-Si♯-Re',         'E','E7#5',     'E-G#-B#-D'),
+  ('MI','Mi 7sus2',           'Mi-Fa♯-Si-Re',          'E','E7sus2',   'E-F#-B-D'),
+  ('MI','Mi 7sus4',           'Mi-La-Si-Re',           'E','E7sus4',   'E-A-B-D'),
+  ('MI','Mi 7add11',          'Mi-Sol♯-Si-Re-La',       'E','E7add11',  'E-G#-B-D-A'),
+
+  /* --- NOVE --- */
+  ('MI','Mi Nona',            'Mi-Sol♯-Si-Re-Fa♯',      'E','E9',       'E-G#-B-D-F#'),
+  ('MI','Mi Maggiore 9',      'Mi-Sol♯-Si-Re♯-Fa♯',     'E','EMaj9',    'E-G#-B-D#-F#'),
+  ('MI','Mi Minore 9',        'Mi-Sol-Si-Re-Fa♯',       'E','Em9',      'E-G-B-D-F#'),
+  ('MI','Mi 9♭5',             'Mi-Sol♯-Si♭-Re-Fa♯',     'E','E9b5',     'E-G#-Bb-D-F#'),
+  ('MI','Mi 9♯5',             'Mi-Sol♯-Si♯-Re-Fa♯',     'E','E9#5',     'E-G#-B#-D-F#'),
+  ('MI','Mi 9sus4',           'Mi-La-Si-Re-Fa♯',        'E','E9sus4',   'E-A-B-D-F#'),
+  ('MI','Mi 9add11',          'Mi-Sol♯-Si-Re-Fa♯-La',    'E','E9add11',  'E-G#-B-D-F#-A'),
+
+  /* --- UNDICI --- */
+  ('MI','Mi Undicesima',      'Mi-Sol♯-Si-Re-Fa♯-La',    'E','E11',      'E-G#-B-D-F#-A'),
+  ('MI','Mi Maggiore 11',     'Mi-Sol♯-Si-Re♯-Fa♯-La',   'E','EMaj11',   'E-G#-B-D#-F#-A'),
+  ('MI','Mi Minore 11',       'Mi-Sol-Si-Re-Fa♯-La',     'E','Em11',     'E-G-B-D-F#-A'),
+  ('MI','Mi 11♭5',            'Mi-Sol♯-Si♭-Re-Fa♯-La',   'E','E11b5',    'E-G#-Bb-D-F#-A'),
+  ('MI','Mi 11♯5',            'Mi-Sol♯-Si♯-Re-Fa♯-La',   'E','E11#5',    'E-G#-B#-D-F#-A'),
+
+  /* --- TREDICI --- */
+  ('MI','Mi Tredicesima',     'Mi-Sol♯-Si-Re-Fa♯-La-Do♯','E','E13',      'E-G#-B-D-F#-A-C#'),
+  ('MI','Mi Maggiore 13',     'Mi-Sol♯-Si-Re♯-Fa♯-La-Do♯','E','EMaj13',   'E-G#-B-D#-F#-A-C#'),
+  ('MI','Mi Minore 13',       'Mi-Sol-Si-Re-Fa♯-La-Do♯', 'E','Em13',     'E-G-B-D-F#-A-C#');
+
+-- Creazione della tabella NoteMIb (Mi♭ / Eb)
 CREATE TABLE NoteMIb (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    note_ita VARCHAR(255),
-    chord_ita VARCHAR(255),
-    chord_note_ita VARCHAR(255),
-    note_eng VARCHAR(255),
-    chord_eng VARCHAR(255),
-    chord_note_eng VARCHAR(255)
-);
+  id               INT UNSIGNED    NOT NULL AUTO_INCREMENT,
+  note_ita         VARCHAR(3)      NOT NULL COMMENT 'es. Mi♭',
+  chord_ita        VARCHAR(50)     NOT NULL COMMENT 'es. Mi♭ Maggiore 7',
+  chord_note_ita   VARCHAR(100)    NOT NULL COMMENT 'es. Mi♭-Sol-La♭-Re♭',
+  note_eng         VARCHAR(2)      NOT NULL COMMENT 'es. Eb',
+  chord_eng        VARCHAR(20)     NOT NULL COMMENT 'es. EbMaj7',
+  chord_note_eng   VARCHAR(100)    NOT NULL COMMENT 'es. Eb-G-Bb-D',
+  created_at       TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at       TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uk_ita (note_ita, chord_ita),
+  UNIQUE KEY uk_eng (note_eng, chord_eng)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Inserimento dei dati per gli accordi di Mi♭ nella tabella MIb
-INSERT INTO NoteMIb (note_ita, chord_ita, chord_note_ita, note_eng, chord_eng, chord_note_eng) VALUES
-('MI♭', 'Mi♭ Maggiore', 'Mi♭-Sol-Si♭', 'Eb', 'EbMaj', 'Eb-G-B♭'),
-('MI♭', 'Mi♭ Minore', 'Mi♭-Sol♭-Si♭', 'Eb', 'Ebm', 'Eb-G♭-B♭'),
-('MI♭', 'Mi♭ Settima', 'Mi♭-Sol-Si♭-Re♭', 'Eb', 'Eb7', 'Eb-G-B♭-Db'),
-('MI♭', 'Mi♭ Maggiore 7', 'Mi♭-Sol-Si♭-Re', 'Eb', 'EbMaj7', 'Eb-G-B♭-D'),
-('MI♭', 'Mi♭ Minore 7', 'Mi♭-Sol♭-Si♭-Re♭', 'Eb', 'Ebm7', 'Eb-G♭-B♭-Db'),
-('MI♭', 'Mi♭ Settima Minore', 'Mi♭-Sol♭-Si♭-Re♭', 'Eb', 'Ebm7', 'Eb-G♭-B♭-Db'),
-('MI♭', 'Mi♭ Maggiore 6', 'Mi♭-Sol-Si♭-La', 'Eb', 'Eb6', 'Eb-G-B♭-A'),
-('MI♭', 'Mi♭ Minore 6', 'Mi♭-Sol♭-Si♭-La', 'Eb', 'Ebm6', 'Eb-G♭-B♭-A'),
-('MI♭', 'Mi♭ Settima 9', 'Mi♭-Sol-Si♭-Re♭-Fa', 'Eb', 'Eb9', 'Eb-G-B♭-Db-F'),
-('MI♭', 'Mi♭ Maggiore 9', 'Mi♭-Sol-Si♭-Re-Fa', 'Eb', 'EbMaj9', 'Eb-G-B♭-D-F'),
-('MI♭', 'Mi♭ Minore 9', 'Mi♭-Sol♭-Si♭-Re-Fa', 'Eb', 'Ebm9', 'Eb-G♭-B♭-Db-F'),
-('MI♭', 'Mi♭ Settima Maggiore 7', 'Mi♭-Sol-Si♭-Re-F', 'Eb', 'EbMaj7♯5', 'Eb-G-B♭-D-F#'),
-('MI♭', 'Mi♭ Diminuito', 'Mi♭-Sol♭-Si♭♭', 'Eb', 'Ebdim', 'Eb-G♭-B♭♭'),
-('MI♭', 'Mi♭ Aumentato', 'Mi♭-Sol-Si', 'Eb', 'Ebaug', 'Eb-G-B'),
-('MI♭', 'Mi♭ Sesta', 'Mi♭-Sol-Si♭-La', 'Eb', 'Eb6', 'Eb-G-B♭-A'),
-('MI♭', 'Mi♭ Nona', 'Mi♭-Sol-Si♭-Re♭-Fa', 'Eb', 'Eb9', 'Eb-G-B♭-Db-F'),
-('MI♭', 'Mi♭ Settima Maggiore', 'Mi♭-Sol-Si♭-Re-F', 'Eb', 'EbMaj7', 'Eb-G-B♭-D-F'),
-('MI♭', 'Mi♭ Settima Maggiore 9', 'Mi♭-Sol-Si♭-Re-F-Fa', 'Eb', 'EbMaj9', 'Eb-G-B♭-D-F-F#'),
-('MI♭', 'Mi♭ Settima 11', 'Mi♭-Sol-Si♭-Re-F-Fa-La♭', 'Eb', 'Eb11', 'Eb-G-B♭-Db-F-Ab'),
-('MI♭', 'Mi♭ Settima 13', 'Mi♭-Sol-Si♭-Re-F-Fa-La♭-Do', 'Eb', 'Eb13', 'Eb-G-B♭-Db-F-Ab-C'),
-('MI♭', 'Mi♭ Settima 9 Add11', 'Mi♭-Sol-Si♭-Re-F-Fa', 'Eb', 'Eb9add11', 'Eb-G-B♭-Db-F-Ab'),
-('MI♭', 'Mi♭ Sesta 9', 'Mi♭-Sol-Si♭-La-Re♭', 'Eb', 'Eb6/9', 'Eb-G-B♭-A-Db'),
-('MI♭', 'Mi♭ Sesta 11', 'Mi♭-Sol-Si♭-La-Re♭-Fa', 'Eb', 'Eb6/11', 'Eb-G-B♭-A-Db-F'),
-('MI♭', 'Mi♭ Settima Maggiore 11', 'Mi♭-Sol-Si♭-Re-Fa♭', 'Eb', 'EbMaj7#11', 'Eb-G-B♭-D-Fb'),
-('MI♭', 'Mi♭ Minore 7 Add11', 'Mi♭-Sol♭-Si♭-Re-F', 'Eb', 'Ebm7add11', 'Eb-G♭-B♭-Db-F'),
-('MI♭', 'Mi♭ Maggiore 7#11', 'Mi♭-Sol-Si♭-Re-Fa', 'Eb', 'EbMaj7#11', 'Eb-G-B♭-D-F#'),
-('MI♭', 'Mi♭ Minore/Maggiore 7', 'Mi♭-Sol♭-Si♭-Re-Fa', 'Eb', 'Ebm/Maj7', 'Eb-G♭-B♭-D-F#'),
-('MI♭', 'Mi♭ Settima 9#11', 'Mi♭-Sol-Si♭-Re♭-Fa-F♯', 'Eb', 'Eb9#11', 'Eb-G-B♭-Db-F-F#'),
-('MI♭', 'Mi♭ Settima Minore 9', 'Mi♭-Sol♭-Si♭-Re♭-Fa♭', 'Eb', 'Ebm9', 'Eb-G♭-B♭-Db-F-Ab'),
-('MI♭', 'Mi♭ Settima Maggiore 13', 'Mi♭-Sol-Si♭-Re-Fa-Fa♯-La♭', 'Eb', 'EbMaj13', 'Eb-G-B♭-D-F-F#-A♭'),
-('MI♭', 'Mi♭ Minore 11', 'Mi♭-Sol-Si♭-Re♭-Fa-Fa♯-La♭', 'Eb', 'Ebm11', 'Eb-G♭-B♭-Db-F-Ab-B'),
-('MI♭', 'Mi♭ Settima add11', 'Mi♭-Sol-Si♭-Re-Fa', 'Eb', 'Eb7add11', 'Eb-G-B♭-Db-F');
+-- Tutti gli accordi per Mi♭ (Eb)
+INSERT INTO NoteMIb (
+  note_ita, chord_ita, chord_note_ita,
+  note_eng, chord_eng, chord_note_eng
+) VALUES
 
--- Creazione della tabella MIdiesis
+  /* --- TRIADI --- */
+  ('Mi♭','Mi♭ Maggiore',     'Mi♭-Sol-Si♭',           'Eb','EbMaj',   'Eb-G-Bb'),
+  ('Mi♭','Mi♭ Minore',       'Mi♭-Sol♭-Si♭',          'Eb','Ebm',     'Eb-Gb-Bb'),
+  ('Mi♭','Mi♭ Diminuito',    'Mi♭-Sol♭-Si♭♭',         'Eb','Ebdim',   'Eb-Gb-Bbb'),
+  ('Mi♭','Mi♭ Aumentato',    'Mi♭-Sol-Si',            'Eb','Ebaug',   'Eb-G-B'),
+
+  /* --- QUARTE & QUINTE --- */
+  ('Mi♭','Mi♭ Quarta',       'Mi♭-La♭',               'Eb','Eb4',     'Eb-Ab'),
+  ('Mi♭','Mi♭ Quinta',       'Mi♭-Si♭',               'Eb','Eb5',     'Eb-Bb'),
+
+  /* --- SOSPESI --- */
+  ('Mi♭','Mi♭ sus2',         'Mi♭-Fa-Si♭',            'Eb','Ebsus2',  'Eb-F-Bb'),
+  ('Mi♭','Mi♭ sus4',         'Mi♭-La♭-Si♭',           'Eb','Ebsus4',  'Eb-Ab-Bb'),
+  ('Mi♭','Mi♭ sus4 add9',    'Mi♭-Fa-La♭-Si♭',        'Eb','Ebsus4add9','Eb-F-Ab-Bb'),
+
+  /* --- SENZA INTERVALLI --- */
+  ('Mi♭','Mi♭ no3',          'Mi♭-Si♭',               'Eb','Ebno3',   'Eb-Bb'),
+  ('Mi♭','Mi♭ no5',          'Mi♭-Sol',               'Eb','Ebno5',   'Eb-G'),
+
+  /* --- ADDIZIONI --- */
+  ('Mi♭','Mi♭ add2',         'Mi♭-Sol-Si♭-Fa',        'Eb','Ebadd2',  'Eb-G-Bb-F'),
+  ('Mi♭','Mi♭ add4',         'Mi♭-Sol-Si♭-La♭',       'Eb','Ebadd4',  'Eb-G-Bb-Ab'),
+  ('Mi♭','Mi♭ add9',         'Mi♭-Sol-Si♭-Fa',        'Eb','Ebadd9',  'Eb-G-Bb-F'),
+  ('Mi♭','Mi♭ add11',        'Mi♭-Sol-Si♭-La♭',       'Eb','Ebadd11', 'Eb-G-Bb-Ab'),
+
+  /* --- SESTE --- */
+  ('Mi♭','Mi♭ 6',            'Mi♭-Sol-Si♭-Do',        'Eb','Eb6',     'Eb-G-Bb-C'),
+  ('Mi♭','Mi♭ m6',           'Mi♭-Sol♭-Si♭-Do',       'Eb','Ebm6',    'Eb-Gb-Bb-C'),
+  ('Mi♭','Mi♭ 6/9',          'Mi♭-Sol-Si♭-Do-Fa',     'Eb','Eb6/9',   'Eb-G-Bb-C-F'),
+
+  /* --- SETTIME --- */
+  ('Mi♭','Mi♭ 7',            'Mi♭-Sol-Si♭-Re♭',       'Eb','Eb7',     'Eb-G-Bb-Db'),
+  ('Mi♭','Mi♭ Maj7',         'Mi♭-Sol-Si♭-Re',        'Eb','EbMaj7',  'Eb-G-Bb-D'),
+  ('Mi♭','Mi♭ m7',           'Mi♭-Sol♭-Si♭-Re♭',      'Eb','Ebm7',    'Eb-Gb-Bb-Db'),
+  ('Mi♭','Mi♭ m7b5',         'Mi♭-Sol♭-Si♭♭-Re♭',     'Eb','Ebm7b5',  'Eb-Gb-Bbb-Db'),
+  ('Mi♭','Mi♭ dim7',         'Mi♭-Sol♭-Si♭♭-Re♭♭',    'Eb','Ebdim7',  'Eb-Gb-Bbb-Dbb'),
+  ('Mi♭','Mi♭ 7b5',          'Mi♭-Sol-Si♭♭-Re♭',      'Eb','Eb7b5',   'Eb-G-Bbb-Db'),
+  ('Mi♭','Mi♭ 7#5',          'Mi♭-Sol-Si-Re♭',        'Eb','Eb7#5',   'Eb-G-B-Db'),
+  ('Mi♭','Mi♭ 7sus2',        'Mi♭-Fa-Si♭-Re♭',        'Eb','Eb7sus2', 'Eb-F-Bb-Db'),
+  ('Mi♭','Mi♭ 7sus4',        'Mi♭-La♭-Si♭-Re♭',       'Eb','Eb7sus4', 'Eb-Ab-Bb-Db'),
+  ('Mi♭','Mi♭ 7add11',       'Mi♭-Sol-Si♭-Re♭-La♭',   'Eb','Eb7add11','Eb-G-Bb-Db-Ab'),
+
+  /* --- NOVE --- */
+  ('Mi♭','Mi♭ 9',            'Mi♭-Sol-Si♭-Re♭-Fa',    'Eb','Eb9',     'Eb-G-Bb-Db-F'),
+  ('Mi♭','Mi♭ Maj9',         'Mi♭-Sol-Si♭-Re-Fa',     'Eb','EbMaj9',  'Eb-G-Bb-D-F'),
+  ('Mi♭','Mi♭ m9',           'Mi♭-Sol♭-Si♭-Re♭-Fa',   'Eb','Ebm9',    'Eb-Gb-Bb-Db-F'),
+  ('Mi♭','Mi♭ 9b5',          'Mi♭-Sol-Si♭♭-Re♭-Fa',   'Eb','Eb9b5',   'Eb-G-Bbb-Db-F'),
+  ('Mi♭','Mi♭ 9#5',          'Mi♭-Sol-Si-Re♭-Fa',     'Eb','Eb9#5',   'Eb-G-B-Db-F'),
+  ('Mi♭','Mi♭ 9sus4',        'Mi♭-La♭-Si♭-Re♭-Fa',    'Eb','Eb9sus4', 'Eb-Ab-Bb-Db-F'),
+  ('Mi♭','Mi♭ 9add11',       'Mi♭-Sol-Si♭-Re♭-La♭-Fa','Eb','Eb9add11','Eb-G-Bb-Db-Ab-F'),
+
+  /* --- UNDICI --- */
+  ('Mi♭','Mi♭ 11',           'Mi♭-Sol-Si♭-Re♭-Fa-La♭', 'Eb','Eb11',    'Eb-G-Bb-Db-F-Ab'),
+  ('Mi♭','Mi♭ Maj11',        'Mi♭-Sol-Si♭-Re-Fa-La♭',  'Eb','EbMaj11', 'Eb-G-Bb-D-F-Ab'),
+  ('Mi♭','Mi♭ m11',          'Mi♭-Sol♭-Si♭-Re♭-Fa-La♭','Eb','Ebm11',   'Eb-Gb-Bb-Db-F-Ab'),
+  ('Mi♭','Mi♭ 11b5',        'Mi♭-Sol-Si♭♭-Re♭-Fa-La♭','Eb','Eb11b5',  'Eb-G-Bbb-Db-F-Ab'),
+  ('Mi♭','Mi♭ 11#5',        'Mi♭-Sol-Si-Re♭-Fa-La♭',  'Eb','Eb11#5',  'Eb-G-B-Db-F-Ab'),
+
+  /* --- TREDICI --- */
+  ('Mi♭','Mi♭ 13',          'Mi♭-Sol-Si♭-Re♭-Fa-La-Do','Eb','Eb13',    'Eb-G-Bb-Db-F-A-C'),
+  ('Mi♭','Mi♭ Maj13',       'Mi♭-Sol-Si♭-Re-Fa-La-Do','Eb','EbMaj13', 'Eb-G-Bb-D-F-A-C'),
+  ('Mi♭','Mi♭ m13',         'Mi♭-Sol♭-Si♭-Re♭-Fa-La-Do','Eb','Ebm13',  'Eb-Gb-Bb-Db-F-A-C');
+
+
+-- Creazione della tabella NoteMIdiesis (Mi♯ / E#)
 CREATE TABLE NoteMIdiesis (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    note_ita VARCHAR(255),
-    chord_ita VARCHAR(255),
-    chord_note_ita VARCHAR(255),
-    note_eng VARCHAR(255),
-    chord_eng VARCHAR(255),
-    chord_note_eng VARCHAR(255)
-);
+  id               INT UNSIGNED    NOT NULL AUTO_INCREMENT,
+  note_ita         VARCHAR(3)      NOT NULL COMMENT 'es. Mi♯',
+  chord_ita        VARCHAR(50)     NOT NULL COMMENT 'es. Mi♯ Maggiore 7',
+  chord_note_ita   VARCHAR(100)    NOT NULL COMMENT 'es. Mi♯-Sol♯♯-Si♯-Re♯',
+  note_eng         VARCHAR(2)      NOT NULL COMMENT 'es. E#',
+  chord_eng        VARCHAR(20)     NOT NULL COMMENT 'es. E#Maj7',
+  chord_note_eng   VARCHAR(100)    NOT NULL COMMENT 'es. E#-G##-B#-D##',
+  created_at       TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at       TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uk_ita (note_ita, chord_ita),
+  UNIQUE KEY uk_eng (note_eng, chord_eng)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Inserimento dei dati per gli accordi di Mi# nella tabella MI#
-INSERT INTO NoteMIdiesis (note_ita, chord_ita, chord_note_ita, note_eng, chord_eng, chord_note_eng) VALUES
-('MI#', 'Mi# Maggiore', 'Mi#-Sol##-Si#', 'F', 'FMaj', 'F-A-C'),
-('MI#', 'Mi# Minore', 'Mi#-Sol#-Si#', 'F', 'Fm', 'F-A♭-C'),
-('MI#', 'Mi# Settima', 'Mi#-Sol##-Si#-Re#', 'F', 'F7', 'F-A-C-E'),
-('MI#', 'Mi# Maggiore 7', 'Mi#-Sol##-Si#-Re##', 'F', 'FMaj7', 'F-A-C-E#'),
-('MI#', 'Mi# Minore 7', 'Mi#-Sol#-Si#-Re#', 'F', 'Fm7', 'F-A♭-C-E'),
-('MI#', 'Mi# Settima Minore', 'Mi#-Sol#-Si#-Re♭', 'F', 'Fm7', 'F-A♭-C-E'),
-('MI#', 'Mi# Maggiore 6', 'Mi#-Sol##-Si#-La#', 'F', 'F6', 'F-A-C-D#'),
-('MI#', 'Mi# Minore 6', 'Mi#-Sol#-Si#-La#', 'F', 'Fm6', 'F-A♭-C-D#'),
-('MI#', 'Mi# Settima 9', 'Mi#-Sol##-Si#-Re#-Fa#', 'F', 'F9', 'F-A-C-E-F#'),
-('MI#', 'Mi# Maggiore 9', 'Mi#-Sol##-Si#-Re##-Fa#', 'F', 'FMaj9', 'F-A-C-E-F#'),
-('MI#', 'Mi# Minore 9', 'Mi#-Sol#-Si#-Re#-Fa#', 'F', 'Fm9', 'F-A♭-C-E-F#'),
-('MI#', 'Mi# Settima Maggiore 7', 'Mi#-Sol##-Si#-Re##-Fa', 'F', 'FMaj7♯5', 'F-A-C-E-F##'),
-('MI#', 'Mi# Diminuito', 'Mi#-Sol#-Si', 'F', 'Fdim', 'F-A♭-C♭'),
-('MI#', 'Mi# Aumentato', 'Mi#-Sol##-Si##', 'F', 'Faug', 'F-A-C#'),
-('MI#', 'Mi# Sesta', 'Mi#-Sol##-Si#-La#', 'F', 'F6', 'F-A-C-D#'),
-('MI#', 'Mi# Nona', 'Mi#-Sol##-Si#-Re#-Fa#', 'F', 'F9', 'F-A-C-E-F#'),
-('MI#', 'Mi# Settima Maggiore', 'Mi#-Sol##-Si#-Re##-Fa#', 'F', 'FMaj7', 'F-A-C-E-F#'),
-('MI#', 'Mi# Settima Maggiore 9', 'Mi#-Sol##-Si#-Re##-Fa#-La#', 'F', 'FMaj9', 'F-A-C-E-F#-A#'),
-('MI#', 'Mi# Settima 11', 'Mi#-Sol##-Si#-Re#-Fa#-La', 'F', 'F11', 'F-A-C-E-F#-A'),
-('MI#', 'Mi# Settima 13', 'Mi#-Sol##-Si#-Re#-Fa#-La-Do#', 'F', 'F13', 'F-A-C-E-F#-A-C#'),
-('MI#', 'Mi# Settima 9 Add11', 'Mi#-Sol##-Si#-Re#-Fa#-La#', 'F', 'F9add11', 'F-A-C-E-F#-A#'),
-('MI#', 'Mi# Sesta 9', 'Mi#-Sol##-Si#-La#-Re#', 'F', 'F6/9', 'F-A-C-D#-G#'),
-('MI#', 'Mi# Sesta 11', 'Mi#-Sol##-Si#-La#-Re#-Fa#', 'F', 'F6/11', 'F-A-C-D#-G#-B'),
-('MI#', 'Mi# Settima Maggiore 11', 'Mi#-Sol##-Si#-Re##-Fa#-La#', 'F', 'FMaj7#11', 'F-A-C-E-F#-A#'),
-('MI#', 'Mi# Minore 7 Add11', 'Mi#-Sol#-Si#-Re-Fa#', 'F', 'Fm7add11', 'F-A♭-C-E-F#'),
-('MI#', 'Mi# Maggiore 7#11', 'Mi#-Sol##-Si#-Re-Fa#', 'F', 'FMaj7#11', 'F-A-C-E-F#'),
-('MI#', 'Mi# Minore/Maggiore 7', 'Mi#-Sol#-Si#-Re-Fa#', 'F', 'Fm/Maj7', 'F-A♭-C-E-F#'),
-('MI#', 'Mi# Settima 9#11', 'Mi#-Sol##-Si#-Re#-Fa#-La##', 'F', 'F9#11', 'F-A-C-E-F#-A##'),
-('MI#', 'Mi# Settima Minore 9', 'Mi#-Sol#-Si#-Re♭-Fa#', 'F', 'Fm9', 'F-A♭-C-E-F#-A'),
-('MI#', 'Mi# Settima Maggiore 13', 'Mi#-Sol##-Si#-Re##-Fa#-La#-Do##', 'F', 'FMaj13', 'F-A-C-E-F#-A#-D##'),
-('MI#', 'Mi# Minore 11', 'Mi#-Sol#-Si#-Re#-Fa#-La#-Do#', 'F', 'Fm11', 'F-A♭-C-E-F#-A#-D#'),
-('MI#', 'Mi# Settima add11', 'Mi#-Sol##-Si#-Re-Fa#-La#', 'F', 'F7add11', 'F-A-C-E-F#-A#');
+-- Inserimento di tutti gli accordi per Mi♯ (E#)
+INSERT INTO NoteMIdiesis (
+  note_ita, chord_ita, chord_note_ita,
+  note_eng, chord_eng, chord_note_eng
+) VALUES
+
+  /* --- TRIADI --- */
+  ('Mi♯','Mi♯ Maggiore',     'Mi♯-Sol♯♯-Si♯',        'E#','E#Maj',   'E#-G##-B#'),
+  ('Mi♯','Mi♯ Minore',       'Mi♯-Sol♯-Si♯',         'E#','E#m',     'E#-G#-B#'),
+  ('Mi♯','Mi♯ Diminuito',    'Mi♯-Sol♯-Si',          'E#','E#dim',   'E#-G#-B'),
+  ('Mi♯','Mi♯ Aumentato',    'Mi♯-Sol♯♯-Si♯♯',       'E#','E#aug',   'E#-G##-B##'),
+
+  /* --- QUARTE & QUINTE --- */
+  ('Mi♯','Mi♯ Quarta',       'Mi♯-La♯',              'E#','E#4',     'E#-A#'),
+  ('Mi♯','Mi♯ Quinta',       'Mi♯-Si♯',              'E#','E#5',     'E#-B#'),
+
+  /* --- SOSPESI --- */
+  ('Mi♯','Mi♯ sus2',         'Mi♯-Fa♯♯-Si♯',         'E#','E#sus2',  'E#-F##-B#'),
+  ('Mi♯','Mi♯ sus4',         'Mi♯-La♯-Si♯',          'E#','E#sus4',  'E#-A#-B#'),
+  ('Mi♯','Mi♯ sus4 add9',    'Mi♯-Fa♯♯-La♯-Si♯',     'E#','E#sus4add9','E#-F##-A#-B#'),
+
+  /* --- SENZA INTERVALLI --- */
+  ('Mi♯','Mi♯ no3',          'Mi♯-La♯',              'E#','E#no3',   'E#-A#'),
+  ('Mi♯','Mi♯ no5',          'Mi♯-Sol♯♯',            'E#','E#no5',   'E#-G##'),
+
+  /* --- ADDITIONS --- */
+  ('Mi♯','Mi♯ add2',         'Mi♯-Sol♯♯-Si♯-Fa♯♯',    'E#','E#add2',  'E#-G##-B#-F##'),
+  ('Mi♯','Mi♯ add4',         'Mi♯-La♯-Si♯-Do',       'E#','E#add4',  'E#-A#-B#-C'),
+  ('Mi♯','Mi♯ add9',         'Mi♯-Sol♯♯-Si♯-Fa♯♯',    'E#','E#add9',  'E#-G##-B#-F##'),
+  ('Mi♯','Mi♯ add11',        'Mi♯-La♯-Si♯-Re',       'E#','E#add11', 'E#-A#-B#-D'),
+
+  /* --- SESTE --- */
+  ('Mi♯','Mi♯ 6',            'Mi♯-Sol♯♯-Si♯-Do♯♯',    'E#','E#6',     'E#-G##-B#-C##'),
+  ('Mi♯','Mi♯ m6',           'Mi♯-Sol♯-Si♯-Do♯♯',     'E#','E#m6',    'E#-G#-B#-C##'),
+  ('Mi♯','Mi♯ 6/9',          'Mi♯-Sol♯♯-Si♯-Do♯♯-Fa♯♯','E#','E#6/9',   'E#-G##-B#-C##-F##'),
+
+  /* --- SETTIME --- */
+  ('Mi♯','Mi♯ 7',            'Mi♯-Sol♯♯-Si♯-Re♯',     'E#','E#7',     'E#-G##-B#-D#'),
+  ('Mi♯','Mi♯ Maj7',         'Mi♯-Sol♯♯-Si♯-Re♯♯',    'E#','E#Maj7',  'E#-G##-B#-D##'),
+  ('Mi♯','Mi♯ m7',           'Mi♯-Sol♯-Si♯-Re♯',      'E#','E#m7',    'E#-G#-B#-D#'),
+  ('Mi♯','Mi♯ m7b5',         'Mi♯-Sol♯-Si-Re♯',       'E#','E#m7b5',  'E#-G#-B-D#'),
+  ('Mi♯','Mi♯ dim7',         'Mi♯-Sol♯-Si-Do',        'E#','E#dim7',  'E#-G#-B-C'),
+  ('Mi♯','Mi♯ 7b5',          'Mi♯-Sol♯♯-Si-Re♯',      'E#','E#7b5',   'E#-G##-B-D#'),
+  ('Mi♯','Mi♯ 7#5',          'Mi♯-Sol♯♯-Si♯♯-Re♯',    'E#','E#7#5',   'E#-G##-B##-D#'),
+  ('Mi♯','Mi♯ 7sus2',        'Mi♯-Fa♯♯-Si♯-Re♯',     'E#','E#7sus2', 'E#-F##-B#-D#'),
+  ('Mi♯','Mi♯ 7sus4',        'Mi♯-La♯-Si♯-Re♯',      'E#','E#7sus4', 'E#-A#-B#-D#'),
+  ('Mi♯','Mi♯ 7add11',       'Mi♯-Sol♯♯-Si♯-Re♯-La♯','E#','E#7add11','E#-G##-B#-D#-A#'),
+
+  /* --- NOVE --- */
+  ('Mi♯','Mi♯ 9',            'Mi♯-Sol♯♯-Si♯-Re♯-Fa♯♯','E#','E#9',     'E#-G##-B#-D#-F##'),
+  ('Mi♯','Mi♯ Maj9',         'Mi♯-Sol♯♯-Si♯-Re♯♯-Fa♯♯','E#','E#Maj9',  'E#-G##-B#-D##-F##'),
+  ('Mi♯','Mi♯ m9',           'Mi♯-Sol♯-Si♯-Re♯-Fa♯♯',  'E#','E#m9',    'E#-G#-B#-D#-F##'),
+  ('Mi♯','Mi♯ 9b5',          'Mi♯-Sol♯♯-Si-Re♯-Fa♯♯','E#','E#9b5',   'E#-G##-B-D#-F##'),
+  ('Mi♯','Mi♯ 9#5',          'Mi♯-Sol♯♯-Si♯♯-Re♯-Fa♯♯','E#','E#9#5',   'E#-G##-B##-D#-F##'),
+  ('Mi♯','Mi♯ 9sus4',        'Mi♯-La♯-Si♯-Re♯-Fa♯♯',  'E#','E#9sus4', 'E#-A#-B#-D#-F##'),
+  ('Mi♯','Mi♯ 9add11',       'Mi♯-Sol♯♯-Si♯-Re♯-La♯-Fa♯♯','E#','E#9add11','E#-G##-B#-D#-A#-F##'),
+
+  /* --- UNDICI --- */
+  ('Mi♯','Mi♯ 11',           'Mi♯-Sol♯♯-Si♯-Re♯-Fa♯♯-La♯','E#','E#11',    'E#-G##-B#-D#-F##-A#'),
+  ('Mi♯','Mi♯ Maj11',        'Mi♯-Sol♯♯-Si♯-Re♯♯-Fa♯♯-La♯','E#','E#Maj11', 'E#-G##-B#-D##-F##-A#'),
+  ('Mi♯','Mi♯ m11',          'Mi♯-Sol♯-Si♯-Re♯-Fa♯♯-La♯','E#','E#m11',   'E#-G#-B#-D#-F##-A#'),
+  ('Mi♯','Mi♯ 11b5',         'Mi♯-Sol♯♯-Si-Re♯-Fa♯♯-La♯','E#','E#11b5',  'E#-G##-B-D#-F##-A#'),
+  ('Mi♯','Mi♯ 11#5',         'Mi♯-Sol♯♯-Si♯♯-Re♯-Fa♯♯-La♯','E#','E#11#5',  'E#-G##-B##-D#-F##-A#'),
+
+  /* --- TREDICI --- */
+  ('Mi♯','Mi♯ 13',           'Mi♯-Sol♯♯-Si♯-Re♯-Fa♯♯-La♯-Do♯♯','E#','E#13',    'E#-G##-B#-D#-F##-A#-C##'),
+  ('Mi♯','Mi♯ Maj13',        'Mi♯-Sol♯♯-Si♯-Re♯♯-Fa♯♯-La♯-Do♯♯','E#','E#Maj13', 'E#-G##-B#-D##-F##-A#-C##'),
+  ('Mi♯','Mi♯ m13',          'Mi♯-Sol♯-Si♯-Re♯-Fa♯♯-La♯-Do♯♯','E#','E#m13',   'E#-G#-B#-D#-F##-A#-C##');
+
 
 -- Creazione della tabella FA
 CREATE TABLE NoteFA (
