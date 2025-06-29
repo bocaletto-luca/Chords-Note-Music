@@ -1221,50 +1221,92 @@ INSERT INTO NoteSOLb (
   ('Sol♭','Sol♭ Maggiore 13','Sol♭-Si♭-Re♭-Fa- La♭-Do♭-Mi♭','Gb','GbMaj13', 'Gb-Bb-Db-F-Ab-Cb-Eb'),
   ('Sol♭','Sol♭ Minore 13',   'Sol♭-Si♭♭-Re♭-Fa♭-La♭-Do♭-Mi♭','Gb','Gbm13',   'Gb-Bbb-Db-Fb-Ab-Cb-Eb');
 
--- Creazione della tabella SOLdiesis
+-- Creazione della tabella NoteSOLdiesis (Sol♯ / G#)
 CREATE TABLE NoteSOLdiesis (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    note_ita VARCHAR(255),
-    chord_ita VARCHAR(255),
-    chord_note_ita VARCHAR(255),
-    note_eng VARCHAR(255),
-    chord_eng VARCHAR(255),
-    chord_note_eng VARCHAR(255)
-);
--- Inserimento dei dati per gli accordi di Sol# nella tabella SOL#
-INSERT INTO NoteSOLdiesis (note_ita, chord_ita, chord_note_ita, note_eng, chord_eng, chord_note_eng) VALUES
-('SOL#', 'Sol# Maggiore', 'Sol#-Si#-Re#', 'G#', 'G#Maj', 'G#-B#-D#'),
-('SOL#', 'Sol# Minore', 'Sol#-Si-Mi', 'G#', 'G#m', 'G#-B-D#'),
-('SOL#', 'Sol# Settima', 'Sol#-Si#-Re#-Fa#', 'G#', 'G#7', 'G#-B#-D#-F#'),
-('SOL#', 'Sol# Maggiore 7', 'Sol#-Si#-Re#-Fa##', 'G#', 'G#Maj7', 'G#-B#-D#-F##'),
-('SOL#', 'Sol# Minore 7', 'Sol#-Si-Mi-Fa#', 'G#', 'G#m7', 'G#-B-D#-F#'),
-('SOL#', 'Sol# Settima Minore', 'Sol#-Si-Mi-Fa#', 'G#', 'G#m7', 'G#-B-D#-F#'),
-('SOL#', 'Sol# Maggiore 6', 'Sol#-Si#-Re#-La#', 'G#', 'G#6', 'G#-B#-D#-A#'),
-('SOL#', 'Sol# Minore 6', 'Sol#-Si-Mi-La#', 'G#', 'G#m6', 'G#-B-D#-A#'),
-('SOL#', 'Sol# Settima 9', 'Sol#-Si#-Re#-Fa#-La#', 'G#', 'G#9', 'G#-B#-D#-F#-A#'),
-('SOL#', 'Sol# Maggiore 9', 'Sol#-Si#-Re#-Fa##-La#', 'G#', 'G#Maj9', 'G#-B#-D#-F##-A#'),
-('SOL#', 'Sol# Minore 9', 'Sol#-Si-Mi-Fa#-La#', 'G#', 'G#m9', 'G#-B-D#-F#-A#'),
-('SOL#', 'Sol# Settima Maggiore 7', 'Sol#-Si#-Re#-Fa##-La#', 'G#', 'G#Maj7♯5', 'G#-B#-D#-F##-A#'),
-('SOL#', 'Sol# Diminuito', 'Sol#-Si-Mi-Fa', 'G#', 'G#dim', 'G#-B-D-F'),
-('SOL#', 'Sol# Aumentato', 'Sol#-Si#-Re##-Fa##', 'G#', 'G#aug', 'G#-B#-D##-F##'),
-('SOL#', 'Sol# Sesta', 'Sol#-Si#-Re#-La#', 'G#', 'G#6', 'G#-B#-D#-A#'),
-('SOL#', 'Sol# Nona', 'Sol#-Si#-Re#-Fa#-La#-Do#', 'G#', 'G#9', 'G#-B#-D#-F#-A#-C#'),
-('SOL#', 'Sol# Settima Maggiore', 'Sol#-Si#-Re#-Fa##-La#-Do#', 'G#', 'G#Maj7', 'G#-B#-D#-F##-A#-C#'),
-('SOL#', 'Sol# Settima Maggiore 9', 'Sol#-Si#-Re#-Fa##-La#-Do#-Mi#', 'G#', 'G#Maj9', 'G#-B#-D#-F##-A#-C#-E#'),
-('SOL#', 'Sol# Settima 11', 'Sol#-Si#-Re#-Fa#-La#-Do#-Mi#-Sol', 'G#', 'G#11', 'G#-B#-D#-F#-A#-C#-E#-G#'),
-('SOL#', 'Sol# Settima 13', 'Sol#-Si#-Re#-Fa#-La#-Do#-Mi#-Sol-Si', 'G#', 'G#13', 'G#-B#-D#-F#-A#-C#-E#-G#-B#'),
-('SOL#', 'Sol# Settima 9 Add11', 'Sol#-Si#-Re#-Fa#-La#-Do#-Mi#-Sol', 'G#', 'G#9add11', 'G#-B#-D#-F#-A#-C#-E#-G#'),
-('SOL#', 'Sol# Sesta 9', 'Sol#-Si#-Re#-La#-Mi#', 'G#', 'G#6/9', 'G#-B#-D#-A#-F#'),
-('SOL#', 'Sol# Sesta 11', 'Sol#-Si#-Re#-La#-Mi#-Sol', 'G#', 'G#6/11', 'G#-B#-D#-A#-F#-C#'),
-('SOL#', 'Sol# Settima Maggiore 11', 'Sol#-Si#-Re#-Fa##-Do#', 'G#', 'G#Maj7#11', 'G#-B#-D#-F##-C#'),
-('SOL#', 'Sol# Minore 7 Add11', 'Sol#-Si-Re#-Fa#-La#', 'G#', 'G#m7add11', 'G#-B-D#-F#-A#-C#'),
-('SOL#', 'Sol# Maggiore 7#11', 'Sol#-Si#-Re#-Fa##-La#-Do##', 'G#', 'G#Maj7#11', 'G#-B#-D#-F##-A#-C##'),
-('SOL#', 'Sol# Minore/Maggiore 7', 'Sol#-Si-Re#-Fa#-La#-Do#', 'G#', 'G#m/Maj7', 'G#-B-D#-F#-A#-C#'),
-('SOL#', 'Sol# Settima 9#11', 'Sol#-Si#-Re#-Fa#-La#-Do#-Mi#-Sol', 'G#', 'G#9#11', 'G#-B#-D#-F#-A#-C#-E#-G#'),
-('SOL#', 'Sol# Settima Minore 9', 'Sol#-Si-Re#-Fa#-La#-Do#-Mi#-Sol', 'G#', 'G#m9', 'G#-B-D#-F#-A#-C#-E#-G#'),
-('SOL#', 'Sol# Settima Maggiore 13', 'Sol#-Si#-Re#-Fa#-La#-Do#-Mi#-Sol-Si', 'G#', 'G#Maj13', 'G#-B#-D#-F#-A#-C#-E#-G#-B#'),
-('SOL#', 'Sol# Minore 11', 'Sol#-Si-Re#-Fa#-La#-Do#-Mi#-Sol-Si', 'G#', 'G#m11', 'G#-B-D#-F#-A#-C#-E#-G#-B'),
-('SOL#', 'Sol# Settima add11', 'Sol#-Si#-Re#-Fa#-La#-Do#-Mi#-Sol', 'G#', 'G#7add11', 'G#-B#-D#-F#-A#-C#-E#-G#');
+  id               INT UNSIGNED    NOT NULL AUTO_INCREMENT,
+  note_ita         VARCHAR(3)      NOT NULL COMMENT 'es. Sol♯',
+  chord_ita        VARCHAR(50)     NOT NULL COMMENT 'es. Sol♯ Maggiore 7',
+  chord_note_ita   VARCHAR(100)    NOT NULL COMMENT 'es. Sol♯-Si♯-Re♯-Fa♯',
+  note_eng         VARCHAR(2)      NOT NULL COMMENT 'es. G#',
+  chord_eng        VARCHAR(20)     NOT NULL COMMENT 'es. G#Maj7',
+  chord_note_eng   VARCHAR(100)    NOT NULL COMMENT 'es. G#-B#-D#-F#',
+  created_at       TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at       TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uk_ita (note_ita, chord_ita),
+  UNIQUE KEY uk_eng (note_eng, chord_eng)
+) ENGINE=InnoDB
+  DEFAULT CHARSET=utf8mb4
+  COLLATE=utf8mb4_unicode_ci;
+
+-- Inserimento di tutti gli accordi per Sol♯ (G#)
+INSERT INTO NoteSOLdiesis (
+  note_ita, chord_ita, chord_note_ita,
+  note_eng, chord_eng, chord_note_eng
+) VALUES
+
+  /* --- TRIADI --- */
+  ('Sol♯','Sol♯ Maggiore',      'Sol♯-Si♯-Re♯',           'G#','G#Maj',   'G#-B#-D#'),
+  ('Sol♯','Sol♯ Minore',        'Sol♯-Si-Re♯',            'G#','G#m',     'G#-B-D#'),
+  ('Sol♯','Sol♯ Diminuito',     'Sol♯-Si-Re',             'G#','G#dim',   'G#-B-D'),
+  ('Sol♯','Sol♯ Aumentato',     'Sol♯-Si♯-Re♯♯',          'G#','G#aug',   'G#-B#-D##'),
+
+  /* --- QUARTE & QUINTE --- */
+  ('Sol♯','Sol♯ Quarta',        'Sol♯-Do♯',               'G#','G#4',     'G#-C#'),
+  ('Sol♯','Sol♯ Quinta',        'Sol♯-Re♯',               'G#','G#5',     'G#-D#'),
+
+  /* --- SOSPESI --- */
+  ('Sol♯','Sol♯ sus2',          'Sol♯-La♯-Re♯',           'G#','G#sus2',  'G#-A#-D#'),
+  ('Sol♯','Sol♯ sus4',          'Sol♯-Do♯-Re♯',           'G#','G#sus4',  'G#-C#-D#'),
+  ('Sol♯','Sol♯ sus4 add9',     'Sol♯-La♯-Do♯-Re♯',       'G#','G#sus4add9','G#-A#-C#-D#'),
+
+  /* --- SENZA INTERVALLI --- */
+  ('Sol♯','Sol♯ no3',           'Sol♯-Re♯',               'G#','G#no3',   'G#-D#'),
+  ('Sol♯','Sol♯ no5',           'Sol♯-Si♯',               'G#','G#no5',   'G#-B#'),
+
+  /* --- ADDITIONS --- */
+  ('Sol♯','Sol♯ add2',          'Sol♯-Si♯-Re♯-La♯',       'G#','G#add2',  'G#-B#-D#-A#'),
+  ('Sol♯','Sol♯ add4',          'Sol♯-Si♯-Re♯-Do♯',       'G#','G#add4',  'G#-B#-D#-C#'),
+  ('Sol♯','Sol♯ add9',          'Sol♯-Si♯-Re♯-La♯',       'G#','G#add9',  'G#-B#-D#-A#'),
+  ('Sol♯','Sol♯ add11',         'Sol♯-Si♯-Re♯-Do♯',       'G#','G#add11', 'G#-B#-D#-C#'),
+
+  /* --- SESTE --- */
+  ('Sol♯','Sol♯ 6',             'Sol♯-Si♯-Re♯-Mi♯',       'G#','G#6',     'G#-B#-D#-E#'),
+  ('Sol♯','Sol♯ Minore 6',      'Sol♯-Si-Re♯-Mi♯',        'G#','G#m6',    'G#-B-D#-E#'),
+  ('Sol♯','Sol♯ 6/9',           'Sol♯-Si♯-Re♯-Mi♯-La♯',   'G#','G#6/9',   'G#-B#-D#-E#-A#'),
+
+  /* --- SETTIME --- */
+  ('Sol♯','Sol♯ 7',             'Sol♯-Si♯-Re♯-Fa♯',       'G#','G#7',     'G#-B#-D#-F#'),
+  ('Sol♯','Sol♯ Maggiore 7',    'Sol♯-Si♯-Re♯-Fa♯♯',      'G#','G#Maj7',  'G#-B#-D#-F##'),
+  ('Sol♯','Sol♯ Minore 7',      'Sol♯-Si-Re♯-Fa♯',        'G#','G#m7',    'G#-B-D#-F#'),
+  ('Sol♯','Sol♯ semidiminuito', 'Sol♯-Si-Re-Fa♯',         'G#','G#m7b5',  'G#-B-D-F#'),
+  ('Sol♯','Sol♯ dim7',          'Sol♯-Si-Re-Fa',          'G#','G#dim7',  'G#-B-D-F'),
+  ('Sol♯','Sol♯ 7♭5',          'Sol♯-Si♯-Re-Fa♯',        'G#','G#7b5',   'G#-B#-D-F#'),
+  ('Sol♯','Sol♯ 7♯5',          'Sol♯-Si♯-Re♯♯-Fa♯',       'G#','G#7#5',   'G#-B#-D##-F#'),
+  ('Sol♯','Sol♯ 7sus2',        'Sol♯-La♯-Re♯-Fa♯',       'G#','G#7sus2', 'G#-A#-D#-F#'),
+  ('Sol♯','Sol♯ 7sus4',        'Sol♯-Do♯-Re♯-Fa♯',       'G#','G#7sus4', 'G#-C#-D#-F#'),
+  ('Sol♯','Sol♯ 7add11',       'Sol♯-Si♯-Re♯-Fa♯-Do♯',   'G#','G#7add11','G#-B#-D#-F#-C#'),
+
+  /* --- NOVE --- */
+  ('Sol♯','Sol♯ 9',            'Sol♯-Si♯-Re♯-Fa♯-La♯',    'G#','G#9',     'G#-B#-D#-F#-A#'),
+  ('Sol♯','Sol♯ Maggiore 9',    'Sol♯-Si♯-Re♯-Fa♯♯-La♯',   'G#','G#Maj9',  'G#-B#-D#-F##-A#'),
+  ('Sol♯','Sol♯ Minore 9',      'Sol♯-Si-Re♯-Fa♯-La♯',     'G#','G#m9',    'G#-B-D#-F#-A#'),
+  ('Sol♯','Sol♯ 9♭5',          'Sol♯-Si♯-Re-Fa♯-La♯',     'G#','G#9b5',   'G#-B#-D-F#-A#'),
+  ('Sol♯','Sol♯ 9♯5',          'Sol♯-Si♯-Re♯♯-Fa♯-La♯',    'G#','G#9#5',   'G#-B#-D##-F#-A#'),
+  ('Sol♯','Sol♯ 9sus4',        'Sol♯-Do♯-Re♯-Fa♯-La♯',    'G#','G#9sus4', 'G#-C#-D#-F#-A#'),
+  ('Sol♯','Sol♯ 9add11',       'Sol♯-Si♯-Re♯-Fa♯-Do♯-La♯','G#','G#9add11','G#-B#-D#-F#-C#-A#'),
+
+  /* --- UNDICI --- */
+  ('Sol♯','Sol♯ 11',           'Sol♯-Si♯-Re♯-Fa♯-La♯-Do♯','G#','G#11',    'G#-B#-D#-F#-A#-C#'),
+  ('Sol♯','Sol♯ Maggiore 11',  'Sol♯-Si♯-Re♯-Fa♯♯-La♯-Do♯','G#','G#Maj11', 'G#-B#-D#-F##-A#-C#'),
+  ('Sol♯','Sol♯ Minore 11',    'Sol♯-Si-Re♯-Fa♯-La♯-Do♯','G#','G#m11',   'G#-B-D#-F#-A#-C#'),
+  ('Sol♯','Sol♯ 11♭5',         'Sol♯-Si♯-Re-Fa♯-La♯-Do♯','G#','G#11b5',  'G#-B#-D-F#-A#-C#'),
+  ('Sol♯','Sol♯ 11#5',         'Sol♯-Si♯-Re♯♯-Fa♯-La♯-Do♯','G#','G#11#5',  'G#-B#-D##-F#-A#-C#'),
+
+  /* --- TREDICI --- */
+  ('Sol♯','Sol♯ 13',           'Sol♯-Si♯-Re♯-Fa♯-La♯-Do♯-Mi♯','G#','G#13',    'G#-B#-D#-F#-A#-C#-E#'),
+  ('Sol♯','Sol♯ Maggiore 13',  'Sol♯-Si♯-Re♯-Fa♯♯-La♯-Do♯-Mi♯','G#','G#Maj13', 'G#-B#-D#-F##-A#-C#-E#'),
+  ('Sol♯','Sol♯ Minore 13',    'Sol♯-Si-Re♯-Fa♯-La♯-Do♯-Mi♯','G#','G#m13',   'G#-B-D#-F#-A#-C#-E#');
 
 -- Creazione della tabella LA
 CREATE TABLE NoteLA (
