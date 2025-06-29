@@ -88,5 +88,5 @@ Each table also includes `INSERT` statements populating all chord types up to th
 
 ## Repository & License
 
-This project is open source under the MIT license.  
+This project is open source under the GPL v3 license.  
 GitHub: https://github.com/bocaletto-luca/Chords-Note-Music/
