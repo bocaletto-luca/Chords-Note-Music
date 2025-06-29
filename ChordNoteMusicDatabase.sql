@@ -1395,50 +1395,92 @@ INSERT INTO NoteLA (
   ('La','La Maggiore 13','La-Do♯-Mi-Sol♯-Si-Re-Fa♯','A','AMaj13', 'A-C#-E-G#-B-D-F#'),
   ('La','La Minore 13',   'La-Do-Mi-Sol-Si-Re-Fa♯','A','Am13',   'A-C-E-G-B-D-F#');
 
--- Creazione della tabella LAb
+-- Creazione della tabella NoteLAb (La♭ / Ab)
 CREATE TABLE NoteLAb (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    note_ita VARCHAR(255),
-    chord_ita VARCHAR(255),
-    chord_note_ita VARCHAR(255),
-    note_eng VARCHAR(255),
-    chord_eng VARCHAR(255),
-    chord_note_eng VARCHAR(255)
-);
--- Inserimento dei dati per gli accordi di Lab nella tabella LAb
-INSERT INTO NoteLAb (note_ita, chord_ita, chord_note_ita, note_eng, chord_eng, chord_note_eng) VALUES
-('LAb', 'Lab Maggiore', 'Lab-Do-Mib', 'Ab', 'AbMaj', 'Ab-C-Eb'),
-('LAb', 'Lab Minore', 'Lab-Do♭-Mib', 'Ab', 'Abm', 'Ab-C♭-Eb'),
-('LAb', 'Lab Settima', 'Lab-Do-Mib-Solb', 'Ab', 'Ab7', 'Ab-C♭-Eb-G♭'),
-('LAb', 'Lab Maggiore 7', 'Lab-Do-Mib-Sol', 'Ab', 'AbMaj7', 'Ab-C-Eb-G'),
-('LAb', 'Lab Minore 7', 'Lab-Do♭-Mib-Sol♭', 'Ab', 'Abm7', 'Ab-C♭-Eb-G♭'),
-('LAb', 'Lab Settima Minore', 'Lab-Do♭-Mib-Solb', 'Ab', 'Abm7', 'Ab-C♭-Eb-G♭'),
-('LAb', 'Lab Maggiore 6', 'Lab-Do-Mib-Fa', 'Ab', 'Ab6', 'Ab-C-Eb-F'),
-('LAb', 'Lab Minore 6', 'Lab-Do♭-Mib-Fa', 'Ab', 'Abm6', 'Ab-C♭-Eb-F'),
-('LAb', 'Lab Settima 9', 'Lab-Do-Mib-Solb-Tib', 'Ab', 'Ab9', 'Ab-C-Eb-G♭-B♭'),
-('LAb', 'Lab Maggiore 9', 'Lab-Do-Mib-Sol-Ti', 'Ab', 'AbMaj9', 'Ab-C-Eb-G-B'),
-('LAb', 'Lab Minore 9', 'Lab-Do♭-Mib-Sol♭-Ti', 'Ab', 'Abm9', 'Ab-C♭-Eb-G♭-B'),
-('LAb', 'Lab Settima Maggiore 7', 'Lab-Do-Mib-Sol-Tib', 'Ab', 'AbMaj7♯5', 'Ab-C-Eb-G-B♭'),
-('LAb', 'Lab Diminuito', 'Lab-Do♭-Mib♭-Sol♭', 'Ab', 'Abdim', 'Ab-C♭-Eb♭-G♭'),
-('LAb', 'Lab Aumentato', 'Lab-Do-Mib♯-Sol', 'Ab', 'Abaug', 'Ab-C-E♭-G♯'),
-('LAb', 'Lab Sesta', 'Lab-Do-Mib-Fa-Lab', 'Ab', 'Ab6', 'Ab-C-Eb-F-Ab'),
-('LAb', 'Lab Nona', 'Lab-Do-Mib-Solb-Tib-Reb', 'Ab', 'Ab9', 'Ab-C-Eb-G♭-B♭-D♭'),
-('LAb', 'Lab Settima Maggiore', 'Lab-Do-Mib-Sol-Ti-Re', 'Ab', 'AbMaj7', 'Ab-C-Eb-G-B-D'),
-('LAb', 'Lab Settima Maggiore 9', 'Lab-Do-Mib-Sol-Ti-Reb', 'Ab', 'AbMaj9', 'Ab-C-Eb-G-B-D♭'),
-('LAb', 'Lab Settima 11', 'Lab-Do-Mib-Sol-Tib-Reb-Fa', 'Ab', 'Ab11', 'Ab-C-Eb-G♭-B♭-D♭-F'),
-('LAb', 'Lab Settima 13', 'Lab-Do-Mib-Sol-Tib-Reb-Fa-Lab', 'Ab', 'Ab13', 'Ab-C-Eb-G♭-B♭-D♭-F-Ab'),
-('LAb', 'Lab Settima 9 Add11', 'Lab-Do-Mib-Sol-Tib-Reb-Fa', 'Ab', 'Ab9add11', 'Ab-C-Eb-G♭-B♭-D♭-F'),
-('LAb', 'Lab Sesta 9', 'Lab-Do-Mib-Fa-Lab-Tib', 'Ab', 'Ab6/9', 'Ab-C-Eb-F-Ab-D♭'),
-('LAb', 'Lab Sesta 11', 'Lab-Do-Mib-Fa-Lab-Tib-Reb', 'Ab', 'Ab6/11', 'Ab-C-Eb-F-Ab-D♭-F'),
-('LAb', 'Lab Settima Maggiore 11', 'Lab-Do-Mib-Sol-Ti-Re-Fa', 'Ab', 'AbMaj7#11', 'Ab-C-Eb-G-B-D♭-F'),
-('LAb', 'Lab Minore 7 Add11', 'Lab-Do♭-Mib-Fa-Solb', 'Ab', 'Abm7add11', 'Ab-C♭-Eb-F-G♭-D♭'),
-('LAb', 'Lab Maggiore 7#11', 'Lab-Do-Mib-Sol-Ti-Fa♯', 'Ab', 'AbMaj7#11', 'Ab-C-Eb-G-B-D♭-F♯'),
-('LAb', 'Lab Minore/Maggiore 7', 'Lab-Do♭-Mib-Fa-Sol', 'Ab', 'Abm/Maj7', 'Ab-C♭-Eb-F-G'),
-('LAb', 'Lab Settima 9#11', 'Lab-Do-Mib-Sol-Tib-Re-Fa♯', 'Ab', 'Ab9#11', 'Ab-C-Eb-G♭-B♭-D♭-F♯'),
-('LAb', 'Lab Settima Minore 9', 'Lab-Do♭-Mib-Sol♭-Ti-Re', 'Ab', 'Abm9', 'Ab-C♭-Eb-G♭-B♭-D♭'),
-('LAb', 'Lab Settima Maggiore 13', 'Lab-Do-Mib-Sol-Ti-Reb-Fa♯-Lab', 'Ab', 'AbMaj13', 'Ab-C-Eb-G-B-D♭-F♯-Ab'),
-('LAb', 'Lab Minore 11', 'Lab-Do♭-Mib-Sol♭-Ti-Reb-Fa', 'Ab', 'Abm11', 'Ab-C♭-Eb-G♭-B♭-D♭-F'),
-('LAb', 'Lab Settima add11', 'Lab-Do-Mib-Sol-Ti-Fa', 'Ab', 'Ab7add11', 'Ab-C-Eb-G♭-B♭-D♭-F');
+  id               INT UNSIGNED    NOT NULL AUTO_INCREMENT,
+  note_ita         VARCHAR(3)      NOT NULL COMMENT 'es. La♭',
+  chord_ita        VARCHAR(50)     NOT NULL COMMENT 'es. La♭ Maggiore 7',
+  chord_note_ita   VARCHAR(100)    NOT NULL COMMENT 'es. La♭-Do-Mi♭-Sol♭',
+  note_eng         VARCHAR(2)      NOT NULL COMMENT 'es. Ab',
+  chord_eng        VARCHAR(20)     NOT NULL COMMENT 'es. AbMaj7',
+  chord_note_eng   VARCHAR(100)    NOT NULL COMMENT 'es. Ab-C-Eb-G',
+  created_at       TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at       TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uk_ita (note_ita, chord_ita),
+  UNIQUE KEY uk_eng (note_eng, chord_eng)
+) ENGINE=InnoDB
+  DEFAULT CHARSET=utf8mb4
+  COLLATE=utf8mb4_unicode_ci;
+
+-- Tutti gli accordi per La♭ (Ab)
+INSERT INTO NoteLAb (
+  note_ita, chord_ita, chord_note_ita,
+  note_eng, chord_eng, chord_note_eng
+) VALUES
+
+  /* --- TRIADI --- */
+  ('La♭','La♭ Maggiore',    'La♭-Do-Mi♭',            'Ab','AbMaj',   'Ab-C-Eb'),
+  ('La♭','La♭ Minore',      'La♭-Do♭-Mi♭',           'Ab','Abm',     'Ab-Cb-Eb'),
+  ('La♭','La♭ Diminuito',   'La♭-Do♭-Mi♭♭',          'Ab','Abdim',   'Ab-Cb-Dbb'),
+  ('La♭','La♭ Aumentato',   'La♭-Do-Mi',             'Ab','Abaug',   'Ab-C-E'),
+
+  /* --- QUARTE & QUINTE --- */
+  ('La♭','La♭ Quarta',      'La♭-Re♭',               'Ab','Ab4',     'Ab-Db'),
+  ('La♭','La♭ Quinta',      'La♭-Mi♭',               'Ab','Ab5',     'Ab-Eb'),
+
+  /* --- SOSPESI --- */
+  ('La♭','La♭ sus2',        'La♭-Si♭-Mi♭',           'Ab','Absus2',  'Ab-Bb-Eb'),
+  ('La♭','La♭ sus4',        'La♭-Re♭-Mi♭',           'Ab','Absus4',  'Ab-Db-Eb'),
+  ('La♭','La♭ sus4 add9',   'La♭-Si♭-Re♭-Mi♭',       'Ab','Absus4add9','Ab-Bb-Db-Eb'),
+
+  /* --- SENZA INTERVALLI --- */
+  ('La♭','La♭ no3',         'La♭-Mi♭',               'Ab','Abno3',   'Ab-Eb'),
+  ('La♭','La♭ no5',         'La♭-Do',                'Ab','Abno5',   'Ab-C'),
+
+  /* --- ADDIZIONI --- */
+  ('La♭','La♭ add2',        'La♭-Do-Mi♭-Si♭',        'Ab','Abadd2',  'Ab-C-Eb-Bb'),
+  ('La♭','La♭ add4',        'La♭-Do-Mi♭-Re♭',        'Ab','Abadd4',  'Ab-C-Eb-Db'),
+  ('La♭','La♭ add9',        'La♭-Do-Mi♭-Si♭',        'Ab','Abadd9',  'Ab-C-Eb-Bb'),
+  ('La♭','La♭ add11',       'La♭-Do-Mi♭-Re♭',        'Ab','Abadd11', 'Ab-C-Eb-Db'),
+
+  /* --- SESTE --- */
+  ('La♭','La♭ 6',           'La♭-Do-Mi♭-Fa',         'Ab','Ab6',     'Ab-C-Eb-F'),
+  ('La♭','La♭ m6',          'La♭-Do♭-Mi♭-Fa',        'Ab','Abm6',    'Ab-Cb-Eb-F'),
+  ('La♭','La♭ 6/9',         'La♭-Do-Mi♭-Fa-Si♭',     'Ab','Ab6/9',   'Ab-C-Eb-F-Bb'),
+
+  /* --- SETTIME --- */
+  ('La♭','La♭ 7',           'La♭-Do-Mi♭-Sol♭',       'Ab','Ab7',     'Ab-C-Eb-Gb'),
+  ('La♭','La♭ Maj7',        'La♭-Do-Mi♭-Sol',        'Ab','AbMaj7',  'Ab-C-Eb-G'),
+  ('La♭','La♭ m7',          'La♭-Do♭-Mi♭-Sol♭',      'Ab','Abm7',    'Ab-Cb-Eb-Gb'),
+  ('La♭','La♭ m7b5',        'La♭-Do♭-Mi♭♭-Sol♭',     'Ab','Abm7b5',  'Ab-Cb-Dbb-Gb'),
+  ('La♭','La♭ dim7',        'La♭-Do♭-Mi♭♭-Fa',       'Ab','Abdim7',  'Ab-Cb-Dbb-F'),
+  ('La♭','La♭ 7b5',         'La♭-Do-Mi♭♭-Sol♭',      'Ab','Ab7b5',   'Ab-C-Ebb-Gb'),
+  ('La♭','La♭ 7#5',         'La♭-Do-Mi-Sol♭',        'Ab','Ab7#5',   'Ab-C-E-Gb'),
+  ('La♭','La♭ 7sus2',       'La♭-Si♭-Mi♭-Sol♭',      'Ab','Ab7sus2', 'Ab-Bb-Eb-Gb'),
+  ('La♭','La♭ 7sus4',       'La♭-Re♭-Mi♭-Sol♭',      'Ab','Ab7sus4', 'Ab-Db-Eb-Gb'),
+  ('La♭','La♭ 7add11',      'La♭-Do-Mi♭-Sol♭-Re♭',   'Ab','Ab7add11','Ab-C-Eb-Gb-Db'),
+
+  /* --- NOVE --- */
+  ('La♭','La♭ 9',           'La♭-Do-Mi♭-Sol♭-Si♭',   'Ab','Ab9',     'Ab-C-Eb-Gb-Bb'),
+  ('La♭','La♭ Maj9',        'La♭-Do-Mi♭-Sol-Si♭',    'Ab','AbMaj9',  'Ab-C-Eb-G-Bb'),
+  ('La♭','La♭ m9',          'La♭-Do♭-Mi♭-Sol♭-Si♭',   'Ab','Abm9',    'Ab-Cb-Eb-Gb-Bb'),
+  ('La♭','La♭ 9b5',         'La♭-Do-Mi♭♭-Sol♭-Si♭',   'Ab','Ab9b5',   'Ab-C-Ebb-Gb-Bb'),
+  ('La♭','La♭ 9#5',         'La♭-Do-Mi-Sol♭-Si♭',     'Ab','Ab9#5',   'Ab-C-E-Gb-Bb'),
+  ('La♭','La♭ 9sus4',       'La♭-Re♭-Mi♭-Sol♭-Si♭',   'Ab','Ab9sus4', 'Ab-Db-Eb-Gb-Bb'),
+  ('La♭','La♭ 9add11',      'La♭-Do-Mi♭-Sol♭-Si♭-Re♭','Ab','Ab9add11','Ab-C-Eb-Gb-Bb-Db'),
+
+  /* --- UNDICI --- */
+  ('La♭','La♭ 11',          'La♭-Do-Mi♭-Sol♭-Si♭-Re♭','Ab','Ab11',    'Ab-C-Eb-Gb-Bb-Db'),
+  ('La♭','La♭ Maj11',       'La♭-Do-Mi♭-Sol-Re♭',    'Ab','AbMaj11', 'Ab-C-Eb-G-Bb-Db'),
+  ('La♭','La♭ m11',         'La♭-Do♭-Mi♭-Sol♭-Si♭-Re♭','Ab','Abm11',   'Ab-Cb-Eb-Gb-Bb-Db'),
+  ('La♭','La♭ 11b5',        'La♭-Do-Mi♭♭-Sol♭-Si♭-Re♭','Ab','Ab11b5',  'Ab-C-Ebb-Gb-Bb-Db'),
+  ('La♭','La♭ 11#5',        'La♭-Do-Mi-Sol♭-Si♭-Re♭',  'Ab','Ab11#5',  'Ab-C-E-Gb-Bb-Db'),
+
+  /* --- TREDICI --- */
+  ('La♭','La♭ 13',          'La♭-Do-Mi♭-Sol♭-Si♭-Re♭-Fa','Ab','Ab13',    'Ab-C-Eb-Gb-Bb-Db-F'),
+  ('La♭','La♭ Maj13',       'La♭-Do-Mi♭-Sol-Re♭-Fa','Ab','AbMaj13', 'Ab-C-Eb-G-Bb-Db-F'),
+  ('La♭','La♭ m13',         'La♭-Do♭-Mi♭-Sol♭-Si♭-Re♭-Fa','Ab','Abm13',   'Ab-Cb-Eb-Gb-Bb-Db-F');
 
 -- Creazione della tabella LAdiesis
 CREATE TABLE NoteLAdiesis (
