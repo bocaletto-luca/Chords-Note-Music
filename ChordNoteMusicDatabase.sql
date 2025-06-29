@@ -1558,96 +1558,190 @@ INSERT INTO NoteLAdiesis (
   ('La♯','La♯ 9sus4',        'La♯-Re♯-Mi♯-Fa♯-Si♯',  'A#','A#9sus4', 'A#-D#-E#-F#-B#'),
   ('La♯','La♯ 9add11',       'La♯-Do♯♯-Mi♯♯-Fa♯-Re♯-Si♯','A#','A#9add11','A#-C##-E##-F#-D#-B#');
 
--- Creazione della tabella SI
-CREATE TABLE NoteLA (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    note_ita VARCHAR(255),
-    chord_ita VARCHAR(255),
-    chord_note_ita VARCHAR(255),
-    note_eng VARCHAR(255),
-    chord_eng VARCHAR(255),
-    chord_note_eng VARCHAR(255)
-);
--- Inserimento dei dati per gli accordi di Si nella tabella SI
-INSERT INTO NoteSI (note_ita, chord_ita, chord_note_ita, note_eng, chord_eng, chord_note_eng) VALUES
-('SI', 'Si Maggiore', 'Si-Re♯-Fa♯', 'B', 'BMaj', 'B-D♯-F♯'),
-('SI', 'Si Minore', 'Si-Re-Fa♯', 'B', 'Bm', 'B-D-F♯'),
-('SI', 'Si Settima', 'Si-Re♯-Fa♯-La', 'B', 'B7', 'B-D♯-F♯-A'),
-('SI', 'Si Maggiore 7', 'Si-Re♯-Fa♯-La♯', 'B', 'BMaj7', 'B-D♯-F♯-A♯'),
-('SI', 'Si Minore 7', 'Si-Re-Fa♯-La', 'B', 'Bm7', 'B-D-F♯-A'),
-('SI', 'Si Settima Minore', 'Si-Re-Fa♯-La', 'B', 'Bm7', 'B-D-F♯-A'),
-('SI', 'Si Maggiore 6', 'Si-Re♯-Fa♯-La♯-Do♯', 'B', 'B6', 'B-D♯-F♯-A♯-C♯'),
-('SI', 'Si Minore 6', 'Si-Re-Fa♯-La-Do♯', 'B', 'Bm6', 'B-D-F♯-A-C♯'),
-('SI', 'Si Settima 9', 'Si-Re♯-Fa♯-La-Do♯-Mi', 'B', 'B9', 'B-D♯-F♯-A-C♯-E'),
-('SI', 'Si Maggiore 9', 'Si-Re♯-Fa♯-La♯-Do♯-Mi', 'B', 'BMaj9', 'B-D♯-F♯-A♯-C♯-E'),
-('SI', 'Si Minore 9', 'Si-Re-Fa♯-La-Do♯-Mi', 'B', 'Bm9', 'B-D-F♯-A-C♯-E'),
-('SI', 'Si Settima Maggiore 7', 'Si-Re♯-Fa♯-La♯-Do♯-Mi', 'B', 'BMaj7♯5', 'B-D♯-F♯-A♯-C♯-E'),
-('SI', 'Si Diminuito', 'Si-Re-Fa-La', 'B', 'Bdim', 'B-D-F-A'),
-('SI', 'Si Aumentato', 'Si-Re♯-Fa♯-La♯', 'B', 'Baug', 'B-D♯-F♯-A♯'),
-('SI', 'Si Sesta', 'Si-Re♯-Fa♯-La♯-Do♯-Mi', 'B', 'B6', 'B-D♯-F♯-A♯-C♯-E'),
-('SI', 'Si Nona', 'Si-Re♯-Fa♯-La-Do♯-Mi-Sol♯', 'B', 'B9', 'B-D♯-F♯-A-C♯-E-G♯'),
-('SI', 'Si Settima Maggiore', 'Si-Re♯-Fa♯-La-Do♯-Mi-Sol♯', 'B', 'BMaj7', 'B-D♯-F♯-A-C♯-E-G♯'),
-('SI', 'Si Settima Maggiore 9', 'Si-Re♯-Fa♯-La♯-Do♯-Mi-Sol♯-Si♯', 'B', 'BMaj9', 'B-D♯-F♯-A♯-C♯-E-G♯-B♯'),
-('SI', 'Si Settima 11', 'Si-Re♯-Fa♯-La-Do♯-Mi-Sol♯-Si♯-Re♯', 'B', 'B11', 'B-D♯-F♯-A-C♯-E-G♯-B♯-D♯'),
-('SI', 'Si Settima 13', 'Si-Re♯-Fa♯-La-Do♯-Mi-Sol♯-Si♯-Re♯-Fa♯', 'B', 'B13', 'B-D♯-F♯-A-C♯-E-G♯-B♯-D♯-F♯'),
-('SI', 'Si Settima 9 Add11', 'Si-Re♯-Fa♯-La-Do♯-Mi-Sol♯-Si♯-Fa♯', 'B', 'B9add11', 'B-D♯-F♯-A-C♯-E-G♯-B♯-F♯'),
-('SI', 'Si Sesta 9', 'Si-Re♯-Fa♯-La♯-Do♯-Mi-Sol♯-Si', 'B', 'B6/9', 'B-D♯-F♯-A♯-C♯-E-G♯-B'),
-('SI', 'Si Sesta 11', 'Si-Re♯-Fa♯-La♯-Do♯-Mi-Sol♯-Si-Re♯', 'B', 'B6/11', 'B-D♯-F♯-A♯-C♯-E-G♯-B-D♯'),
-('SI', 'Si Settima Maggiore 11', 'Si-Re♯-Fa♯-La-Do♯-Mi-Sol♯-Si-Re♯-Fa#', 'B', 'BMaj7#11', 'B-D♯-F♯-A-C♯-E-G♯-B-D♯-F#'),
-('SI', 'Si Minore 7 Add11', 'Si-Re-Fa-La-Do♯-Mi-Sol♯-Si♯', 'B', 'Bm7add11', 'B-D-F♯-A-C♯-E-G♯-B♯'),
-('SI', 'Si Maggiore 7#11', 'Si-Re♯-Fa♯-La♯-Do♯-Mi-Sol♯-Si♯-Fa#', 'B', 'BMaj7#11', 'B-D♯-F♯-A-C♯-E-G♯-B-D♯-F#'),
-('SI', 'Si Minore/Maggiore 7', 'Si-Re-Fa-La-Do♯-Mi-Sol♯-Si', 'B', 'Bm/Maj7', 'B-D-F♯-A-C♯-E-G♯-B'),
-('SI', 'Si Settima 9#11', 'Si-Re♯-Fa♯-La-Do♯-Mi-Sol♯-Si♯-Fa#', 'B', 'B9#11', 'B-D♯-F♯-A-C♯-E-G♯-B-D♯-F#'),
-('SI', 'Si Settima Minore 9', 'Si-Re-Fa♯-La-Do♯-Mi♯-Sol♯-Si', 'B', 'Bm9', 'B-D-F♯-A-C♯-E♯-G♯-B'),
-('SI', 'Si Settima Maggiore 13', 'Si-Re♯-Fa♯-La♯-Do♯-Mi-Sol♯-Si-Re♯-Fa#', 'B', 'BMaj13', 'B-D♯-F♯-A-C♯-E-G♯-B-D♯-F#'),
-('SI', 'Si Minore 11', 'Si-Re-Fa-La-Do♯-Mi-Sol-Si-Re', 'B', 'Bm11', 'B-D-F♯-A-C♯-E-G-B-D♯'),
-('SI', 'Si Settima add11', 'Si-Re♯-Fa♯-La♯-Do♯-Mi-Sol♯-Si♯-Fa#', 'B', 'B7add11', 'B-D♯-F♯-A-C♯-E-G♯-B-D♯-F#');
+ /* --- UNDICI --- */
+  ('La♯','La♯ 11',          'La♯-Do♯♯-Mi♯♯-Sol♯-Si♯-Re♯',  'A#','A#11',     'A#-C##-E##-G#-B#-D#'),
+  ('La♯','La♯ Maggiore 11', 'La♯-Do♯♯-Mi♯♯-Sol♯♯-Si♯-Re♯','A#','A#Maj11',  'A#-C##-E##-G##-B#-D#'),
+  ('La♯','La♯ Minore 11',   'La♯-Do♯-Mi♯-Sol♯-Si♯-Re♯',    'A#','A#m11',    'A#-C#-E#-G#-B#-D#'),
+  ('La♯','La♯ 11♭5',       'La♯-Do♯♯-Mi♯-Sol♯-Si♯-Re♯',   'A#','A#11b5',   'A#-C##-E#-G#-B#-D#'),
+  ('La♯','La♯ 11#5',       'La♯-Do♯♯-Mi♯♯♯-Sol♯-Si♯-Re♯','A#','A#11#5',   'A#-C##-E###-G#-B#-D#'),
 
--- Creazione della tabella SIb
-CREATE TABLE NoteLA (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    note_ita VARCHAR(255),
-    chord_ita VARCHAR(255),
-    chord_note_ita VARCHAR(255),
-    note_eng VARCHAR(255),
-    chord_eng VARCHAR(255),
-    chord_note_eng VARCHAR(255)
-);
--- Inserimento dei dati per gli accordi di Si♭ nella tabella SIb
-INSERT INTO NoteSIb (note_ita, chord_ita, chord_note_ita, note_eng, chord_eng, chord_note_eng) VALUES
-('SI♭', 'Si♭ Maggiore', 'Si♭-Re-Fa', 'B♭', 'B♭Maj', 'B♭-D-F'),
-('SI♭', 'Si♭ Minore', 'Si♭-Re♭-Fa', 'B♭', 'B♭m', 'B♭-D♭-F'),
-('SI♭', 'Si♭ Settima', 'Si♭-Re-Fa-La♭', 'B♭', 'B♭7', 'B♭-D-F-A♭'),
-('SI♭', 'Si♭ Maggiore 7', 'Si♭-Re-Fa-La', 'B♭', 'B♭Maj7', 'B♭-D-F-A'),
-('SI♭', 'Si♭ Minore 7', 'Si♭-Re♭-Fa-La♭', 'B♭', 'B♭m7', 'B♭-D♭-F-A♭'),
-('SI♭', 'Si♭ Settima Minore', 'Si♭-Re♭-Fa-La♭', 'B♭', 'B♭m7', 'B♭-D♭-F-A♭'),
-('SI♭', 'Si♭ Maggiore 6', 'Si♭-Re-Fa-La-Do', 'B♭', 'B♭6', 'B♭-D-F-A-C'),
-('SI♭', 'Si♭ Minore 6', 'Si♭-Re♭-Fa-La-Do', 'B♭', 'B♭m6', 'B♭-D♭-F-A-C'),
-('SI♭', 'Si♭ Settima 9', 'Si♭-Re-Fa-La-Do-Mi', 'B♭', 'B♭9', 'B♭-D-F-A-C-E'),
-('SI♭', 'Si♭ Maggiore 9', 'Si♭-Re-Fa-La-Do-Mi', 'B♭', 'B♭Maj9', 'B♭-D-F-A-C-E'),
-('SI♭', 'Si♭ Minore 9', 'Si♭-Re♭-Fa-La-Do-Mi', 'B♭', 'B♭m9', 'B♭-D♭-F-A♭-C-E'),
-('SI♭', 'Si♭ Settima Maggiore 7', 'Si♭-Re-Fa-La-Do-Mi', 'B♭', 'B♭Maj7♯5', 'B♭-D-F-A-C-E'),
-('SI♭', 'Si♭ Diminuito', 'Si♭-Re♭-Fa♭-La♭', 'B♭', 'B♭dim', 'B♭-D♭-F♭-A♭'),
-('SI♭', 'Si♭ Aumentato', 'Si♭-Re-Fa♯-La', 'B♭', 'B♭aug', 'B♭-D-F♯-A'),
-('SI♭', 'Si♭ Sesta', 'Si♭-Re-Fa-La-Do-Sol', 'B♭', 'B♭6', 'B♭-D-F-A-C-G'),
-('SI♭', 'Si♭ Nona', 'Si♭-Re-Fa-La-Do-Mi-Si', 'B♭', 'B♭9', 'B♭-D-F-A-C-E-B'),
-('SI♭', 'Si♭ Settima Maggiore', 'Si♭-Re-Fa-La-Do-Mi-Si', 'B♭', 'B♭Maj7', 'B♭-D-F-A-C-E-B'),
-('SI♭', 'Si♭ Settima Maggiore 9', 'Si♭-Re-Fa-La-Do-Mi-Si-Do♯', 'B♭', 'B♭Maj9', 'B♭-D-F-A-C-E-B-D♯'),
-('SI♭', 'Si♭ Settima 11', 'Si♭-Re-Fa-La-Do-Sol-Si-Re', 'B♭', 'B♭11', 'B♭-D-F-A-C-G-B-D♯'),
-('SI♭', 'Si♭ Settima 13', 'Si♭-Re-Fa-La-Do-Mi-Si-Do♯-Re♯-Fa', 'B♭', 'B♭13', 'B♭-D-F-A-C-E-B-D♯-F'),
-('SI♭', 'Si♭ Settima 9 Add11', 'Si♭-Re-Fa-La-Do-Sol-Si-Fa', 'B♭', 'B♭9add11', 'B♭-D-F-A-C-G-B-F'),
-('SI♭', 'Si♭ Sesta 9', 'Si♭-Re-Fa-La-Do-Sol-Si-Mi', 'B♭', 'B♭6/9', 'B♭-D-F-A-C-G-B-E'),
-('SI♭', 'Si♭ Sesta 11', 'Si♭-Re-Fa-La-Do-Sol-Si-Mi-Re♯', 'B♭', 'B♭6/11', 'B♭-D-F-A-C-G-B-E-D♯'),
-('SI♭', 'Si♭ Settima Maggiore 11', 'Si♭-Re-Fa-La-Do-Mi-Si-Do♯-Re♯-Fa#', 'B♭', 'B♭Maj7#11', 'B♭-D-F-A-C-E-B-D♯-F#'),
-('SI♭', 'Si♭ Minore 7 Add11', 'Si♭-Re♭-Fa-La-Do-Sol-Si♭-Do♭', 'B♭', 'B♭m7add11', 'B♭-D♭-F-A♭-C-G♭-B♭'),
-('SI♭', 'Si♭ Maggiore 7#11', 'Si♭-Re-Fa-La-Do-Mi-Si-Do♯-Re♯-Fa#', 'B♭', 'B♭Maj7#11', 'B♭-D-F-A-C-E-B-D♯-F#'),
-('SI♭', 'Si♭ Minore/Maggiore 7', 'Si♭-Re♭-Fa-La-Do-Sol-Si♭-Do', 'B♭', 'B♭m/Maj7', 'B♭-D♭-F-A♭-C-G-B♭'),
-('SI♭', 'Si♭ Settima 9#11', 'Si♭-Re-Fa-La-Do-Sol-Si♭-Do♭-Fa#', 'B♭', 'B♭9#11', 'B♭-D-F-A-C-G-B♭-D♭-F#'),
-('SI♭', 'Si♭ Settima Minore 9', 'Si♭-Re♭-Fa♭-La♭-Do♭-Mi♭-Si♭', 'B♭', 'B♭m9', 'B♭-D♭-F♭-A♭-C♭-E♭-B♭'),
-('SI♭', 'Si♭ Settima Maggiore 13', 'Si♭-Re-Fa-La-Do-Mi-Si-Do♯-Re♯-Fa#', 'B♭', 'B♭Maj13', 'B♭-D-F-A-C-E-B-D♯-F#'),
-('SI♭', 'Si♭ Minore 11', 'Si♭-Re♭-Fa♭-La-Do♭-Mi♭-Si♭-Do', 'B♭', 'B♭m11', 'B♭-D♭-F♭-A-C♭-E♭-B♭-C'),
-('SI♭', 'Si♭ Settima add11', 'Si♭-Re-Fa-La-Do-Sol-Si♭-Do♭-Fa', 'B♭', 'B♭7add11', 'B♭-D-F-A-C-G-B♭-D♭-F'),
-('SI♭', 'Si♭ Sesta 9', 'Si♭-Re-Fa-La-Do-Sol-Si♭-Mi♭-Do♭', 'B♭', 'B♭6/9', 'B♭-D-F-A-C-G-B♭-E♭-C♭');
+  /* --- TREDICI --- */
+  ('La♯','La♯ 13',          'La♯-Do♯♯-Mi♯♯-Sol♯-Si♯-Re♯-Fa♯',        'A#','A#13',     'A#-C##-E##-G#-B#-D#-F#'),
+  ('La♯','La♯ Maggiore 13', 'La♯-Do♯♯-Mi♯♯-Sol♯♯-Si♯-Re♯-Fa♯',      'A#','A#Maj13',  'A#-C##-E##-G##-B#-D#-F#'),
+  ('La♯','La♯ Minore 13',   'La♯-Do♯-Mi♯-Sol♯-Si♯-Re♯-Fa♯',          'A#','A#m13',    'A#-C#-E#-G#-B#-D#-F#');
+
+
+-- Creazione della tabella NoteSI (Si / B)
+CREATE TABLE NoteSI (
+  id               INT UNSIGNED    NOT NULL AUTO_INCREMENT,
+  note_ita         VARCHAR(2)      NOT NULL COMMENT 'es. Si',
+  chord_ita        VARCHAR(50)     NOT NULL COMMENT 'es. Si Maggiore 7',
+  chord_note_ita   VARCHAR(100)    NOT NULL COMMENT 'es. Si-Re#-Fa#-La',
+  note_eng         VARCHAR(2)      NOT NULL COMMENT 'es. B',
+  chord_eng        VARCHAR(20)     NOT NULL COMMENT 'es. BMaj7',
+  chord_note_eng   VARCHAR(100)    NOT NULL COMMENT 'es. B-D#-F#-A#',
+  created_at       TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at       TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uk_ita (note_ita, chord_ita),
+  UNIQUE KEY uk_eng (note_eng, chord_eng)
+) ENGINE=InnoDB
+  DEFAULT CHARSET=utf8mb4
+  COLLATE=utf8mb4_unicode_ci;
+
+-- Inserimento di tutti gli accordi per Si (B) fino al 13°
+INSERT INTO NoteSI (
+  note_ita, chord_ita, chord_note_ita,
+  note_eng, chord_eng, chord_note_eng
+) VALUES
+
+  /* --- TRIADI --- */
+  ('Si','Si Maggiore',        'Si-Re#-Fa#',           'B','BMaj',    'B-D#-F#'),
+  ('Si','Si Minore',          'Si-Re-Fa#',            'B','Bm',      'B-D-F#'),
+  ('Si','Si Diminuito',       'Si-Re-Fa',             'B','Bdim',    'B-D-F'),
+  ('Si','Si Aumentato',       'Si-Re#-Fa##',          'B','Baug',    'B-D#-G'),
+
+  /* --- QUARTE & QUINTE --- */
+  ('Si','Si Quarta',          'Si-Mi',                'B','B4',      'B-E'),
+  ('Si','Si Quinta',          'Si-Fa#',               'B','B5',      'B-F#'),
+
+  /* --- SOSPESI --- */
+  ('Si','Si sus2',            'Si-Do#-Fa#',           'B','Bsus2',   'B-C#-F#'),
+  ('Si','Si sus4',            'Si-Mi-Fa#',            'B','Bsus4',   'B-E-F#'),
+  ('Si','Si sus4 add9',       'Si-Do#-Mi-Fa#',        'B','Bsus4add9','B-C#-E-F#'),
+
+  /* --- SENZA INTERVALLI --- */
+  ('Si','Si no3',             'Si-Fa#',               'B','Bno3',    'B-F#'),
+  ('Si','Si no5',             'Si-Re#',               'B','Bno5',    'B-D#'),
+
+  /* --- ADDIZIONI --- */
+  ('Si','Si add2',            'Si-Re#-Fa#-Do#',       'B','Badd2',   'B-D#-F#-C#'),
+  ('Si','Si add4',            'Si-Re#-Fa#-Mi',        'B','Badd4',   'B-D#-F#-E'),
+  ('Si','Si add9',            'Si-Re#-Fa#-Do#',       'B','Badd9',   'B-D#-F#-C#'),
+  ('Si','Si add11',           'Si-Re#-Fa#-Mi',        'B','Badd11',  'B-D#-F#-E'),
+
+  /* --- SESTE --- */
+  ('Si','Si 6',               'Si-Re#-Fa#-Sol#',      'B','B6',      'B-D#-F#-G#'),
+  ('Si','Si Minore 6',        'Si-Re-Fa#-Sol#',       'B','Bm6',     'B-D-F#-G#'),
+  ('Si','Si 6/9',             'Si-Re#-Fa#-Sol#-Do#',  'B','B6/9',    'B-D#-F#-G#-C#'),
+
+  /* --- SETTIME --- */
+  ('Si','Si 7',               'Si-Re#-Fa#-La',        'B','B7',      'B-D#-F#-A'),
+  ('Si','Si Maggiore 7',      'Si-Re#-Fa#-La#',       'B','BMaj7',   'B-D#-F#-A#'),
+  ('Si','Si Minore 7',        'Si-Re-Fa#-La',         'B','Bm7',     'B-D-F#-A'),
+  ('Si','Si m7b5',           'Si-Re-Fa-La',          'B','Bm7b5',   'B-D-F-A'),
+  ('Si','Si dim7',           'Si-Re-Fa-La♭',         'B','Bdim7',   'B-D-F-Ab'),
+  ('Si','Si 7b5',            'Si-Re#-Fa-La',         'B','B7b5',    'B-D#-F-A'),
+  ('Si','Si 7#5',            'Si-Re#-Fa##-La',       'B','B7#5',    'B-D#-G-A'),
+  ('Si','Si 7sus2',          'Si-Do#-Fa#-La',        'B','B7sus2',  'B-C#-F#-A'),
+  ('Si','Si 7sus4',          'Si-Mi-Fa#-La',         'B','B7sus4',  'B-E-F#-A'),
+  ('Si','Si 7add11',         'Si-Re#-Fa#-La-Mi',     'B','B7add11', 'B-D#-F#-A-E'),
+
+  /* --- NOVE --- */
+  ('Si','Si 9',               'Si-Re#-Fa#-La-Do#',    'B','B9',      'B-D#-F#-A-C#'),
+  ('Si','Si Maggiore 9',      'Si-Re#-Fa#-La#-Do#',    'B','BMaj9',   'B-D#-F#-A#-C#'),
+  ('Si','Si Minore 9',        'Si-Re-Fa#-La-Do#',      'B','Bm9',     'B-D-F#-A-C#'),
+  ('Si','Si 9b5',             'Si-Re#-Fa-La-Do#',      'B','B9b5',    'B-D#-F-A-C#'),
+  ('Si','Si 9#5',             'Si-Re#-Fa##-La-Do#',    'B','B9#5',    'B-D#-G-A-C#'),
+  ('Si','Si 9sus4',           'Si-Mi-Fa#-La-Do#',      'B','B9sus4',  'B-E-F#-A-C#'),
+  ('Si','Si 9add11',          'Si-Re#-Fa#-La-Mi-Do#',  'B','B9add11', 'B-D#-F#-A-E-C#'),
+
+  /* --- UNDICI --- */
+  ('Si','Si 11',              'Si-Re#-Fa#-La-Do#-Mi',  'B','B11',     'B-D#-F#-A-C#-E'),
+  ('Si','Si Maggiore 11',     'Si-Re#-Fa#-La#-Do#-Mi',  'B','BMaj11',  'B-D#-F#-A#-C#-E'),
+  ('Si','Si Minore 11',       'Si-Re-Fa#-La-Do#-Mi',    'B','Bm11',    'B-D-F#-A-C#-E'),
+  ('Si','Si 11b5',            'Si-Re#-Fa-La-Do#-Mi',    'B','B11b5',   'B-D#-F-A-C#-E'),
+  ('Si','Si 11#5',            'Si-Re#-Fa##-La-Do#-Mi',  'B','B11#5',   'B-D#-G-A-C#-E'),
+
+  /* --- TREDICI --- */
+  ('Si','Si 13',              'Si-Re#-Fa#-La-Do#-Mi-Sol#',    'B','B13',     'B-D#-F#-A-C#-E-G#'),
+  ('Si','Si Maggiore 13',     'Si-Re#-Fa#-La#-Do#-Mi-Sol#',    'B','BMaj13',  'B-D#-F#-A#-C#-E-G#'),
+  ('Si','Si Minore 13',       'Si-Re-Fa#-La-Do#-Mi-Sol#',      'B','Bm13',    'B-D-F#-A-C#-E-G#');
+
+-- Creazione della tabella NoteSIb (Si♭ / Bb)
+CREATE TABLE NoteSIb (
+  id               INT UNSIGNED    NOT NULL AUTO_INCREMENT,
+  note_ita         VARCHAR(3)      NOT NULL COMMENT 'es. Si♭',
+  chord_ita        VARCHAR(50)     NOT NULL COMMENT 'es. Si♭ Maggiore 7',
+  chord_note_ita   VARCHAR(100)    NOT NULL COMMENT 'es. Si♭-Re-Fa-Lab',
+  note_eng         VARCHAR(2)      NOT NULL COMMENT 'es. Bb',
+  chord_eng        VARCHAR(20)     NOT NULL COMMENT 'es. BbMaj7',
+  chord_note_eng   VARCHAR(100)    NOT NULL COMMENT 'es. Bb-D-F-A♭',
+  created_at       TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at       TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uk_ita (note_ita, chord_ita),
+  UNIQUE KEY uk_eng (note_eng, chord_eng)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Inserimento di tutti gli accordi per Si♭ (Bb) fino al 13°
+INSERT INTO NoteSIb (
+  note_ita, chord_ita, chord_note_ita,
+  note_eng, chord_eng, chord_note_eng
+) VALUES
+
+  /* --- TRIADI --- */
+  ('Si♭','Si♭ Maggiore',       'Si♭-Re-Fa',              'Bb','BbMaj',    'Bb-D-F'),
+  ('Si♭','Si♭ Minore',         'Si♭-Re♭-Fa',             'Bb','Bbm',      'Bb-Db-F'),
+  ('Si♭','Si♭ Diminuito',      'Si♭-Re♭-Fa♭',            'Bb','Bbdim',    'Bb-Db-Fb'),
+  ('Si♭','Si♭ Aumentato',      'Si♭-Re-Fa♯',             'Bb','Bbaug',    'Bb-D-F#'),
+
+  /* --- QUARTE & QUINTE --- */
+  ('Si♭','Si♭ Quarta',         'Si♭-Mi♭',               'Bb','Bb4',      'Bb-Eb'),
+  ('Si♭','Si♭ Quinta',         'Si♭-Fa',                'Bb','Bb5',      'Bb-F'),
+
+  /* --- SOSPESI --- */
+  ('Si♭','Si♭ sus2',           'Si♭-Do-Fa',             'Bb','Bbsus2',   'Bb-C-F'),
+  ('Si♭','Si♭ sus4',           'Si♭-Mi♭-Fa',            'Bb','Bbsus4',   'Bb-Eb-F'),
+  ('Si♭','Si♭ sus4 add9',      'Si♭-Do-Mi♭-Fa',         'Bb','Bbsus4add9','Bb-C-Eb-F'),
+
+  /* --- SENZA INTERVALLI --- */
+  ('Si♭','Si♭ no3',            'Si♭-Fa',                'Bb','Bbno3',    'Bb-F'),
+  ('Si♭','Si♭ no5',            'Si♭-Re',                'Bb','Bbno5',    'Bb-D'),
+
+  /* --- ADDIZIONI --- */
+  ('Si♭','Si♭ add2',           'Si♭-Re-Fa-Do',          'Bb','Bbadd2',   'Bb-D-F-C'),
+  ('Si♭','Si♭ add4',           'Si♭-Re-Fa-Mi♭',         'Bb','Bbadd4',   'Bb-D-F-Eb'),
+  ('Si♭','Si♭ add9',           'Si♭-Re-Fa-Do',          'Bb','Bbadd9',   'Bb-D-F-C'),
+  ('Si♭','Si♭ add11',          'Si♭-Re-Fa-Mi♭',         'Bb','Bbadd11',  'Bb-D-F-Eb'),
+
+  /* --- SESTE --- */
+  ('Si♭','Si♭ 6',              'Si♭-Re-Fa-Sol',         'Bb','Bb6',      'Bb-D-F-G'),
+  ('Si♭','Si♭ Minore 6',       'Si♭-Re♭-Fa-Sol',        'Bb','Bbm6',     'Bb-Db-F-G'),
+  ('Si♭','Si♭ 6/9',            'Si♭-Re-Fa-Sol-Do',      'Bb','Bb6/9',    'Bb-D-F-G-C'),
+
+  /* --- SETTIME --- */
+  ('Si♭','Si♭ 7',              'Si♭-Re-Fa-Lab',         'Bb','Bb7',      'Bb-D-F-Ab'),
+  ('Si♭','Si♭ Maggiore 7',     'Si♭-Re-Fa-La',          'Bb','BbMaj7',   'Bb-D-F-A'),
+  ('Si♭','Si♭ Minore 7',       'Si♭-Re♭-Fa-Lab',        'Bb','Bbm7',     'Bb-Db-F-Ab'),
+  ('Si♭','Si♭ Semidiminuito',  'Si♭-Re♭-Fa♭-Lab',       'Bb','Bbm7b5',   'Bb-Db-Fb-Ab'),
+  ('Si♭','Si♭ Dim7',           'Si♭-Re♭-Fa♭-Lab♭',      'Bb','Bbdim7',   'Bb-Db-Fb-Gbb'),
+  ('Si♭','Si♭ 7♭5',            'Si♭-Re-Fa♭-Lab',        'Bb','Bb7b5',    'Bb-D-Fb-Ab'),
+  ('Si♭','Si♭ 7♯5',            'Si♭-Re-Fa♯-Lab',        'Bb','Bb7#5',    'Bb-D-F#-Ab'),
+  ('Si♭','Si♭ 7sus2',          'Si♭-Do-Fa-Lab',         'Bb','Bb7sus2',  'Bb-C-F-Ab'),
+  ('Si♭','Si♭ 7sus4',          'Si♭-Mi♭-Fa-Lab',        'Bb','Bb7sus4',  'Bb-Eb-F-Ab'),
+  ('Si♭','Si♭ 7add11',         'Si♭-Re-Fa-Lab-Mi♭',     'Bb','Bb7add11','Bb-D-F-Ab-Eb'),
+
+  /* --- NOVE --- */
+  ('Si♭','Si♭ 9',              'Si♭-Re-Fa-Lab-Do',      'Bb','Bb9',      'Bb-D-F-Ab-C'),
+  ('Si♭','Si♭ Maggiore 9',     'Si♭-Re-Fa-La-Do',       'Bb','BbMaj9',   'Bb-D-F-A-C'),
+  ('Si♭','Si♭ Minore 9',       'Si♭-Re♭-Fa-Lab-Do',     'Bb','Bbm9',     'Bb-Db-F-Ab-C'),
+  ('Si♭','Si♭ 9♭5',           'Si♭-Re-Fa♭-Lab-Do',      'Bb','Bb9b5',    'Bb-D-Fb-Ab-C'),
+  ('Si♭','Si♭ 9♯5',           'Si♭-Re-Fa♯-Lab-Do',     'Bb','Bb9#5',    'Bb-D-F#-Ab-C'),
+  ('Si♭','Si♭ 9sus4',         'Si♭-Mi♭-Fa-Lab-Do',     'Bb','Bb9sus4',  'Bb-Eb-F-Ab-C'),
+  ('Si♭','Si♭ 9add11',        'Si♭-Re-Fa-Lab-Mi♭-Do',   'Bb','Bb9add11','Bb-D-F-Ab-Eb-C'),
+
+  /* --- UNDICI --- */
+  ('Si♭','Si♭ 11',            'Si♭-Re-Fa-Lab-Do-Mi♭',   'Bb','Bb11',     'Bb-D-F-Ab-C-Eb'),
+  ('Si♭','Si♭ Maggiore 11',   'Si♭-Re-Fa-La-Do-Mi♭',    'Bb','BbMaj11',  'Bb-D-F-A-C-Eb'),
+  ('Si♭','Si♭ Minore 11',     'Si♭-Re♭-Fa-Lab-Do-Mi♭',  'Bb','Bbm11',    'Bb-Db-F-Ab-C-Eb'),
+  ('Si♭','Si♭ 11♭5',         'Si♭-Re-Fa♭-Lab-Do-Mi♭',  'Bb','Bb11b5',   'Bb-D-Fb-Ab-C-Eb'),
+  ('Si♭','Si♭ 11#5',         'Si♭-Re-Fa♯-Lab-Do-Mi♭',  'Bb','Bb11#5',   'Bb-D-F#-Ab-C-Eb'),
+
+  /* --- TREDICI --- */
+  ('Si♭','Si♭ 13',            'Si♭-Re-Fa-Lab-Do-Mi♭-Sol','Bb','Bb13',     'Bb-D-F-Ab-C-Eb-G'),
+  ('Si♭','Si♭ Maggiore 13',   'Si♭-Re-Fa-La-Do-Mi♭-Sol','Bb','BbMaj13',  'Bb-D-F-A-C-Eb-G'),
+  ('Si♭','Si♭ Minore 13',     'Si♭-Re♭-Fa-Lab-Do-Mi♭-Sol','Bb','Bbm13',   'Bb-Db-F-Ab-C-Eb-G');
 
 -- Creazione della tabella SIdiesis
 CREATE TABLE NoteLA (
