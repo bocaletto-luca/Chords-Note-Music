@@ -1,58 +1,92 @@
-# ChordNoteMusicDatabase
+# Chord Note Music Database
+#### Author: Bocaletto Luca
 
-## Database Description
-The "ChordNoteMusicDatabase" is designed to store information about musical chords in different keys. It consists of several tables, each representing a musical note from the chromatic scale (C, C#, D, D#, E, F, F#, G, G#, A, A#, B) and related chord information in both Italian and English.
+A MySQL schema storing chord definitions for every note in the chromatic scale, with names and interval lists in both Italian and English. Each note (natural, sharp, flat) gets its own table containing all common chord types up to the 13th.
 
-![Screenshot 2023-10-10 122524](https://github.com/elektronoide/Chords-Note-Music/assets/134635227/6667fcea-87ef-4d6c-b377-d4746c6812e7)
+## Table Structure (Production-Ready)
 
-## Tables
+Every table is named `NoteXY` (where `XY` is the note: DO, DOdiesis, REb, REdiesis, …) and shares this definition:
 
-### Table "DO" (C)
-This table represents the note "DO" (C).
-It contains information about chords in Italian and English related to the note "DO."
-Each row represents a different type of chord for the note "DO," with details in the following fields:
+```sql
+CREATE TABLE NoteXY (
+  id               INT UNSIGNED    NOT NULL AUTO_INCREMENT,
+  note_ita         VARCHAR(3)      NOT NULL COMMENT 'Italian note name, e.g. Do♯',
+  chord_ita        VARCHAR(50)     NOT NULL COMMENT 'Italian chord name, e.g. Do♯ Maggiore 7',
+  chord_note_ita   VARCHAR(100)    NOT NULL COMMENT 'Italian intervals, e.g. Do♯-Mi-Sol♯-Si',
+  note_eng         VARCHAR(2)      NOT NULL COMMENT 'English note name, e.g. C#',
+  chord_eng        VARCHAR(20)     NOT NULL COMMENT 'English chord name, e.g. C#Maj7',
+  chord_note_eng   VARCHAR(100)    NOT NULL COMMENT 'English intervals, e.g. C#-E#-G#-B#',
+  created_at       TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at       TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP
+                         ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uk_ita (note_ita, chord_ita),
+  UNIQUE KEY uk_eng (note_eng, chord_eng)
+) ENGINE=InnoDB
+  DEFAULT CHARSET=utf8mb4
+  COLLATE=utf8mb4_unicode_ci;
+```
 
-- `note_ita`: The note in Italian (e.g., "Do").
-- `chord_ita`: The chord name in Italian (e.g., "Do Maggiore").
-- `chord_note_ita`: The chord composition in Italian (e.g., "Do-Mi-Sol").
-- `note_eng`: The note in English (e.g., "C").
-- `chord_eng`: The chord name in English (e.g., "CMaj").
-- `chord_note_eng`: The chord composition in English (e.g., "C-E-G").
+**Columns**
 
-#### Example row:
-| note_ita | chord_ita    | chord_note_ita | note_eng | chord_eng | chord_note_eng |
-|----------|--------------|-----------------|----------|-----------|----------------|
-| Do       | Do Maggiore  | Do-Mi-Sol       | C        | CMaj      | C-E-G          |
+- `note_ita` / `note_eng`: the root note name in Italian / English  
+- `chord_ita` / `chord_eng`: chord type (triad, 7th, 9th, 11th, 13th…)  
+- `chord_note_ita` / `chord_note_eng`: interval composition (Do-Mi-Sol / C-E-G…)  
+- `created_at` / `updated_at`: automatic timestamps for auditing  
+- Unique keys to prevent duplicate chord entries  
 
-### Table "DO#" (C#)
-This table represents the note "DO#" (C#).
-It contains information about chords in Italian and English related to the note "DO#," with similar details in the specified fields.
+## Included Tables
 
-# Lingua Italiana
+Each of the 12 chromatic notes (plus enharmonic flats/sharps) has its own table:
 
-## Descrizione del Database
-Il database "Chords Note Music Database" è stato progettato per memorizzare informazioni sugli accordi musicali nelle diverse tonalità. Contiene una serie di tabelle, ognuna delle quali rappresenta una nota musicale della scala cromatica (C, C#, D, D#, E, F, F#, G, G#, A, A#, B) e le relative informazioni sugli accordi in italiano e inglese per quella nota.
+- **NoteDO**            (Do / C)  
+- **NoteDOdiesis**      (Do♯ / C#)  
+- **NoteDOb**           (Do♭ / Cb)  
 
-## Tabelle
+- **NoteRE**            (Re / D)  
+- **NoteREdiesis**      (Re♯ / D#)  
+- **NoteREb**           (Re♭ / Db)  
 
-### Tabella "DO"
-Questa tabella rappresenta la nota "DO" (C).
-Contiene informazioni sugli accordi in italiano e inglese relativi alla nota "DO".
-Ogni riga rappresenta un diverso tipo di accordo per la nota "DO", con dettagli sui seguenti campi:
+- **NoteMI**            (Mi / E)  
+- **NoteMIdiesis**      (Mi♯ / E#)  
+- **NoteMIb**           (Mi♭ / Eb)  
 
-- `note_ita`: La nota in italiano (es. "Do").
-- `chord_ita`: Il nome dell'accordo in italiano (es. "Do Maggiore").
-- `chord_note_ita`: La composizione dell'accordo in italiano (es. "Do-Mi-Sol").
-- `note_eng`: La nota in inglese (es. "C").
-- `chord_eng`: Il nome dell'accordo in inglese (es. "CMaj").
-- `chord_note_eng`: La composizione dell'accordo in inglese (es. "C-E-G").
+- **NoteFA**            (Fa / F)  
+- **NoteFAdiesis**      (Fa♯ / F#)  
+- **NoteFAb**           (Fa♭ / Fb)  
 
-#### Esempio di riga:
-| note_ita | chord_ita    | chord_note_ita | note_eng | chord_eng | chord_note_eng |
-|----------|--------------|-----------------|----------|-----------|----------------|
-| Do       | Do Maggiore  | Do-Mi-Sol       | C        | CMaj      | C-E-G          |
+- **NoteSOL**           (Sol / G)  
+- **NoteSOLdiesis**     (Sol♯ / G#)  
+- **NoteSOLb**          (Sol♭ / Gb)  
 
-### Tabella "DO#" (C#)
-Questa tabella rappresenta la nota "DO#" (C#).
-Contiene informazioni sugli accordi in italiano e inglese relativi alla nota "DO#".
-Ogni riga rappresenta un diverso tipo di accordo per la nota "DO#", con dettagli simili nei campi specificati sopra.
+- **NoteLA**            (La / A)  
+- **NoteLAdiesis**      (La♯ / A#)  
+- **NoteLAb**           (La♭ / Ab)  
+
+- **NoteSI**            (Si / B)  
+- **NoteSIdiesis**      (Si♯ – rarely used)  
+- **NoteSIb**           (Si♭ / Bb)  
+
+Each table also includes `INSERT` statements populating all chord types up to the 13th.
+
+## Quick Start
+
+1. Create the database:  
+   ```sql
+   CREATE DATABASE ChordNoteMusic;
+   USE ChordNoteMusic;
+   ```
+2. Apply each table’s DDL (above).  
+3. Run the corresponding `INSERT` scripts for each `NoteXY` table.  
+4. Query example:  
+   ```sql
+   -- Find all D9 variants
+   SELECT * 
+     FROM NoteRE 
+    WHERE chord_eng LIKE 'D%9%';
+   ```
+
+## Repository & License
+
+This project is open source under the MIT license.  
+GitHub: https://github.com/bocaletto-luca/Chords-Note-Music/
