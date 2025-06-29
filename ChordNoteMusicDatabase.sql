@@ -264,51 +264,92 @@ INSERT INTO NoteDOdiesis (
   ('DO#','Do# Maj13',       'Do#-Mi#-Sol#-Si#-Re#-Fa#-La#',  'C#','C#Maj13', 'C#-E#-G#-B#-D#-F#-A#'),
   ('DO#','Do# m13',         'Do#-Mi-Sol#-Si-Re#-Fa#-La#',     'C#','C#m13',   'C#-E-G#-B-D#-F#-A#');
 
--- Creazione della tabella RE
+-- Creazione della tabella NoteRE (Re / D)
 CREATE TABLE NoteRE (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    note_ita VARCHAR(255),
-    chord_ita VARCHAR(255),
-    chord_note_ita VARCHAR(255),
-    note_eng VARCHAR(255),
-    chord_eng VARCHAR(255),
-    chord_note_eng VARCHAR(255)
-);
+  id                 INT UNSIGNED     NOT NULL AUTO_INCREMENT,
+  note_ita           VARCHAR(2)       NOT NULL COMMENT 'es. Re',
+  chord_ita          VARCHAR(50)      NOT NULL COMMENT 'es. Re Maggiore 7',
+  chord_note_ita     VARCHAR(100)     NOT NULL COMMENT 'es. Re-Fa♯-La-Do',
+  note_eng           VARCHAR(2)       NOT NULL COMMENT 'es. D',
+  chord_eng          VARCHAR(20)      NOT NULL COMMENT 'es. DMaj7',
+  chord_note_eng     VARCHAR(100)     NOT NULL COMMENT 'es. D-F#-A-C#',
+  created_at         TIMESTAMP        NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at         TIMESTAMP        NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uk_ita (note_ita, chord_ita),
+  UNIQUE KEY uk_eng (note_eng, chord_eng)
+) ENGINE=InnoDB
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_unicode_ci;
 
--- Inserimento dei dati per gli accordi di Re nella tabella RE
-INSERT INTO NoteRE (note_ita, chord_ita, chord_note_ita, note_eng, chord_eng, chord_note_eng) VALUES
-('RE', 'Re Maggiore', 'Re-Fa♯-La', 'D', 'DMaj', 'D-F#-A'),
-('RE', 'Re Minore', 'Re-Fa-La', 'D', 'Dm', 'D-F-A'),
-('RE', 'Re Settima', 'Re-Fa-La-Si', 'D', 'D7', 'D-F#-A-C'),
-('RE', 'Re Maggiore 7', 'Re-Fa♯-La-Si', 'D', 'DMaj7', 'D-F#-A-C#'),
-('RE', 'Re Minore 7', 'Re-Fa-La-Si♭', 'D', 'Dm7', 'D-F-A-C'),
-('RE', 'Re Settima Minore', 'Re-Fa-La-Si♭', 'D', 'Dm7', 'D-F-A-C'),
-('RE', 'Re Maggiore 6', 'Re-Fa♯-La♯', 'D', 'D6', 'D-F#-A-B'),
-('RE', 'Re Minore 6', 'Re-Fa-La♯', 'D', 'Dm6', 'D-F-A-B'),
-('RE', 'Re Settima 9', 'Re-Fa-La-Si-Re', 'D', 'D9', 'D-F#-A-C-E'),
-('RE', 'Re Maggiore 9', 'Re-Fa♯-La-Si-Re', 'D', 'DMaj9', 'D-F#-A-C#-E'),
-('RE', 'Re Minore 9', 'Re-Fa-La-Si♭-Re', 'D', 'Dm9', 'D-F-A-C-E'),
-('RE', 'Re Settima Maggiore 7', 'Re-Fa♯-La-Si♯', 'D', 'DMaj7♯5', 'D-F#-A-C#'),
-('RE', 'Re Diminuito', 'Re-Fa-La♭', 'D', 'Ddim', 'D-F-A♭'),
-('RE', 'Re Aumentato', 'Re-Fa♯-La♯♯', 'D', 'Daug', 'D-F#-A##'),
-('RE', 'Re Sesta', 'Re-Fa♯-La-Si♯', 'D', 'D6', 'D-F#-A-B'),
-('RE', 'Re Nona', 'Re-Fa-La-Si-Re', 'D', 'D9', 'D-F#-A-C-E'),
-('RE', 'Re Settima Maggiore', 'Re-Fa♯-La-Si', 'D', 'DMaj7', 'D-F#-A-C#'),
-('RE', 'Re Settima Maggiore 9', 'Re-Fa♯-La-Si-Re', 'D', 'DMaj9', 'D-F#-A-C#-E'),
-('RE', 'Re Settima 11', 'Re-Fa-La-Si♭-Re-Fa', 'D', 'D11', 'D-F-A-C-E-G'),
-('RE', 'Re Settima 13', 'Re-Fa-La-Si♭-Re-Fa-La', 'D', 'D13', 'D-F-A-C-E-G-B'),
-('RE', 'Re Settima 9 Add11', 'Re-Fa-La-Si♭-Re-Fa', 'D', 'D9add11', 'D-F-A-C-E-G'),
-('RE', 'Re Sesta 9', 'Re-Fa♯-La-Si♯-Re♯', 'D', 'D6/9', 'D-F#-A-B-E'),
-('RE', 'Re Sesta 11', 'Re-Fa♯-La-Si♯-Re♯-Fa', 'D', 'D6/11', 'D-F#-A-B-E-G'),
-('RE', 'Re Settima Maggiore 11', 'Re-Fa♯-La-Si-Re-Fa', 'D', 'DMaj7#11', 'D-F#-A-C#-E-G#'),
-('RE', 'Re Minore 7 Add11', 'Re-Fa-La♭-Si', 'D', 'Dm7add11', 'D-F-A-C-E-G'),
-('RE', 'Re Maggiore 7#11', 'Re-Fa♯-La-Si-Re-F♯', 'D', 'DMaj7#11', 'D-F#-A-C#-E-G#'),
-('RE', 'Re Minore/Maggiore 7', 'Re-Fa-La-Si-Re♯', 'D', 'Dm/Maj7', 'D-F-A-C#-E'),
-('RE', 'Re Settima 9#11', 'Re-Fa-La-Si♭-Re-F♯', 'D', 'D9#11', 'D-F-A-C-E-G#'),
-('RE', 'Re Settima Minore 9', 'Re-Fa-La-Si♭-Re♭', 'D', 'Dm9', 'D-F-A-C-E'),
-('RE', 'Re Settima Maggiore 13', 'Re-Fa♯-La-Si-Re-Fa-La', 'D', 'DMaj13', 'D-F#-A-C#-E-G#-B'),
-('RE', 'Re Minore 11', 'Re-Fa-La-Si♭-Re-Fa♯', 'D', 'Dm11', 'D-F-A-C-E-G#'),
-('RE', 'Re Settima add11', 'Re-Fa-La-Si-Re-Fa', 'D', 'D7add11', 'D-F-A-C-E-G');
+-- Inserimento di tutti gli accordi per Re (D)
+INSERT INTO NoteRE (
+  note_ita, chord_ita, chord_note_ita,
+  note_eng, chord_eng, chord_note_eng
+) VALUES
+
+  /* --- TRIADI --- */
+  ('Re','Re Maggiore',     'Re-Fa♯-La',          'D','DMaj',   'D-F#-A'),
+  ('Re','Re Minore',       'Re-Fa-La',           'D','Dm',     'D-F-A'),
+  ('Re','Re Diminuito',    'Re-Fa-La♭',          'D','Ddim',   'D-F-Ab'),
+  ('Re','Re Aumentato',    'Re-Fa♯-La♯',         'D','Daug',   'D-F#-A#'),
+
+  /* --- QUARTE & QUINTE --- */
+  ('Re','Re Quarta',       'Re-Sol',             'D','D4',     'D-G'),
+  ('Re','Re Quinta',       'Re-La',              'D','D5',     'D-A'),
+
+  /* --- SOSPESI --- */
+  ('Re','Re Sospesa 2',    'Re-Mi-La',           'D','Dsus2',  'D-E-A'),
+  ('Re','Re Sospesa 4',    'Re-Sol-La',          'D','Dsus4',  'D-G-A'),
+  ('Re','Re sus4 add9',    'Re-Mi-Sol-La',       'D','Dsus4add9','D-E-G-A'),
+
+  /* --- SENZA INTERVALLI --- */
+  ('Re','Re senza Terza',  'Re-La',              'D','Dno3',   'D-A'),
+  ('Re','Re senza Quinta', 'Re-Fa♯',             'D','Dno5',   'D-F#'),
+
+  /* --- ADDITIONS --- */
+  ('Re','Re add2',         'Re-Fa♯-La-Mi',       'D','Dadd2',  'D-F#-A-E'),
+  ('Re','Re add4',         'Re-Fa♯-La-Sol',      'D','Dadd4',  'D-F#-A-G'),
+  ('Re','Re add9',         'Re-Fa♯-La-Mi',       'D','Dadd9',  'D-F#-A-E'),
+  ('Re','Re add11',        'Re-Fa♯-La-Sol',      'D','Dadd11', 'D-F#-A-G'),
+
+  /* --- SESTE --- */
+  ('Re','Re Sesta',        'Re-Fa♯-La-Si',       'D','D6',     'D-F#-A-B'),
+  ('Re','Re Minore 6',     'Re-Fa-La-Si',        'D','Dm6',    'D-F-A-B'),
+  ('Re','Re 6/9',          'Re-Fa♯-La-Si-Mi',    'D','D6/9',   'D-F#-A-B-E'),
+
+  /* --- SETTIME --- */
+  ('Re','Re Settima',      'Re-Fa♯-La-Do',       'D','D7',     'D-F#-A-C'),
+  ('Re','Re Maggiore 7',   'Re-Fa♯-La-Do♯',      'D','DMaj7',  'D-F#-A-C#'),
+  ('Re','Re Minore 7',     'Re-Fa-La-Do',        'D','Dm7',    'D-F-A-C'),
+  ('Re','Re Semidiminuito','Re-Fa-La♭-Do',      'D','Dm7b5',  'D-F-Ab-C'),
+  ('Re','Re Dim7',         'Re-Fa-La♭-Do♭',      'D','Ddim7',  'D-F-Ab-Cb'),
+  ('Re','Re 7♭5',          'Re-Fa♯-La♭-Do',      'D','D7b5',   'D-F#-Ab-C'),
+  ('Re','Re 7♯5',          'Re-Fa♯-La♯-Do',      'D','D7#5',   'D-F#-A#-C'),
+  ('Re','Re 7sus2',        'Re-Mi-La-Do',        'D','D7sus2', 'D-E-A-C'),
+  ('Re','Re 7sus4',        'Re-Sol-La-Do',       'D','D7sus4', 'D-G-A-C'),
+  ('Re','Re 7add11',       'Re-Fa♯-La-Do-Sol',   'D','D7add11','D-F#-A-C-G'),
+
+  /* --- NOVE --- */
+  ('Re','Re Nona',         'Re-Fa♯-La-Do-Mi',    'D','D9',     'D-F#-A-C-E'),
+  ('Re','Re Maggiore 9',   'Re-Fa♯-La-Do♯-Mi',   'D','DMaj9',  'D-F#-A-C#-E'),
+  ('Re','Re Minore 9',     'Re-Fa-La-Do-Mi',     'D','Dm9',    'D-F-A-C-E'),
+  ('Re','Re 9♭5',         'Re-Fa♯-La♭-Do-Mi',   'D','D9b5',   'D-F#-Ab-C-E'),
+  ('Re','Re 9♯5',         'Re-Fa♯-La♯-Do-Mi',   'D','D9#5',   'D-F#-A#-C-E'),
+  ('Re','Re 9sus4',       'Re-Sol-La-Do-Mi',    'D','D9sus4', 'D-G-A-C-E'),
+  ('Re','Re 9add11',      'Re-Fa♯-La-Do-Sol-Mi','D','D9add11','D-F#-A-C-G-E'),
+
+  /* --- UNDICI --- */
+  ('Re','Re Undicesima',   'Re-Fa♯-La-Do-Mi-Sol','D','D11',    'D-F#-A-C-E-G'),
+  ('Re','Re Maggiore 11',  'Re-Fa♯-La-Do♯-Mi-Sol','D','DMaj11', 'D-F#-A-C#-E-G'),
+  ('Re','Re Minore 11',    'Re-Fa-La-Do-Mi-Sol',  'D','Dm11',   'D-F-A-C-E-G'),
+  ('Re','Re 11♭5',        'Re-Fa♯-La♭-Do-Mi-Sol','D','D11b5',  'D-F#-Ab-C-E-G'),
+  ('Re','Re 11♯5',        'Re-Fa♯-La♯-Do-Mi-Sol','D','D11#5',  'D-F#-A#-C-E-G'),
+
+  /* --- TREDICI --- */
+  ('Re','Re Tredicesima',  'Re-Fa♯-La-Do-Mi-Sol-Si','D','D13',    'D-F#-A-C-E-G-B'),
+  ('Re','Re Maggiore 13','Re-Fa♯-La-Do♯-Mi-Sol-Si','D','DMaj13', 'D-F#-A-C#-E-G-B'),
+  ('Re','Re Minore 13',    'Re-Fa-La-Do-Mi-Sol-Si','D','Dm13',   'D-F-A-C-E-G-B');
 
 -- Creazione della tabella REb
 CREATE TABLE NoteREb (
