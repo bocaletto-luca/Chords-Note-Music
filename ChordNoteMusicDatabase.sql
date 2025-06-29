@@ -1,6 +1,7 @@
 -- Autrhor: Bocaletto Luca
 -- License: Open Source
--- Web Site: https://www.elektronoide.it
+-- Web Site: https://www.bocaletto-luca.github.io
+-- web site: https://bocalettoluca.altervista.org
 -- language: sql
 CREATE DATABASE ChordNoteMusic;
 
