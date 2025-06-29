@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chord Note Music Database | von Luca Bocaletto</title>
+  <meta name="description" content="Chord Note Music Database: MySQL-Schema und Tools zum Export aller Akkordtabellen (Italienisch & Englisch) ins JSON-Format. Pflege: Luca Bocaletto." />
+  <meta name="keywords" content="Chord Note Music Database, Luca Bocaletto, MySQL Akkordschema, Akkordintervalle, mehrsprachige Akkordbibliothek, JSON Export, sql_to_json" />
+  <meta name="author" content="Luca Bocaletto" />
+  <link rel="canonical" href="https://github.com/bocaletto-luca/Chords-Note-Music/" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body { padding-top: 4.5rem; }
+    pre { background: #f8f9fa; padding: 1rem; border-radius: .25rem; overflow-x: auto; }
+    code { font-size: .9em; }
+    a { word-break: break-all; }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">ChordNoteMusic</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="navMenu" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#uebersicht">Übersicht</a></li>
+          <li class="nav-item"><a class="nav-link" href="#funktionen">Funktionen</a></li>
+          <li class="nav-item"><a class="nav-link" href="#installation">Installation</a></li>
+          <li class="nav-item"><a class="nav-link" href="#tools">Tools</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ressourcen">Ressourcen</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- Header -->
+    <header class="my-5 text-center">
+      <h1>Chord Note Music Database</h1>
+      <p class="lead">Eine umfangreiche MySQL-Akkordbibliothek für die gesamte chromatische Skala – zweisprachig (Italienisch & Englisch) – mit Export-Tools.</p>
+    </header>
+
+    <!-- Übersicht -->
+    <section id="uebersicht" class="mb-5">
+      <h2>Projektübersicht</h2>
+      <p>
+        Die <strong>Chord Note Music Database</strong> ist ein sorgfältig entwickeltes MySQL-Schema zur Katalogisierung von Akkorddefinitionen für jede Note der chromatischen Skala – natürliche, Kreuz- und Bezeichnungen. Jede Note hat ihre eigene Tabelle und speichert Akkordnamen sowie Intervalllisten in Italienisch und Englisch.
+      </p>
+      <p>
+        Erstellt und gepflegt von <a href="https://github.com/bocaletto-luca" target="_blank">Luca Bocaletto</a>, bietet es:
+      </p>
+      <ul>
+        <li>Zweisprachige Akkordreferenz: Italienische & englische Namen und Intervalle.</li>
+        <li>Alle gängigen Akkorderweiterungen bis zur <strong>13.</strong> (Triaden, Sexten, Septimen, Nonen, Undezimen, Tredezimen).</li>
+        <li>Produktionsfertige Tabellen mit <code>created_at</code> / <code>updated_at</code> und eindeutigen Schlüsseln.</li>
+        <li>Bequeme Export-Tools zur Umwandlung des SQL-Dumps in eine einzige JSON-Datei.</li>
+      </ul>
+    </section>
+
+    <!-- Funktionen -->
+    <section id="funktionen" class="mb-5">
+      <h2>Hauptfunktionen</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <h5>Einheitliches Tabellenschema</h5>
+          <p>Alle Tabellen (<code>NoteDO</code>, <code>NoteREdiesis</code>, <code>NoteSIb</code> etc.) basieren auf:</p>
+          <pre><code>CREATE TABLE NoteXY (
+  id               INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  note_ita         VARCHAR(3)    NOT NULL COMMENT 'z. B. Do♯',
+  chord_ita        VARCHAR(50)   NOT NULL COMMENT 'z. B. Do♯ Maggiore 7',
+  chord_note_ita   VARCHAR(100)  NOT NULL COMMENT 'z. B. Do♯-Mi-Sol♯-Si',
+  note_eng         VARCHAR(2)    NOT NULL COMMENT 'z. B. C#',
+  chord_eng        VARCHAR(20)   NOT NULL COMMENT 'z. B. C#Maj7',
+  chord_note_eng   VARCHAR(100)  NOT NULL COMMENT 'z. B. C#-E#-G#-B#',
+  created_at       TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at       TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  UNIQUE KEY uk_ita(note_ita, chord_ita),
+  UNIQUE KEY uk_eng(note_eng, chord_eng)
+);</code></pre>
+        </div>
+        <div class="col-md-6">
+          <h5>Vollständige Datenabdeckung</h5>
+          <ul>
+            <li>12 chromatische Noten + enharmonische Kreuz-/Bezeichnungen.</li>
+            <li>Komplette <code>INSERT</code>-Skripte für Akkorde bis zur 13.</li>
+            <li>Automatische <code>created_at</code> / <code>updated_at</code> Felder.</li>
+            <li>Optionale JSON-Exporte für Web- & Mobil-Apps.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Installation -->
+    <section id="installation" class="mb-5">
+      <h2>Installation & Nutzung</h2>
+      <ol>
+        <li>Repository klonen:
+          <pre><code>git clone https://github.com/bocaletto-luca/Chords-Note-Music.git</code></pre>
+        </li>
+        <li>Datenbank anlegen und auswählen:
+          <pre><code>CREATE DATABASE ChordNoteMusic;
+USE ChordNoteMusic;</code></pre>
+        </li>
+        <li>Schema & Daten importieren:
+          <pre><code>mysql -u &lt;user&gt; -p ChordNoteMusic &lt; file.sql</code></pre>
+        </li>
+        <li>Beispiel-Abfrage:
+          <pre><code>SELECT * FROM NoteRE WHERE chord_eng LIKE 'D%9%';</code></pre>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Tools -->
+    <section id="tools" class="mb-5">
+      <h2>Export-Tools</h2>
+      <p>Wählen Sie Ihre Methode, um <code>file.sql</code> in eine einzelne <code>chords.json</code> zu konvertieren:</p>
+      <ul>
+        <li>
+          <strong>Bash + Python</strong><br/>
+          <code>sql_to_json.sh</code> (benötigt <code>mysql</code>-Client & <code>python3</code>)  
+          <pre><code>chmod +x sql_to_json.sh
+./sql_to_json.sh
+# → erzeugt chords.json</code></pre>
+        </li>
+        <li>
+          <strong>Reines Python</strong><br/>
+          <code>sql_to_json.py</code> (kein DB-Server erforderlich)  
+          <pre><code># optional: pip install sqlparse
+python3 sql_to_json.py file.sql [output.json]
+# → Standard: chords.json</code></pre>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Ressourcen -->
+    <section id="ressourcen" class="mb-5">
+      <h2>Ressourcen & Links</h2>
+      <ul>
+        <li><a href="https://github.com/bocaletto-luca/Chords-Note-Music/" target="_blank">GitHub Repository</a></li>
+        <li><a href="file.sql">SQL-Schema & Daten (file.sql)</a></li>
+        <li><a href="sql_to_json.sh">Bash-Skript (sql_to_json.sh)</a></li>
+        <li><a href="sql_to_json.py">Python-Skript (sql_to_json.py)</a></li>
+        <li><a href="chords.json">Beispiel-JSON (chords.json)</a></li>
+        <li><a href="README.md">Vollständiges README</a></li>
+        <li><a href="https://github.com/bocaletto-luca" target="_blank">Luca’s GitHub</a></li>
+        <li><a href="https://bocalettoluca.altervista.org" target="_blank">Luca Bocalettos Webseite</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-light text-center py-4">
+    <div class="container">
+      <p>© 2025 Luca Bocaletto</p>
+      <p>
+        <a href="https://github.com/bocaletto-luca" target="_blank">github.com/bocaletto-luca</a> • 
+        <a href="https://bocalettoluca.altervista.org" target="_blank">bocalettoluca.altervista.org</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
