@@ -158,3 +158,17 @@ This project is licensed under **GPLv3**. See [LICENSE](LICENSE).
 > **Note:** This repository replaces the old account `@Elektronoide`. All future updates will be under `@bocaletto-luca`.
 
 ---
+
+> **New:** A multilingual site has been added! At the end of this repo you’ll find `index.html`, plus language-specific pages:  
+> - `english.html`  
+> - `italian.html`  
+> - `spanish.html`  
+> - `french.html`  
+> - `german.html`  
+> - `portuguese.html`  
+> - `chinese.html`  
+> - `russian.html`  
+
+Navigate your preferred language from the main selector page.  
+
+---
