@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chord Note Music Database | by Luca Bocaletto</title>
+  <meta name="description" content="Chord Note Music Database is a comprehensive MySQL schema that stores chord definitions for every note of the chromatic scale (natural, sharp, flat) in both Italian and English. Designed and maintained by Luca Bocaletto.">
+  <meta name="keywords" content="Chord Note Music Database, Luca Bocaletto, MySQL chord schema, chord intervals, bilingual chord library, music database">
+  <meta name="author" content="Luca Bocaletto">
+  <link rel="canonical" href="https://github.com/bocaletto-luca/Chords-Note-Music/">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { padding-top: 4rem; }
+    pre { background: #f8f9fa; padding: 1rem; border-radius: .25rem; overflow-x: auto; }
+    a { word-break: break-all; }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">ChordNoteMusic</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="navMenu" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#overview">Overview</a></li>
+          <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="#installation">Installation</a></li>
+          <li class="nav-item"><a class="nav-link" href="#resources">Resources</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- Header -->
+    <header class="my-5 text-center">
+      <h1>Chord Note Music Database</h1>
+      <p class="lead">A robust, fully-populated MySQL chord library for the entire chromatic scale, bilingual (Italian & English).</p>
+    </header>
+
+    <!-- Overview -->
+    <section id="overview" class="mb-5">
+      <h2>Project Overview</h2>
+      <p>
+        The <strong>Chord Note Music Database</strong> is a meticulously designed MySQL schema that catalogs musical chord data for each note in the chromatic scale—covering natural notes, sharps, and flats. Each note has its own table, storing chord names and interval compositions in both Italian and English. 
+      </p>
+      <p>
+        Authored and maintained by <a href="https://github.com/bocaletto-luca" target="_blank">Luca Bocaletto</a>, this project aims to:
+      </p>
+      <ul>
+        <li>Provide a <strong>bilingual reference</strong> for chord names and interval breakdowns.</li>
+        <li>Include every common chord extension up to the <strong>13th</strong> (triads, 6ths, 7ths, 9ths, 11ths, 13ths).</li>
+        <li>Offer a <strong>production-ready</strong> schema with timestamps and uniqueness constraints to avoid duplicates.</li>
+        <li>Serve as a foundation for <strong>music education tools</strong>, chord lookup APIs, and integration into DAWs or web applications.</li>
+      </ul>
+    </section>
+
+    <!-- Key Features -->
+    <section id="features" class="mb-5">
+      <h2>Key Features</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <h5>Uniform Table Structure</h5>
+          <p>Every table (`NoteDO`, `NoteREdiesis`, `NoteSIb`, etc.) follows the same DDL:</p>
+          <pre><code>CREATE TABLE NoteXY (
+  id               INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  note_ita         VARCHAR(3)    NOT NULL COMMENT 'e.g. Do♯',
+  chord_ita        VARCHAR(50)   NOT NULL,
+  chord_note_ita   VARCHAR(100)  NOT NULL,
+  note_eng         VARCHAR(2)    NOT NULL COMMENT 'e.g. C#',
+  chord_eng        VARCHAR(20)   NOT NULL,
+  chord_note_eng   VARCHAR(100)  NOT NULL,
+  created_at       TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at       TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP 
+                    ON UPDATE CURRENT_TIMESTAMP,
+  UNIQUE KEY uk_ita(note_ita,chord_ita),
+  UNIQUE KEY uk_eng(note_eng,chord_eng)
+);</code></pre>
+        </div>
+        <div class="col-md-6">
+          <h5>Comprehensive Data</h5>
+          <ul>
+            <li>All 12 chromatic notes, plus enharmonic flats/sharps.</li>
+            <li>Both Italian and English chord names and interval lists.</li>
+            <li>Full set of INSERT scripts for each chord type up to 13ths.</li>
+            <li>Automatic <code>created_at</code> / <code>updated_at</code> fields.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Installation -->
+    <section id="installation" class="mb-5">
+      <h2>Installation & Usage</h2>
+      <ol>
+        <li>Clone the repository:
+          <pre><code>git clone https://github.com/bocaletto-luca/Chords-Note-Music.git</code></pre>
+        </li>
+        <li>Create and select your database:
+          <pre><code>CREATE DATABASE ChordNoteMusic;
+USE ChordNoteMusic;</code></pre>
+        </li>
+        <li>Import the full schema and data:
+          <pre><code>mysql -u &lt;username&gt; -p ChordNoteMusic &lt; file.sql</code></pre>
+        </li>
+        <li>Query examples:
+          <pre><code>-- List all D9 chords in Italian and English
+SELECT * FROM NoteRE WHERE chord_eng LIKE 'D%9%';</code></pre>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Resources -->
+    <section id="resources" class="mb-5">
+      <h2>Resources & Links</h2>
+      <ul>
+        <li><a href="https://github.com/bocaletto-luca/Chords-Note-Music/" target="_blank">GitHub Repository</a></li>
+        <li><a href="https://github.com/bocaletto-luca" target="_blank">Luca’s GitHub Profile</a></li>
+        <li><a href="https://bocalettoluca.altervista.org" target="_blank">Luca Bocaletto’s Website</a></li>
+        <li><a href="file.sql">Download the SQL Schema & Data (file.sql)</a></li>
+        <li><a href="README.md">Full README Documentation</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-light text-center py-4">
+    <div class="container">
+      <p>© 2025 Luca Bocaletto</p>
+      <p>
+        <a href="https://github.com/bocaletto-luca" target="_blank">github.com/bocaletto-luca</a> • 
+        <a href="https://bocalettoluca.altervista.org" target="_blank">bocalettoluca.altervista.org</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
