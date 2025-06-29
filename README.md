@@ -90,3 +90,9 @@ Each table also includes `INSERT` statements populating all chord types up to th
 
 This project is open source under the GPL v3 license.  
 GitHub: https://github.com/bocaletto-luca/Chords-Note-Music/
+
+---
+
+#### This is my old account @Elektronoide 
+
+---
