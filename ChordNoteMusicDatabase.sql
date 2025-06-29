@@ -910,50 +910,93 @@ INSERT INTO NoteFAb (note_ita, chord_ita, chord_note_ita, note_eng, chord_eng, c
 ('FA♭', 'Fa♭ Minore 11', 'Fa♭-La♭♭-Do-Mi♭-Sol-B♭-D-Fa', 'E', 'Em11', 'E-G-B♭-D-F♯-A-C'),
 ('FA♭', 'Fa♭ Settima add11', 'Fa♭-La♭-Do-Mi♭-Sol-B♭', 'E', 'E7add11', 'E-G♯-B-D-F♯-A♭');
 
--- Creazione della tabella FAdiesis
+-- Creazione della tabella NoteFAdiesis (Fa♯ / F#)
 CREATE TABLE NoteFAdiesis (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    note_ita VARCHAR(255),
-    chord_ita VARCHAR(255),
-    chord_note_ita VARCHAR(255),
-    note_eng VARCHAR(255),
-    chord_eng VARCHAR(255),
-    chord_note_eng VARCHAR(255)
-);
--- Inserimento dei dati per gli accordi di Fa# nella tabella FA#
-INSERT INTO NoteFA# (note_ita, chord_ita, chord_note_ita, note_eng, chord_eng, chord_note_eng) VALUES
-('FA#', 'Fa# Maggiore', 'Fa#-La#-Do#', 'F#', 'F#Maj', 'F#-A#-C#'),
-('FA#', 'Fa# Minore', 'Fa#-La-Do#', 'F#', 'F#m', 'F#-A-C#'),
-('FA#', 'Fa# Settima', 'Fa#-La#-Do#-Mi', 'F#', 'F#7', 'F#-A#-C#-E'),
-('FA#', 'Fa# Maggiore 7', 'Fa#-La#-Do#-Mi#', 'F#', 'F#Maj7', 'F#-A#-C#-E#'),
-('FA#', 'Fa# Minore 7', 'Fa#-La-Do#-Mi', 'F#', 'F#m7', 'F#-A-C#-E'),
-('FA#', 'Fa# Settima Minore', 'Fa#-La-Do#-Mi', 'F#', 'F#m7', 'F#-A-C#-E'),
-('FA#', 'Fa# Maggiore 6', 'Fa#-La#-Do#-Re#', 'F#', 'F#6', 'F#-A#-C#-D#'),
-('FA#', 'Fa# Minore 6', 'Fa#-La-Do#-Re', 'F#', 'F#m6', 'F#-A-C#-D'),
-('FA#', 'Fa# Settima 9', 'Fa#-La#-Do#-Mi-So#', 'F#', 'F#9', 'F#-A#-C#-E-G#'),
-('FA#', 'Fa# Maggiore 9', 'Fa#-La#-Do#-Mi#-So#', 'F#', 'F#Maj9', 'F#-A#-C#-E#-G#'),
-('FA#', 'Fa# Minore 9', 'Fa#-La-Do#-Mi-So#', 'F#', 'F#m9', 'F#-A-C#-E-G#'),
-('FA#', 'Fa# Settima Maggiore 7', 'Fa#-La#-Do#-Mi#', 'F#', 'F#Maj7♯5', 'F#-A#-C#-E#'),
-('FA#', 'Fa# Diminuito', 'Fa#-La-Do', 'F#', 'F#dim', 'F#-A-C'),
-('FA#', 'Fa# Aumentato', 'Fa#-La#-Do', 'F#', 'F#aug', 'F#-A#-C'),
-('FA#', 'Fa# Sesta', 'Fa#-La#-Do#-Re#-So#', 'F#', 'F#6', 'F#-A#-C#-D#-G#'),
-('FA#', 'Fa# Nona', 'Fa#-La#-Do#-Mi-So#-Re#', 'F#', 'F#9', 'F#-A#-C#-E-G#-D#'),
-('FA#', 'Fa# Settima Maggiore', 'Fa#-La#-Do#-Mi#', 'F#', 'F#Maj7', 'F#-A#-C#-E#'),
-('FA#', 'Fa# Settima Maggiore 9', 'Fa#-La#-Do#-Mi#-So#', 'F#', 'F#Maj9', 'F#-A#-C#-E#-G#'),
-('FA#', 'Fa# Settima 11', 'Fa#-La#-Do#-Mi-So#-Si', 'F#', 'F#11', 'F#-A#-C#-E-G#-B'),
-('FA#', 'Fa# Settima 13', 'Fa#-La#-Do#-Mi-So#-Si-Re#', 'F#', 'F#13', 'F#-A#-C#-E-G#-B-D#'),
-('FA#', 'Fa# Settima 9 Add11', 'Fa#-La#-Do#-Mi-So#-Si', 'F#', 'F#9add11', 'F#-A#-C#-E-G#-B'),
-('FA#', 'Fa# Sesta 9', 'Fa#-La#-Do#-Re#-So#-Mi', 'F#', 'F#6/9', 'F#-A#-C#-D#-G#-E'),
-('FA#', 'Fa# Sesta 11', 'Fa#-La#-Do#-Re#-So#-Mi-Fa#', 'F#', 'F#6/11', 'F#-A#-C#-D#-G#-E-F#'),
-('FA#', 'Fa# Settima Maggiore 11', 'Fa#-La#-Do#-Mi#-So#-Si#', 'F#', 'F#Maj7#11', 'F#-A#-C#-E#-G#-B'),
-('FA#', 'Fa# Minore 7 Add11', 'Fa#-La-Do#-Mi-So#-Si#', 'F#', 'F#m7add11', 'F#-A-C#-E-G#-B'),
-('FA#', 'Fa# Maggiore 7#11', 'Fa#-La#-Do#-Mi#-So#-Si#', 'F#', 'F#Maj7#11', 'F#-A#-C#-E#-G#-B'),
-('FA#', 'Fa# Minore/Maggiore 7', 'Fa#-La-Do#-Mi-So#-Si#', 'F#', 'F#m/Maj7', 'F#-A-C#-E-G#-B'),
-('FA#', 'Fa# Settima 9#11', 'Fa#-La#-Do#-Mi-So#-Si♭-Re#', 'F#', 'F#9#11', 'F#-A#-C#-E-G#-B♭-D#'),
-('FA#', 'Fa# Settima Minore 9', 'Fa#-La-Do#-Mi-So#-Si-Do#', 'F#', 'F#m9', 'F#-A-C#-E-G#-B-D#'),
-('FA#', 'Fa# Settima Maggiore 13', 'Fa#-La#-Do#-Mi#-So#-Si-Re#', 'F#', 'F#Maj13', 'F#-A#-C#-E#-G#-B-D#'),
-('FA#', 'Fa# Minore 11', 'Fa#-La-Do#-Mi-So#-Si-Do#-Re#', 'F#', 'F#m11', 'F#-A-C#-E-G#-B-D#-F#'),
-('FA#', 'Fa# Settima add11', 'Fa#-La#-Do#-Mi-So#-Si', 'F#', 'F#7add11', 'F#-A#-C#-E-G#-B');
+  id               INT UNSIGNED    NOT NULL AUTO_INCREMENT,
+  note_ita         VARCHAR(3)      NOT NULL COMMENT 'es. Fa♯',
+  chord_ita        VARCHAR(50)     NOT NULL COMMENT 'es. Fa♯ Maggiore 7',
+  chord_note_ita   VARCHAR(100)    NOT NULL COMMENT 'es. Fa♯-La♯-Do♯-Mi♯',
+  note_eng         VARCHAR(2)      NOT NULL COMMENT 'es. F#',
+  chord_eng        VARCHAR(20)     NOT NULL COMMENT 'es. F#Maj7',
+  chord_note_eng   VARCHAR(100)    NOT NULL COMMENT 'es. F#-A#-C#-E#',
+  created_at       TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at       TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uk_ita (note_ita, chord_ita),
+  UNIQUE KEY uk_eng (note_eng, chord_eng)
+) ENGINE=InnoDB 
+  DEFAULT CHARSET=utf8mb4 
+  COLLATE=utf8mb4_unicode_ci;
+
+-- Tutti gli accordi per Fa♯ (F#)
+INSERT INTO NoteFAdiesis (
+  note_ita, chord_ita, chord_note_ita,
+  note_eng, chord_eng, chord_note_eng
+) VALUES
+
+  /* --- TRIADI --- */
+  ('Fa♯','Fa♯ Maggiore',    'Fa♯-La♯-Do♯',              'F#','F#Maj',   'F#-A#-C#'),
+  ('Fa♯','Fa♯ Minore',      'Fa♯-La-Do♯',               'F#','F#m',     'F#-A-C#'),
+  ('Fa♯','Fa♯ Diminuito',   'Fa♯-La-Do',                'F#','F#dim',   'F#-A-C'),
+  ('Fa♯','Fa♯ Aumentato',   'Fa♯-La♯-Do♯♯',             'F#','F#aug',   'F#-A#-Cx'),
+
+  /* --- QUARTE & QUINTE --- */
+  ('Fa♯','Fa♯ Quarta',      'Fa♯-Si',                   'F#','F#4',     'F#-B'),
+  ('Fa♯','Fa♯ Quinta',      'Fa♯-Do♯',                  'F#','F#5',     'F#-C#'),
+
+  /* --- SOSPESI --- */
+  ('Fa♯','Fa♯ sus2',        'Fa♯-Sol♯-Do♯',             'F#','F#sus2',  'F#-G#-C#'),
+  ('Fa♯','Fa♯ sus4',        'Fa♯-Si-Do♯',               'F#','F#sus4',  'F#-B-C#'),
+  ('Fa♯','Fa♯ sus4 add9',   'Fa♯-Sol♯-Si-Do♯',          'F#','F#sus4add9','F#-G#-B-C#'),
+
+  /* --- SENZA INTERVALLI --- */
+  ('Fa♯','Fa♯ no3',         'Fa♯-Do♯',                  'F#','F#no3',   'F#-C#'),
+  ('Fa♯','Fa♯ no5',         'Fa♯-La♯',                  'F#','F#no5',   'F#-A#'),
+
+  /* --- ADDITIONS --- */
+  ('Fa♯','Fa♯ add2',        'Fa♯-La♯-Do♯-Re♯',          'F#','F#add2',  'F#-A#-C#-D#'),
+  ('Fa♯','Fa♯ add4',        'Fa♯-La♯-Do♯-Si',           'F#','F#add4',  'F#-A#-C#-B'),
+  ('Fa♯','Fa♯ add9',        'Fa♯-La♯-Do♯-Re♯',          'F#','F#add9',  'F#-A#-C#-D#'),
+  ('Fa♯','Fa♯ add11',       'Fa♯-La♯-Do♯-Si',           'F#','F#add11', 'F#-A#-C#-B'),
+
+  /* --- SESTE --- */
+  ('Fa♯','Fa♯ 6',           'Fa♯-La♯-Do♯-Re♯',          'F#','F#6',     'F#-A#-C#-D#'),
+  ('Fa♯','Fa♯ Minore 6',    'Fa♯-La-Do♯-Re♯',           'F#','F#m6',    'F#-A-C#-D#'),
+  ('Fa♯','Fa♯ 6/9',         'Fa♯-La♯-Do♯-Re♯-Sol♯',     'F#','F#6/9',   'F#-A#-C#-D#-G#'),
+
+  /* --- SETTIME --- */
+  ('Fa♯','Fa♯ 7',           'Fa♯-La♯-Do♯-Mi',           'F#','F#7',     'F#-A#-C#-E'),
+  ('Fa♯','Fa♯ Maggiore 7',  'Fa♯-La♯-Do♯-Mi♯',          'F#','F#Maj7',  'F#-A#-C#-E#'),
+  ('Fa♯','Fa♯ Minore 7',    'Fa♯-La-Do♯-Mi',            'F#','F#m7',    'F#-A-C#-E'),
+  ('Fa♯','Fa♯ Semidiminuito','Fa♯-La-Do-Mi',            'F#','F#m7b5',  'F#-A-C-E'),
+  ('Fa♯','Fa♯ Dim7',        'Fa♯-La-Do-Mi♭',           'F#','F#dim7',  'F#-A-C-Eb'),
+  ('Fa♯','Fa♯ 7♭5',         'Fa♯-La♯-Do-Mi',           'F#','F#7b5',   'F#-A#-C#-E'),
+  ('Fa♯','Fa♯ 7♯5',         'Fa♯-La♯-Do♯♯-Mi',         'F#','F#7#5',   'F#-A#-Cx-E'),
+  ('Fa♯','Fa♯ 7sus2',       'Fa♯-Sol♯-Do♯-Mi',         'F#','F#7sus2', 'F#-G#-C#-E'),
+  ('Fa♯','Fa♯ 7sus4',       'Fa♯-Si-Do♯-Mi',           'F#','F#7sus4', 'F#-B-C#-E'),
+  ('Fa♯','Fa♯ 7add11',      'Fa♯-La♯-Do♯-Mi-Si',       'F#','F#7add11','F#-A#-C#-E-B'),
+
+  /* --- NOVE --- */
+  ('Fa♯','Fa♯ 9',           'Fa♯-La♯-Do♯-Mi-Sol♯',      'F#','F#9',     'F#-A#-C#-E-G#'),
+  ('Fa♯','Fa♯ Maggiore 9',  'Fa♯-La♯-Do♯-Mi♯-Sol♯',     'F#','F#Maj9',  'F#-A#-C#-E#-G#'),
+  ('Fa♯','Fa♯ Minore 9',    'Fa♯-La-Do♯-Mi-Sol♯',       'F#','F#m9',    'F#-A-C#-E-G#'),
+  ('Fa♯','Fa♯ 9♭5',         'Fa♯-La♯-Do-Mi-Sol♯',       'F#','F#9b5',   'F#-A#-C-E-G#'),
+  ('Fa♯','Fa♯ 9♯5',         'Fa♯-La♯-Do♯♯-Mi-Sol♯',     'F#','F#9#5',   'F#-A#-Cx-E-G#'),
+  ('Fa♯','Fa♯ 9sus4',       'Fa♯-Si-Do♯-Mi-Sol♯',       'F#','F#9sus4', 'F#-B-C#-E-G#'),
+  ('Fa♯','Fa♯ 9add11',      'Fa♯-La♯-Do♯-Mi-Si-Sol♯',    'F#','F#9add11','F#-A#-C#-E-B-G#'),
+
+  /* --- UNDICI --- */
+  ('Fa♯','Fa♯ 11',          'Fa♯-La♯-Do♯-Mi-Sol♯-Si',   'F#','F#11',    'F#-A#-C#-E-G#-B'),
+  ('Fa♯','Fa♯ Maggiore 11', 'Fa♯-La♯-Do♯-Mi♯-Sol♯-Si',  'F#','F#Maj11', 'F#-A#-C#-E#-G#-B'),
+  ('Fa♯','Fa♯ Minore 11',   'Fa♯-La-Do♯-Mi-Sol♯-Si',    'F#','F#m11',   'F#-A-C#-E-G#-B'),
+  ('Fa♯','Fa♯ 11♭5',       'Fa♯-La♯-Do-Mi-Sol♯-Si',     'F#','F#11b5',  'F#-A#-C-E-G#-B'),
+  ('Fa♯','Fa♯ 11♯5',       'Fa♯-La♯-Do♯♯-Mi-Sol♯-Si',   'F#','F#11#5',  'F#-A#-Cx-E-G#-B'),
+
+  /* --- TREDICI --- */
+  ('Fa♯','Fa♯ 13',          'Fa♯-La♯-Do♯-Mi-Sol♯-Si-Re♯','F#','F#13',    'F#-A#-C#-E-G#-B-D#'),
+  ('Fa♯','Fa♯ Maggiore 13','Fa♯-La♯-Do♯-Mi♯-Sol♯-Si-Re♯','F#','F#Maj13', 'F#-A#-C#-E#-G#-B-D#'),
+  ('Fa♯','Fa♯ Minore 13',  'Fa♯-La-Do♯-Mi-Sol♯-Si-Re♯','F#','F#m13',   'F#-A-C#-E-G#-B-D#');
+
 
 -- Creazione della tabella SOL
 CREATE TABLE NoteSOL (
