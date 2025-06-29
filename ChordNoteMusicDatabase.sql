@@ -926,37 +926,72 @@ CREATE TABLE NoteLA (
     chord_eng VARCHAR(255),
     chord_note_eng VARCHAR(255)
 );
--- Inserimento dei dati per gli accordi di Si# nella tabella SI#
-INSERT INTO NoteSI# (note_ita, chord_ita, chord_note_ita, note_eng, chord_eng, chord_note_eng) VALUES
-('SI#', 'Si# Maggiore', 'Si#-Re♯♯-Fa♯♯', 'B#', 'B#Maj', 'B#-Dx-Fx'),
-('SI#', 'Si# Minore', 'Si#-Re♯-Fa♯♯', 'B#', 'B#m', 'B#-Dx-Fx'),
-('SI#', 'Si# Settima', 'Si#-Re♯♯-Fa♯♯-La♯', 'B#', 'B#7', 'B#-Dx-Fx-Ax'),
-('SI#', 'Si# Maggiore 7', 'Si#-Re♯♯-Fa♯♯-La♯♯', 'B#', 'B#Maj7', 'B#-Dx-Fx-Ax'),
-('SI#', 'Si# Minore 7', 'Si#-Re♯-Fa♯♯-La♯', 'B#', 'B#m7', 'B#-Dx-Fx-Ax'),
-('SI#', 'Si# Settima Minore', 'Si#-Re♯-Fa♯♯-La♯', 'B#', 'B#m7', 'B#-Dx-Fx-Ax'),
-('SI#', 'Si# Maggiore 6', 'Si#-Re♯♯-Fa♯♯-La♯♯-Do♯♯', 'B#', 'B#6', 'B#-Dx-Fx-Ax-Cx'),
-('SI#', 'Si# Minore 6', 'Si#-Re♯-Fa♯♯-La♯-Do♯♯', 'B#', 'B#m6', 'B#-Dx-Fx-Ax-Cx'),
-('SI#', 'Si# Settima 9', 'Si#-Re♯♯-Fa♯♯-La♯-Do♯♯-Mi♯', 'B#', 'B#9', 'B#-Dx-Fx-Ax-Cx-Ex'),
-('SI#', 'Si# Maggiore 9', 'Si#-Re♯♯-Fa♯♯-La♯♯-Do♯♯-Mi♯', 'B#', 'B#Maj9', 'B#-Dx-Fx-Ax-Cx-Ex'),
-('SI#', 'Si# Minore 9', 'Si#-Re♯-Fa♯♯-La♯-Do♯♯-Mi♯', 'B#', 'B#m9', 'B#-Dx-Fx-Ax-Cx-Ex'),
-('SI#', 'Si# Settima Maggiore 7', 'Si#-Re♯♯-Fa♯♯-La♯-Do♯♯-Mi♯', 'B#', 'B#Maj7♯5', 'B#-Dx-Fx-Ax-Cx-Ex'),
-('SI#', 'Si# Diminuito', 'Si#-Re♯-Fa♯♯-La', 'B#', 'B#dim', 'B#-Dx-Fx-A'),
-('SI#', 'Si# Aumentato', 'Si#-Re♯♯-Fa♯♯♯', 'B#', 'B#aug', 'B#-Dx-Fxx-Ax'),
-('SI#', 'Si# Sesta', 'Si#-Re♯♯-Fa♯♯-La♯♯-Do♯♯-Mi♯', 'B#', 'B#6', 'B#-Dx-Fx-Ax-Cx-Ex'),
-('SI#', 'Si# Nona', 'Si#-Re♯♯-Fa♯♯-La♯-Do♯♯-Mi♯-Sol♯♯', 'B#', 'B#9', 'B#-Dx-Fx-Ax-Cx-Ex-Gx'),
-('SI#', 'Si# Settima Maggiore', 'Si#-Re♯♯-Fa♯♯-La♯-Do♯♯-Mi♯-Sol♯♯', 'B#', 'B#Maj7', 'B#-Dx-Fx-Ax-Cx-Ex-Gx'),
-('SI#', 'Si# Settima Maggiore 9', 'Si#-Re♯♯-Fa♯♯-La♯♯-Do♯♯-Mi♯-Sol♯♯-Si♯♯', 'B#', 'B#Maj9', 'B#-Dx-Fx-Ax-Cx-Ex-Gx-Bx♯'),
-('SI#', 'Si# Settima 11', 'Si#-Re♯♯-Fa♯♯♯-La♯-Do♯♯-Mi♯-Sol♯♯-Si♯-Re♯♯', 'B#', 'B#11', 'B#-Dx-Fxx-Ax-Cx-Ex-Gx-Bx♯-Dx♯'),
-('SI#', 'Si# Settima 13', 'Si#-Re♯♯-Fa♯♯-La♯-Do♯♯-Mi♯-Sol♯♯-Si♯-Re♯♯-Fa♯', 'B#', 'B#13', 'B#-Dx-Fxx-Ax-Cx-Ex-Gx-Bx♯-Dx♯-Fx'),
-('SI#', 'Si# Settima 9 Add11', 'Si#-Re♯♯-Fa♯♯-La♯-Do♯♯-Mi♯-Sol♯♯-Si♯-Re♯♯-Fa♯', 'B#', 'B#9add11', 'B#-Dx-Fxx-Ax-Cx-Ex-Gx-Bx♯-Dx♯-Fx'),
-('SI#', 'Si# Sesta 9', 'Si#-Re♯♯-Fa♯♯-La♯♯-Do♯♯-Mi♯-Sol♯-Si♯-Re♯', 'B#', 'B#6/9', 'B#-Dx-Fx-Ax-Cx-Ex-Gx-Bx♯-E♯'),
-('SI#', 'Si# Sesta 11', 'Si#-Re♯♯-Fa♯♯♯-La♯♯-Do♯♯-Mi♯-Sol♯-Si♯-Re♯-Fa♯', 'B#', 'B#6/11', 'B#-Dx-Fxx-Ax-Cx-Ex-Gx-Bx♯-E♯-Dx♯'),
-('SI#', 'Si# Settima Maggiore 11', 'Si#-Re♯♯-Fa♯♯-La♯-Do♯♯-Mi♯-Sol♯-Si♯-Re♯-Fa♯♯♯', 'B#', 'B#Maj7#11', 'B#-Dx-Fxx-Ax-Cx-Ex-Gx-Bx♯-Dx♯-Fx-#x'),
-('SI#', 'Si# Minore 7 Add11', 'Si#-Re♯-Fa♯♯-La-Do♯♯-Mi♯-Sol♯♯-Si♯', 'B#', 'B#m7add11', 'B#-Dx-Fx-Ax-Cx-Ex-Gx-Bx'),
-('SI#', 'Si# Maggiore 7#11', 'Si#-Re♯♯-Fa♯♯-La♯-Do♯♯-Mi♯-Sol♯♯-Si♯-Re♯♯-Fa♯♯♯', 'B#', 'B#Maj7#11', 'B#-Dx-Fxx-Ax-Cx-Ex-Gx-Bx♯-Dx♯-Fx-#x'),
-('SI#', 'Si# Minore/Maggiore 7', 'Si#-Re♯-Fa♯♯-La-Do♯♯-Mi♯-Sol♯♯-Si♯', 'B#', 'B#m/Maj7', 'B#-Dx-Fx-Ax-Cx-Ex-Gx-Bx'),
-('SI#', 'Si# Settima 9#11', 'Si#-Re♯♯-Fa♯♯♯-La♯-Do♯♯-Mi♯-Sol♯-Si♯-Re♯♯-Fa♯', 'B#', 'B#9#11', 'B#-Dx-Fxx-Ax-Cx-Ex-Gx-Bx♯-Dx♯-Fx-#x'),
-('SI#', 'Si# Settima Minore 9', 'Si#-Re♯-Fa♯-La-Do♯♯-Mi♯♯-Sol♯♯-Si♯', 'B#', 'B#m9', 'B#-Dx-Fx-Ax-Cx-Exx-Gx-Bx'),
-('SI#', 'Si# Settima Maggiore 13', 'Si#-Re♯♯-Fa♯♯-La♯-Do♯♯-Mi♯-Sol♯-Si♯-Re♯♯-Fa♯-La♯', 'B#', 'B#Maj13', 'B#-Dx-Fxx-Ax-Cx-Ex-Gx-Bx♯-Dx♯-Fx-#x-Gx'),
-('SI#', 'Si# Minore 11', 'Si#-Re♯-Fa♯♯♯-La-Do♯♯♯-Mi♯-Sol♯♯-Si♯-Re♯-Fa♯-La', 'B#', 'B#m11', 'B#-Dx-Fxx-Ax-Cx-Ex-Gx-Bx♯-Dx♯-Fx-#x-Gx'),
-('SI#', 'Si# Settima add11', 'Si#-Re♯♯-Fa♯♯-La♯-Do♯♯-Mi♯-Sol♯♯-Si♯-Re♯♯-Fa♯-La', 'B#', 'B#7add11', 'B#-Dx-Fxx-Ax-Cx-Ex-Gx-Bx♯-Dx♯-Fx-#x-Gx');
+-- TUTTI GLI ACCORDI PER SI# (B#) NELLA TABELLA NoteSI#
+INSERT INTO NoteSI# (
+  note_ita,   chord_ita,        chord_note_ita,
+  note_eng,   chord_eng,        chord_note_eng
+) VALUES
+
+  /* --- TRIADI --- */
+  ('SI#','Si# Maggiore',      'Si#-Re♯♯-Fa♯♯',        'B#','B#Maj',  'B#-Dx-Fx'),
+  ('SI#','Si# Minore',        'Si#-Re♯-Fa♯♯',         'B#','B#m',    'B#-Dx-Fx'),
+  ('SI#','Si# Diminuito',     'Si#-Re♯-Fa♯',          'B#','B#dim',  'B#-Dx-F'),
+  ('SI#','Si# Aumentato',     'Si#-Re♯♯-Fa♯♯♯',       'B#','B#aug',  'B#-Dx-Fxx'),
+
+  /* --- QUARTE E QUINTE --- */
+  ('SI#','Si# Quarta',        'Si#-Mi♯',              'B#','B#4',    'B#-Ex'),
+  ('SI#','Si# Quinta',        'Si#-Fa♯♯',             'B#','B#5',    'B#-Fx'),
+
+  /* --- SOSPESI --- */
+  ('SI#','Si# Sospesa 2',     'Si#-Do♯♯-Fa♯♯',        'B#','B#sus2',      'B#-Cx-Fx'),
+  ('SI#','Si# Sospesa 4',     'Si#-Re♯♯-Fa♯♯',        'B#','B#sus4',      'B#-Dx-Fx'),
+  ('SI#','Si# sus4 add9',     'Si#-Re♯♯-Do♯♯-Fa♯♯',   'B#','B#sus4add9',  'B#-Dx-Cx-Fx'),
+
+  /* --- SENZA INTERVALLI --- */
+  ('SI#','Si# senza Terza',   'Si#-Fa♯♯-La♯',         'B#','B#no3',      'B#-Fx-A#'),
+  ('SI#','Si# senza Quinta',  'Si#-Re♯♯-La♯',         'B#','B#no5',      'B#-Dx-A#'),
+
+  /* --- ADDITIONS --- */
+  ('SI#','Si# add2',          'Si#-Do♯♯-Re♯♯-Fa♯♯', 'B#','B#add2',     'B#-Cx-Dx-Fx'),
+  ('SI#','Si# add4',          'Si#-Mi♯-Re♯♯-Fa♯♯',   'B#','B#add4',     'B#-Ex-Dx-Fx'),
+  ('SI#','Si# add9',          'Si#-Re♯♯-Fa♯♯-Do♯♯',  'B#','B#add9',     'B#-Dx-Fx-Cx'),
+  ('SI#','Si# add11',         'Si#-Re♯♯-Fa♯♯-Sol♯♯', 'B#','B#add11',    'B#-Dx-Fx-Gx'),
+
+  /* --- SESTE --- */
+  ('SI#','Si# Sesta',         'Si#-Re♯♯-Fa♯♯-La♯♯',    'B#','B#6',       'B#-Dx-Fx-Ax'),
+  ('SI#','Si# Minore 6',      'Si#-Re♯-Fa♯♯-La♯♯',     'B#','B#m6',      'B#-Dx-Fx-Ax'),
+  ('SI#','Si# 6/9',           'Si#-Re♯♯-Fa♯♯-La♯♯-Do♯♯','B#','B#6/9',     'B#-Dx-Fx-Ax-Cx'),
+
+  /* --- SETTIME --- */
+  ('SI#','Si# Settima',       'Si#-Re♯♯-Fa♯♯-La♯',     'B#','B#7',      'B#-Dx-Fx-A#'),
+  ('SI#','Si# Maggiore 7',    'Si#-Re♯♯-Fa♯♯-La♯♯',   'B#','B#Maj7',   'B#-Dx-Fx-Ax'),
+  ('SI#','Si# Minore 7',      'Si#-Re♯-Fa♯♯-La♯',     'B#','B#m7',     'B#-Dx-Fx-A#'),
+  ('SI#','Si# Semidiminuito', 'Si#-Re♯-Fa♯-La♯',      'B#','B#m7b5',  'B#-Dx-F-A#'),
+  ('SI#','Si# Dim7',          'Si#-Re♯-Fa♯-La♯♯♯',    'B#','B#dim7',   'B#-Dx-F-A#'),
+  ('SI#','Si# 7♭5',          'Si#-Re♯♯-Fa♯-La♯',     'B#','B#7b5',    'B#-Dx-F-A#'),
+  ('SI#','Si# 7♯5',          'Si#-Re♯♯-Fa♯♯♯-La♯',    'B#','B#7#5',    'B#-Dx-G#-A#'),
+  ('SI#','Si# 7sus2',        'Si#-Do♯♯-Fa♯♯-La♯',    'B#','B#7sus2',  'B#-Cx-Fx-A#'),
+  ('SI#','Si# 7sus4',        'Si#-Re♯♯-Sol♯♯-La♯',    'B#','B#7sus4',  'B#-Dx-Gx-A#'),
+  ('SI#','Si# 7add11',       'Si#-Re♯♯-Fa♯♯-Sol♯♯-La♯','B#','B#7add11','B#-Dx-Fx-Gx-A#'),
+
+  /* --- NOVE --- */
+  ('SI#','Si# Nona',         'Si#-Re♯♯-Fa♯♯-La♯-Do♯♯',    'B#','B#9',      'B#-Dx-Fx-A#-Cx'),
+  ('SI#','Si# Maggiore 9',   'Si#-Re♯♯-Fa♯♯-La♯♯-Do♯♯',  'B#','B#Maj9',   'B#-Dx-Fx-Ax-Cx'),
+  ('SI#','Si# Minore 9',     'Si#-Re♯-Fa♯♯-La♯-Do♯♯',     'B#','B#m9',     'B#-Dx-Fx-A#-Cx'),
+  ('SI#','Si# 9♭5',         'Si#-Re♯♯-Fa♯-La♯-Do♯♯',      'B#','B#9b5',    'B#-Dx-F-A#-Cx'),
+  ('SI#','Si# 9♯5',         'Si#-Re♯♯-Fa♯♯♯-La♯-Do♯♯',   'B#','B#9#5',    'B#-Dx-G#-A#-Cx'),
+  ('SI#','Si# 9sus4',       'Si#-Re♯♯-Fa♯♯-La♯-Sol♯♯',    'B#','B#9sus4',  'B#-Dx-Fx-A#-Gx'),
+  ('SI#','Si# 9add11',      'Si#-Re♯♯-Fa♯♯-La♯-Sol♯♯-Do♯♯','B#','B#9add11','B#-Dx-Fx-A#-Gx-Cx'),
+
+  /* --- UNDICI --- */
+  ('SI#','Si# Undicesima',   'Si#-Re♯♯-Fa♯♯-La♯-Sol♯♯-Do♯♯',   'B#','B#11',     'B#-Dx-Fx-A#-Gx-Cx'),
+  ('SI#','Si# Maggiore 11',  'Si#-Re♯♯-Fa♯♯-La♯♯-Sol♯♯-Do♯♯','B#','B#Maj11','B#-Dx-Fx-Ax-Gx-Cx'),
+  ('SI#','Si# Minore 11',    'Si#-Re♯-Fa♯♯-La♯-Sol♯♯-Do♯♯',    'B#','B#m11',   'B#-Dx-Fx-A#-Gx-Cx'),
+  ('SI#','Si# 11♭5',       'Si#-Re♯♯-Fa♯-Sol♯♯-Do♯♯',          'B#','B#11b5',  'B#-Dx-Fx-Gx-Cx'),
+  ('SI#','Si# 11♯5',       'Si#-Re♯♯-Fa♯♯♯-Sol♯♯-Do♯♯',       'B#','B#11#5',  'B#-Dx-G#-Gx-Cx'),
+
+  /* --- TREDICI --- */
+  ('SI#','Si# Tredicesima', 'Si#-Re♯♯-Fa♯♯-La♯-Do♯♯-Mi♯-Sol♯♯',   'B#','B#13',     'B#-Dx-Fx-A#-Cx-Ex-Gx'),
+  ('SI#','Si# Maggiore 13','Si#-Re♯♯-Fa♯♯-La♯♯-Do♯♯-Mi♯-Sol♯♯','B#','B#Maj13','B#-Dx-Fx-Ax-Cx-Ex-Gx'),
+  ('SI#','Si# Minore 13',  'Si#-Re♯-Fa♯♯-La♯-Do♯♯-Mi♯-Sol♯♯','B#','B#m13',   'B#-Dx-Fx-A#-Cx-Ex-Gx');
+
