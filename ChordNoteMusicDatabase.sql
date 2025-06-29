@@ -3,20 +3,25 @@
 -- Web Site: https://www.bocaletto-luca.github.io
 -- web site: https://bocalettoluca.altervista.org
 -- language: sql
-CREATE DATABASE ChordNoteMusic;
 
-USE ChordNoteMusic;
-
--- Creazione della tabella DO
+-- VERSIONE “PRODUCTION‐READY” DELLA TABELLA NoteDO
 CREATE TABLE NoteDO (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    note_ita VARCHAR(255),
-    chord_ita VARCHAR(255),
-    chord_note_ita VARCHAR(255),
-    note_eng VARCHAR(255),
-    chord_eng VARCHAR(255),
-    chord_note_eng VARCHAR(255)
-);
+  id                 INT UNSIGNED        NOT NULL AUTO_INCREMENT,
+  note_ita           VARCHAR(2)          NOT NULL COMMENT 'es. Do',
+  chord_ita          VARCHAR(50)         NOT NULL COMMENT 'es. Do Maggiore 7',
+  chord_note_ita     VARCHAR(100)        NOT NULL COMMENT 'es. Do-Mi-Sol-Si',
+  note_eng           VARCHAR(2)          NOT NULL COMMENT 'es. C',
+  chord_eng          VARCHAR(20)         NOT NULL COMMENT 'es. CMaj7',
+  chord_note_eng     VARCHAR(100)        NOT NULL COMMENT 'es. C-E-G-B',
+  created_at         TIMESTAMP           NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at         TIMESTAMP           NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uk_ita  (note_ita, chord_ita),
+  UNIQUE KEY uk_eng  (note_eng, chord_eng)
+) ENGINE=InnoDB
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_unicode_ci;
+
 
 -- TUTTI GLI ACCORDI PER DO (C) NELLA TABELA NoteDO
 INSERT INTO NoteDO (
@@ -86,6 +91,7 @@ INSERT INTO NoteDO (
   ('DO','Do Maggiore 13',        'Do-Mi-Sol-Si-Re-Fa-La',     'C','CMaj13', 'C-E-G-B-D-F-A'),
   ('DO','Do Minore 13',          'Do-Mib-Sol-Sib-Re-Fa-La',   'C','Cm13',   'C-Eb-G-Bb-D-F-A');
 
+-- VERSIONE “PRODUCTION‐READY” DELLA TABELLA NoteDOb
 CREATE TABLE NoteDOb (
   id                 INT UNSIGNED NOT NULL AUTO_INCREMENT,
   note_ita           VARCHAR(2)    NOT NULL,    -- es. 'Do♭'
@@ -173,51 +179,90 @@ INSERT INTO NoteDOb (
   ('DO♭','Do♭ Minore 13',    'Do♭-Mi♭♭-Sol♭-Si♭-Re♭-Fa♭-La♭','Cb','Cbm13',    'Cb-Ebb-Gb-Bb-Db-Fb-Ab');
 
 
--- Creazione della tabella DO#
+-- Creazione della tabella NoteDOdiesis (Do# / C#)
 CREATE TABLE NoteDOdiesis (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    note_ita VARCHAR(255),
-    chord_ita VARCHAR(255),
-    chord_note_ita VARCHAR(255),
-    note_eng VARCHAR(255),
-    chord_eng VARCHAR(255),
-    chord_note_eng VARCHAR(255)
-);
+  id               INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  note_ita         VARCHAR(2)    NOT NULL COMMENT 'es. DO#',
+  chord_ita        VARCHAR(50)   NOT NULL COMMENT 'es. DO# Maggiore 7',
+  chord_note_ita   VARCHAR(100)  NOT NULL COMMENT 'es. DO#-Fa-La-Si',
+  note_eng         VARCHAR(2)    NOT NULL COMMENT 'es. C#',
+  chord_eng        VARCHAR(20)   NOT NULL COMMENT 'es. C#Maj7',
+  chord_note_eng   VARCHAR(100)  NOT NULL COMMENT 'es. C#-E#-G#-B',
+  created_at       TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at       TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uk_ita (note_ita, chord_ita),
+  UNIQUE KEY uk_eng (note_eng, chord_eng)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Inserimento dei dati per gli accordi di DO# nella tabella DO#
-INSERT INTO NoteDO# (note_ita, chord_ita, chord_note_ita, note_eng, chord_eng, chord_note_eng) VALUES
-('DO#', 'DO# Maggiore', 'DO#-Fa-La', 'C#', 'C#Maj', 'C#-E#-G#'),
-('DO#', 'DO# Minore', 'DO#-Fa♯-La', 'C#', 'C#m', 'C#-E-G#'),
-('DO#', 'DO# Settima', 'DO#-Fa-La-Si', 'C#', 'C#7', 'C#-E-G#-B'),
-('DO#', 'DO# Maggiore 7', 'DO#-Fa-La-Si♯', 'C#', 'C#Maj7', 'C#-E#-G#-B#'),
-('DO#', 'DO# Minore 7', 'DO#-Fa♯-La-Si', 'C#', 'C#m7', 'C#-E-G#-B'),
-('DO#', 'DO# Settima Minore', 'DO#-Fa♯-La-Si', 'C#', 'C#m7', 'C#-E-G#-B'),
-('DO#', 'DO# Maggiore 6', 'DO#-Fa-La♯', 'C#', 'C#6', 'C#-E#-G#-A#'),
-('DO#', 'DO# Minore 6', 'DO#-Fa♯-La♯', 'C#', 'C#m6', 'C#-E-G#-A'),
-('DO#', 'DO# Settima 9', 'DO#-Fa-La-Si-Re', 'C#', 'C#9', 'C#-E-G#-B-D#'),
-('DO#', 'DO# Maggiore 9', 'DO#-Fa-La-Si♯-Re', 'C#', 'C#Maj9', 'C#-E#-G#-B#-D#'),
-('DO#', 'DO# Minore 9', 'DO#-Fa♯-La-Si-Re', 'C#', 'C#m9', 'C#-E-G#-B-D#'),
-('DO#', 'DO# Settima Maggiore 7', 'DO#-Fa-La-Si♯♯', 'C#', 'C#Maj7♯5', 'C#-E#-G#-B#'),
-('DO#', 'DO# Diminuito', 'DO#-Fa-La♭', 'C#', 'C#dim', 'C#-E-G'),
-('DO#', 'DO# Aumentato', 'DO#-Fa♯-La♯♯', 'C#', 'C#aug', 'C#-E#-G##'),
-('DO#', 'DO# Sesta', 'DO#-Fa-La♯-Mi', 'C#', 'C#6', 'C#-E#-G#-A#'),
-('DO#', 'DO# Nona', 'DO#-Fa-La-Si-Re', 'C#', 'C#9', 'C#-E-G#-B-D#'),
-('DO#', 'DO# Settima Maggiore', 'DO#-Fa-La-Si', 'C#', 'C#Maj7', 'C#-E#-G#-B#'),
-('DO#', 'DO# Settima Maggiore 9', 'DO#-Fa-La-Si♯-Re', 'C#', 'C#Maj9', 'C#-E#-G#-B#-D#'),
-('DO#', 'DO# Settima 11', 'DO#-Fa-La-Si♯-Re-Fa♯', 'C#', 'C#11', 'C#-E-G#-B-D-F#'),
-('DO#', 'DO# Settima 13', 'DO#-Fa-La-Si♯-Re-Fa♯-La', 'C#', 'C#13', 'C#-E-G#-B-D-F#-A'),
-('DO#', 'DO# Settima 9 Add11', 'DO#-Fa-La-Si♯-Re-Fa♯', 'C#', 'C#9add11', 'C#-E-G#-B-D-F#'),
-('DO#', 'DO# Sesta 9', 'DO#-Fa-La♯-Mi-La-Re', 'C#', 'C#6/9', 'C#-E#-G#-A#-D#'),
-('DO#', 'DO# Sesta 11', 'DO#-Fa-La♯-Mi-La-Re-Fa♯', 'C#', 'C#6/11', 'C#-E#-G#-A#-D#-F#'),
-('DO#', 'DO# Settima Maggiore 11', 'DO#-Fa-La-Si-Fa♯', 'C#', 'C#Maj7#11', 'C#-E#-G#-B#-F#'),
-('DO#', 'DO# Minore 7 Add11', 'DO#-Fa♯-La♭-Si', 'C#', 'C#m7add11', 'C#-E-G-B-D-F#'),
-('DO#', 'DO# Maggiore 7#11', 'DO#-Fa-La-Si-F♯', 'C#', 'C#Maj7#11', 'C#-E#-G#-B#-F#'),
-('DO#', 'DO# Minore/Maggiore 7', 'DO#-Fa♯-La♭-Si♯', 'C#', 'C#m/Maj7', 'C#-E-G#-B#'),
-('DO#', 'DO# Settima 9#11', 'DO#-Fa-La-Si♯-Re-F♯', 'C#', 'C#9#11', 'C#-E-G#-B-D-F#'),
-('DO#', 'DO# Settima Minore 9', 'DO#-Fa♯-La♭-Si♯-Re', 'C#', 'C#m9', 'C#-E-G#-B#-D#'),
-('DO#', 'DO# Settima Maggiore 13', 'DO#-Fa-La-Si-Re-F♯-La', 'C#', 'C#Maj13', 'C#-E#-G#-B#-D#-F#-A'),
-('DO#', 'DO# Minore 11', 'DO#-Fa♯-La♭-Si♯-Re-Fa♯', 'C#', 'C#m11', 'C#-E-G-B-D-F#'),
-('DO#', 'DO# Settima add11', 'DO#-Fa-La-Si-Fa♯', 'C#', 'C#7add11', 'C#-E-G#-B-F#');
+-- Inserimento dei dati per gli accordi di DO# (C#)
+INSERT INTO NoteDOdiesis (
+  note_ita, chord_ita, chord_note_ita,
+  note_eng, chord_eng, chord_note_eng
+) VALUES
+
+  /* --- TRIADI --- */
+  ('DO#','Do# Maggiore',    'Do#-Fa-La#',                   'C#','C#Maj',   'C#-E#-G#'),
+  ('DO#','Do# Minore',      'Do#-Fa-La#',                   'C#','C#m',     'C#-E-G#'),
+  ('DO#','Do# Diminuito',   'Do#-Fa-La',                    'C#','C#dim',   'C#-E-G'),
+  ('DO#','Do# Aumentato',   'Do#-Fa-La##',                  'C#','C#aug',   'C#-E#-G##'),
+
+  /* --- QUARTE & QUINTE --- */
+  ('DO#','Do# Quarta',      'Do#-Sol',                      'C#','C#4',     'C#-G#'),
+  ('DO#','Do# Quinta',      'Do#-Fa#',                      'C#','C#5',     'C#-Fx'),
+
+  /* --- SOSPESI --- */
+  ('DO#','Do# sus2',        'Do#-Re#-Fa#',                  'C#','C#sus2',  'C#-D#-Fx'),
+  ('DO#','Do# sus4',        'Do#-Fa-Sol#',                  'C#','C#sus4',  'C#-F#-G#'),
+  ('DO#','Do# sus4 add9',   'Do#-Re#-Fa-Sol#',              'C#','C#sus4add9','C#-D#-F#-G#'),
+
+  /* --- SENZA INTERVALLI --- */
+  ('DO#','Do# no3',         'Do#-Fa#',                      'C#','C#no3',   'C#-Fx'),
+  ('DO#','Do# no5',         'Do#-Mi#',                      'C#','C#no5',   'C#-E#'),
+
+  /* --- ADDITIONS --- */
+  ('DO#','Do# add2',        'Do#-Mi#-Fa#-Re#',              'C#','C#add2',  'C#-E#-Fx-D#'),
+  ('DO#','Do# add4',        'Do#-Mi#-Sol-Fa',               'C#','C#add4',  'C#-E#-G-F'),
+  ('DO#','Do# add9',        'Do#-Fa#-Sol#-Re#',             'C#','C#add9',  'C#-Fx-G#-D#'),
+  ('DO#','Do# add11',       'Do#-Fa#-La#-Sol',              'C#','C#add11', 'C#-Fx-A#-G'),
+
+  /* --- SESTE --- */
+  ('DO#','Do# 6',           'Do#-Mi#-Sol#-La#',             'C#','C#6',     'C#-E#-G#-A#'),
+  ('DO#','Do# m6',          'Do#-Mi-Fa#-La#',               'C#','C#m6',    'C#-E-Fx-A#'),
+  ('DO#','Do# 6/9',         'Do#-Mi#-Sol#-La#-Re#',         'C#','C#6/9',   'C#-E#-G#-A#-D#'),
+
+  /* --- SETTIME --- */
+  ('DO#','Do# 7',           'Do#-Mi#-Sol#-Si',              'C#','C#7',     'C#-E#-G#-B'),
+  ('DO#','Do# Maj7',        'Do#-Mi#-Sol#-Si#',             'C#','C#Maj7',  'C#-E#-G#-B#'),
+  ('DO#','Do# m7',          'Do#-Mi-Sol#-Si',               'C#','C#m7',    'C#-E-G#-B'),
+  ('DO#','Do# m7b5',        'Do#-Mi-Sol-Si',                'C#','C#m7b5',  'C#-E-G-B'),
+  ('DO#','Do# dim7',        'Do#-Mi-Sol-La',                'C#','C#dim7',  'C#-E-G-A'),
+  ('DO#','Do# 7b5',         'Do#-Mi#-Sol#-Si',              'C#','C#7b5',   'C#-E#-G#-B'),
+  ('DO#','Do# 7#5',         'Do#-Mi#-Sol##-Si',             'C#','C#7#5',   'C#-E#-G##-B'),
+  ('DO#','Do# 7sus2',       'Do#-Re#-Sol#-Si',              'C#','C#7sus2', 'C#-D#-G#-B'),
+  ('DO#','Do# 7sus4',       'Do#-Fa-Sol#-Si',               'C#','C#7sus4', 'C#-F#-G#-B'),
+  ('DO#','Do# 7add11',      'Do#-Mi#-Sol#-Si-Fa',           'C#','C#7add11','C#-E#-G#-B-F'),
+
+  /* --- NOVE --- */
+  ('DO#','Do# 9',           'Do#-Mi#-Sol#-Si-Re#',          'C#','C#9',     'C#-E#-G#-B-D#'),
+  ('DO#','Do# Maj9',        'Do#-Mi#-Sol#-Si#-Re#',         'C#','C#Maj9',  'C#-E#-G#-B#-D#'),
+  ('DO#','Do# m9',          'Do#-Mi-Sol#-Si-Re#',           'C#','C#m9',    'C#-E-G#-B-D#'),
+  ('DO#','Do# 9b5',         'Do#-Mi#-Sol-Si-Re#',           'C#','C#9b5',   'C#-E#-G-B-D#'),
+  ('DO#','Do# 9#5',         'Do#-Mi#-Sol##-Si-Re#',         'C#','C#9#5',   'C#-E#-G##-B-D#'),
+  ('DO#','Do# 9sus4',       'Do#-Fa-Sol#-Si-Re#',           'C#','C#9sus4', 'C#-F#-G#-B-D#'),
+  ('DO#','Do# 9add11',      'Do#-Mi#-Sol#-Si-Fa-Re#',       'C#','C#9add11','C#-E#-G#-B-F-D#'),
+
+  /* --- UNDICI --- */
+  ('DO#','Do# 11',          'Do#-Mi#-Sol#-Si-Re#-Fa#',      'C#','C#11',    'C#-E#-G#-B-D#-F#'),
+  ('DO#','Do# Maj11',       'Do#-Mi#-Sol#-Si#-Re#-Fa#',     'C#','C#Maj11', 'C#-E#-G#-B#-D#-F#'),
+  ('DO#','Do# m11',         'Do#-Mi-Sol#-Si-Re#-Fa#',       'C#','C#m11',   'C#-E-G#-B-D#-F#'),
+  ('DO#','Do# 11b5',        'Do#-Mi#-Sol-Si-Re#-Fa#',       'C#','C#11b5',  'C#-E#-G-B-D#-F#'),
+  ('DO#','Do# 11#5',        'Do#-Mi#-Sol##-Si-Re#-Fa#',      'C#','C#11#5',  'C#-E#-G##-B-D#-F#'),
+
+  /* --- TREDICI --- */
+  ('DO#','Do# 13',          'Do#-Mi#-Sol#-Si-Re#-Fa#-La#',   'C#','C#13',    'C#-E#-G#-B-D#-F#-A#'),
+  ('DO#','Do# Maj13',       'Do#-Mi#-Sol#-Si#-Re#-Fa#-La#',  'C#','C#Maj13', 'C#-E#-G#-B#-D#-F#-A#'),
+  ('DO#','Do# m13',         'Do#-Mi-Sol#-Si-Re#-Fa#-La#',     'C#','C#m13',   'C#-E-G#-B-D#-F#-A#');
 
 -- Creazione della tabella RE
 CREATE TABLE NoteRE (
